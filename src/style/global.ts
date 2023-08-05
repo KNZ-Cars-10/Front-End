@@ -11,6 +11,7 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     transition: 1s;
     font-family: 'Nunito', 'Inter', sans-serif;
+	/* overflow: auto; */
   }
 
   svg {
@@ -29,6 +30,7 @@ export const GlobalStyles = createGlobalStyle`
   html{
     min-height: 100vh;
     width: 100%;
+	/* overflow-x: hidden; */
   }
 
 
@@ -38,26 +40,31 @@ export const GlobalStyles = createGlobalStyle`
     align-items: center;
     min-height: 100vh;
     width: 100%; 
-    background-color: var(--color-grey-scale-grey-1);
+	overflow-x: hidden;
+	/* position: relative; */
+    /* background-color: var(--color-grey-scale-grey-1); */
   }
   
   .routes{
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    height: 100%;
     width: 100%; 
-    background-color: var(--color-grey-scale-grey-1);
+	/* overflow-x: hidden */
+    /* background-color: var(--color-grey-scale-grey-1); */
   }
 
   body{
     min-height: 100vh;
     width: 100%;
+	/* overflow-x: hidden */
   }
 
   #root{
    min-height: 100vh;
    width: 100%;
+   /* overflow-x: hidden */
   }
 
   .modal {

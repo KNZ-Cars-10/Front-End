@@ -41,4 +41,50 @@ export const StyledDash = styled.div`
     font-weight: 500;
     text-align: center;
   }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    //Tem que resolve
+    overflow: auto;
+  }
+
+  button {
+    background-color: var(--color-brand-brand-2);
+    padding: 15px 0;
+    width: 90%;
+    border-radius: 5px;
+    color: var(--color-grey-scale-grey-10);
+    margin: 50px 0;
+  }
+
+  button:hover {
+    background-color: var(--color-brand-brand-1);
+    color: var(--color-grey-scale-grey-3);
+  }
+
+  .pages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .pages > p {
+    color: var(--color-grey-scale-grey-3);
+    font-weight: 700;
+  }
+
+  .pages > p > span {
+    color: var(--color-grey-scale-grey-2);
+  }
+
+  .pages > span {
+    color: var(--color-brand-brand-2);
+    font-weight: 700;
+    cursor: pointer;
+  }
 `;

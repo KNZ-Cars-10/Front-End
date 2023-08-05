@@ -14,6 +14,8 @@ export type IDefaultProviderProps = {
 export type TAdvertResponseFull = {
   prevPage: string | null;
   nextPage: string | null;
+  page: number;
+  pages: number;
   count: number;
   data: TAdverts;
 };
