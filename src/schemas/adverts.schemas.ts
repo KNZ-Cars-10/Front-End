@@ -17,8 +17,6 @@ export const advertSchema = z.object({
   other_images: z.string().array().nullish(),
 });
 
-// type teste = z.infer<typeof advertSchema>;
-
 export const advertSchemaRequest = advertSchema.omit({
   id: true,
   createdAt: true,
@@ -43,7 +41,7 @@ export const advertSchemaResponse = advertSchema.extend({
   }),
 });
 
-export const advertsSchemaResponse = advertSchema
+export const advertsSchema = advertSchema
   .extend({
     user: z.object({
       id: z.number(),
@@ -66,4 +64,8 @@ export const advertsSchemaResponse = advertSchema
 
 export const updateAdvertSchema = advertSchemaRequest.partial();
 
-export const advertsSchema = advertSchemaResponse.array();
+// export const advertsSchema = advertSchemaResponse.array();
+
+type teste = z.infer<typeof advertsSchema>;
+
+// type teste2 = z.infer<typeof advertsSchemaResponse>;
