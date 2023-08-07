@@ -30,7 +30,7 @@ export const GlobalStyles = createGlobalStyle`
   html{
     min-height: 100vh;
     width: 100%;
-	/* overflow-x: hidden; */
+	
   }
 
 
@@ -51,7 +51,7 @@ export const GlobalStyles = createGlobalStyle`
     align-items: center;
     height: 100%;
     width: 100%; 
-	/* overflow-x: hidden */
+
     /* background-color: var(--color-grey-scale-grey-1); */
   }
 
@@ -64,18 +64,32 @@ export const GlobalStyles = createGlobalStyle`
   #root{
    min-height: 100vh;
    width: 100%;
-   /* overflow-x: hidden */
+
   }
 
   .modal {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: var(--matte);
+    background-color: var(--color-matte);
+	/* Tem que resolve modal de filtros com duas barras de rolagem  */
+	overflow: auto;
+  }
+
+  .loading{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+
+	h2{
+		// Tem que Estiliza
+	}
   }
 
   :root {
@@ -113,6 +127,7 @@ export const GlobalStyles = createGlobalStyle`
 	--color-grey-scale-grey-9: #f8f9fa;
 	--color-grey-scale-grey-10: #fdfdfd;
 	--color-colors-fixed-white-fixed: #ffffff;
+	--color-matte: rgb(0, 0, 0, 0.5);
 }
 
 .text-style-heading-heading-1-700 {
