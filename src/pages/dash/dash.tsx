@@ -5,12 +5,9 @@ import { AdvertCard } from "../../components/advertCard/advertCrad";
 import { Filters } from "../../components/filters/filters";
 import { AdvertContext } from "../../providers/advertContext/advertContext";
 import { api } from "../../services/api";
-import { useNavigate } from "react-router-dom";
 import { ModalEditProfile } from "../../components/modalEditProfile";
 
 export function DashPage() {
-  const navigate = useNavigate();
-
   const {
     loading,
     mock,
@@ -23,12 +20,6 @@ export function DashPage() {
   } = useContext(AdvertContext);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      navigate("/");
-    }
-
     getAdverts();
   }, []);
 
@@ -46,7 +37,7 @@ export function DashPage() {
 
   return (
     <>
-    {/* <ModalEditProfile/> */}
+      {/* <ModalEditProfile/> */}
       {loading ? (
         <div className="modal">
           <div className="loading">
