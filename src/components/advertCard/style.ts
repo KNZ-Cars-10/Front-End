@@ -6,7 +6,8 @@ export const StyledAdvertCard = styled.div`
   align-self: flex-start;
   gap: 10px;
   /* border: 1px black solid; */
-  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
 
   background-color: var(--color-colors-fixed-white-fixed);
 
@@ -18,6 +19,7 @@ export const StyledAdvertCard = styled.div`
   & > p {
     text-align: center;
     color: var(--color-grey-scale-grey-2);
+    max-height: 100px;
   }
 
   & > h2 {
@@ -35,7 +37,7 @@ export const StyledAdvertCard = styled.div`
 
   .user > div {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     color: var(--color-colors-fixed-white-fixed);
@@ -55,6 +57,7 @@ export const StyledAdvertCard = styled.div`
     align-items: center;
     width: 100%;
     justify-content: space-between;
+    text-align: center;
   }
 
   .information > div {

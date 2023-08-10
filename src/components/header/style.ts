@@ -35,7 +35,7 @@ export const StyledHeader = styled.header<IHeaderProps>`
         .navDown {
           display: flex;
           flex-direction: column;
-          align-self: flex-start;
+          align-items: flex-start;
           width: 100%;
           gap: 2rem;
         }
@@ -61,41 +61,49 @@ export const StyledHeader = styled.header<IHeaderProps>`
     display: none;
   }
 
-  .navUpButtons > span {
+  .navUpButtons > a {
     color: var(--color-grey-scale-grey-2);
     font-weight: 600;
-  }
-
-  .navUpButtons > span:hover {
-    color: var(--color-grey-scale-grey-0);
     cursor: pointer;
   }
 
-  .navUpButtons > button {
+  .navUpButtons > a:hover {
+    color: var(--color-grey-scale-grey-0);
+  }
+
+  .navUpButtons > .register {
     border-radius: 5px;
     padding: 1rem;
     background-color: var(--color-colors-fixed-white-fixed);
     border: 2px solid var(--color-grey-scale-grey-3);
   }
 
-  .navUpButtons > button:hover {
+  .navUpButtons > .register:hover {
     color: var(--color-grey-scale-grey-0);
     border: 2px solid var(--color-grey-scale-grey-0);
   }
 
-  .navDown > span {
+  .navDown > a {
     color: var(--color-grey-scale-grey-2);
     font-weight: 600;
+    cursor: pointer;
   }
 
-  .navDown > button {
+  .navDown > a:hover {
+    color: var(--color-grey-scale-grey-0);
+  }
+
+  .navDown > .register {
     border-radius: 5px;
     padding: 1rem;
+    width: 100%;
+    text-align: center;
+    color: var(--color-grey-scale-grey-0);
     background-color: var(--color-colors-fixed-white-fixed);
     border: 2px solid var(--color-grey-scale-grey-3);
   }
 
-  .navDown > button:hover {
+  .navDown > .register:hover {
     color: var(--color-grey-scale-grey-0);
     border: 2px solid var(--color-grey-scale-grey-0);
   }
@@ -104,7 +112,7 @@ export const StyledHeader = styled.header<IHeaderProps>`
     display: flex;
   }
 
-  @media (min-width: 770px) {
+  @media (min-width: 700px) {
     .menuIcon {
       display: none;
     }

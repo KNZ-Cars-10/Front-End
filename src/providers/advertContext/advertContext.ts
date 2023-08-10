@@ -47,7 +47,7 @@ export const AdvertContextProvider = ({ children }: IDefaultProviderProps) => {
     setAdverts(updatedAdvert);
   };
   return (
-    <AdvertContext.
+    <AdvertContext.Provider
       value={{ createAdvert, updateAdvert, deleteAdvert }}
     >
       {children}

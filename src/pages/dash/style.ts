@@ -46,9 +46,10 @@ export const StyledDash = styled.div`
     display: flex;
     flex-direction: row;
     align-self: flex-start;
+
     gap: 1rem;
+    width: 100%;
     padding: 1rem;
-    //Tem que resolve
     overflow: auto;
   }
 
@@ -70,6 +71,7 @@ export const StyledDash = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     gap: 1rem;
   }
 
@@ -82,9 +84,115 @@ export const StyledDash = styled.div`
     color: var(--color-grey-scale-grey-2);
   }
 
-  .pages > span {
+  .pages > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+  }
+  .pages > div > span {
     color: var(--color-brand-brand-2);
     font-weight: 700;
     cursor: pointer;
+  }
+
+  main {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .filters {
+    display: none;
+  }
+
+  @media (min-width: 1000px) {
+    .filterButton {
+      display: none;
+    }
+
+    .pages {
+      margin: 5rem 0;
+    }
+
+    .filters {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 1rem;
+      width: 400px;
+
+      background-color: var(--color-colors-fixed-white-fixed);
+
+      & > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .close {
+        cursor: pointer;
+        color: var(--color-grey-scale-grey-3);
+      }
+
+      section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      section > h2 {
+        padding: 1rem 0;
+      }
+
+      section > span {
+        color: var(--color-grey-scale-grey-3);
+        padding-left: 10px;
+        margin-bottom: 5px;
+        font-weight: 600;
+        align-self: flex-start;
+        cursor: pointer;
+      }
+
+      section > span:hover {
+        color: var(--color-grey-scale-grey-2);
+      }
+
+      section > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      section > div > span {
+        color: var(--color-grey-scale-grey-3);
+        font-weight: 600;
+      }
+
+      button {
+        background-color: var(--color-brand-brand-2);
+        padding: 15px 0;
+        width: 100%;
+        border-radius: 5px;
+        color: var(--color-grey-scale-grey-10);
+        margin: 50px 0;
+      }
+
+      button:hover {
+        background-color: var(--color-brand-brand-1);
+        color: var(--color-grey-scale-grey-3);
+      }
+    }
+
+    ul {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 `;

@@ -1,6 +1,7 @@
 import { StyledHeader } from "./style";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const [nav, setNav] = useState(false);
@@ -15,17 +16,21 @@ export function Header() {
         </div>
 
         <div className="navUpButtons">
-          <span> Fazer Login</span>
-          <button>Cadastrar</button>
+          <Link to="/login">Fazer Login</Link>
+          <Link to="/register" className="register">
+            Cadastrar
+          </Link>
         </div>
 
         <GiHamburgerMenu className="menuIcon" onClick={() => setNav(!nav)} />
       </div>
 
       <div className="navDown">
-        <span>Fazer Login</span>
+        <Link to="/login">Fazer Login</Link>
 
-        <button>Cadastrar</button>
+        <Link to="/register" className="register">
+          Cadastrar
+        </Link>
       </div>
     </StyledHeader>
   );
