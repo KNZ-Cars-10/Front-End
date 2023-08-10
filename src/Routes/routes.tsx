@@ -8,7 +8,7 @@ export const RouterComponent = () => {
   return (
     <AdvertProvider>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage />} />
         {/* <Route path="/register" element={<RegisterPage />} /> */}
         <Route path="/dash" element={<DashPage />} />
         {/* <Route path="/*" element={<NotFound />} /> */}
