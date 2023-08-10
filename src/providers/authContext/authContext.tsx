@@ -2,6 +2,7 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 import { LoginData } from "../../interfaces/login.interfaces";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -44,7 +45,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
       setLoading(false);
 
-      navigate("/dashboard");
+      toast.success("Login realizado com sucesso!");
+
+      navigate("/dash");
     } catch (error) {
       console.log(error);
     }
