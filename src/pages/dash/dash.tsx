@@ -6,6 +6,7 @@ import { Filters } from "../../components/filters/filters";
 import { AdvertContext } from "../../providers/advertContext/advertContext";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import { ModalEditProfile } from "../../components/modalEditProfile";
 
 export function DashPage() {
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ export function DashPage() {
 
   return (
     <>
+    {/* <ModalEditProfile/> */}
       {loading ? (
         <div className="modal">
           <div className="loading">
