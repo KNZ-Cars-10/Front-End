@@ -56,9 +56,10 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
   const userLogin = async (formData: TUserLoginFormValues) => {
     try {
       const response = await api.post("login", formData);
-      localStorage.setItem("token", `${response.data.accessToken}`);
-      localStorage.setItem("userId", `${response.data.user.id}`);
-      setUser(response.data.user);
+      console.log(response);
+      localStorage.setItem("token", `${response.data.token}`);
+      // localStorage.setItem("userId", `${response.data.user.id}`);
+      // setUser(response.data.user);
       navigate("dash");
       toast.success("Login realizado com sucesso!");
     } catch (error) {

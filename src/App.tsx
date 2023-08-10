@@ -2,7 +2,7 @@ import { ToastContainer } from "react-toastify";
 import { RouterComponent } from "./Routes/routes";
 import "react-toastify/dist/ReactToastify.css";
 import { Footer } from "./components/footer/footer";
-import { AuthProvider } from "./providers/userContext/authContext";
+import { UserContextProvider } from "./providers/userContext/userContext";
 // import { Header } from "./components/header/header";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <>
       <div className="App">
         <div className="routes">
-          <AuthProvider>
+          <UserContextProvider>
             {/* <Header /> */}
             <RouterComponent />
 
@@ -26,7 +26,7 @@ function App() {
               pauseOnHover
               theme="light"
             />
-          </AuthProvider>
+          </UserContextProvider>
         </div>
       </div>
       <Footer />
