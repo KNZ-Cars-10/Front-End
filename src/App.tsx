@@ -2,14 +2,14 @@ import { ToastContainer } from "react-toastify";
 import { RouterComponent } from "./Routes/routes";
 import "react-toastify/dist/ReactToastify.css";
 import { Footer } from "./components/footer/footer";
-import { Header } from "./components/header/header";
+// import { Header } from "./components/header/header";
 
 function App() {
   return (
     <>
       <div className="App">
         <div className="routes">
-          <Header />
+          {/* <Header /> */}
           <RouterComponent />
 
           <ToastContainer
