@@ -2,6 +2,13 @@ import { StyledFooter } from "./style";
 import { AiOutlineArrowUp } from "react-icons/ai";
 
 export function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <StyledFooter>
       <h3>
@@ -10,9 +17,9 @@ export function Footer() {
 
       <span>2022 - Todods os direitos reservados.</span>
 
-      <div className="arrow">
+      <button className="arrow" onClick={scrollToTop}>
         <AiOutlineArrowUp />
-      </div>
+      </button>
     </StyledFooter>
   );
 }
