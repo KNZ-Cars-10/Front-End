@@ -46,7 +46,7 @@ export function DashPage() {
 
   return (
     <>
-    {/* <ModalEditProfile/> */}
+      {/* <ModalEditProfile/> */}
       {loading ? (
         <div className="modal">
           <div className="loading">
