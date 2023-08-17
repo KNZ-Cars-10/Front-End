@@ -5,6 +5,7 @@ import { requestLoginSchema } from "../../schemas/login.schemas";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../providers/userContext/userContext";
 import { useContext } from "react";
+import { ModalCreateAnnounce } from "../../components/modalCreateAnnounc/modalCreateAnnounc";
 
 export const LoginPage = () => {
   const { register, handleSubmit } = useForm<LoginData>({
@@ -15,9 +16,11 @@ export const LoginPage = () => {
 
   return (
     <main>
-      <h1>Login</h1>
+      {/* <h1>Login</h1> */}
 
-      <form onSubmit={handleSubmit(userLogin)}>
+      <ModalCreateAnnounce/>
+
+      {/* <form onSubmit={handleSubmit(userLogin)}>
         <label htmlFor="email">Email</label>
         <input type="text" id="email" {...register("email")} />
 
@@ -27,7 +30,7 @@ export const LoginPage = () => {
         <button type="submit">Entrar</button>
 
         <Link to="/register">Criar nova conta</Link>
-      </form>
+      </form> */}
     </main>
   );
 };
