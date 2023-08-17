@@ -15,7 +15,7 @@ export function Footer() {
         Motors <span>shop</span>
       </h3>
 
-      <span>2022 - Todods os direitos reservados.</span>
+      <span>2023 - Todods os direitos reservados.</span>
 
       <button className="arrow" onClick={scrollToTop}>
         <AiOutlineArrowUp />

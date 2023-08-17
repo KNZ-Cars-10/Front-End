@@ -14,6 +14,8 @@ export const UserContext = createContext({} as TUserContext);
 
 export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<TUser | null>(null);
+  const [isAdvertise, setIsAdvertise] = useState(false);
+
   const navigate = useNavigate();
 
   const autoLoginUser = async () => {
@@ -74,6 +76,8 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
         setUser,
         userLogin,
         autoLoginUser,
+        isAdvertise,
+        setIsAdvertise
       }}
     >
       {children}
