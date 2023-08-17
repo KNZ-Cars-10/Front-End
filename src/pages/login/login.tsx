@@ -2,9 +2,10 @@ import { useForm } from "react-hook-form";
 import { LoginData } from "../../interfaces/login.interfaces";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { requestLoginSchema } from "../../schemas/login.schemas";
-import { Link } from "react-router-dom";
 import { UserContext } from "../../providers/userContext/userContext";
 import { useContext } from "react";
+import { FormStyled } from "./style";
+import { Link } from "./style";
 
 export const LoginPage = () => {
   const { register, handleSubmit } = useForm<LoginData>({
@@ -14,20 +15,39 @@ export const LoginPage = () => {
   const { userLogin } = useContext(UserContext);
 
   return (
-    <main>
-      <h1>Login</h1>
+    <>
+      <FormStyled onSubmit={handleSubmit(userLogin)}>
+        <h1>Login</h1>
 
-      <form onSubmit={handleSubmit(userLogin)}>
-        <label htmlFor="email">Email</label>
-        <input type="text" id="email" {...register("email")} />
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            placeholder="Digitar email"
+            {...register("email")}
+          />
+        </div>
 
-        <label htmlFor="password">Senha</label>
-        <input type="text" id="password" {...register("password")} />
+        <div>
+          <label htmlFor="password">Senha</label>
+          <section>
+            <input
+              type="text"
+              id="password"
+              placeholder="Digitar senha"
+              {...register("password")}
+            />
+            <span>Esqueci minha senha</span>
+          </section>
+        </div>
 
         <button type="submit">Entrar</button>
 
-        <Link to="/register">Criar nova conta</Link>
-      </form>
-    </main>
+        <p>Ainda não possui conta?</p>
+
+        <Link to="/register">Cadastrar</Link>
+      </FormStyled>
+    </>
   );
 };
