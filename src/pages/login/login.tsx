@@ -19,10 +19,6 @@ export const LoginPage = () => {
     <>
       <FormStyled onSubmit={handleSubmit(userLogin)}>
         <h1>Login</h1>
-    <main>
-
-
-      <ModalCreateAnnounce/>
 
         <div>
           <label htmlFor="email">Email</label>
@@ -53,7 +49,7 @@ export const LoginPage = () => {
 
         <Link to="/register">Cadastrar</Link>
       </FormStyled>
-      
+
     </>
   );
 };

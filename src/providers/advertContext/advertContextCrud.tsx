@@ -32,21 +32,7 @@ export const AdvertContext = createContext({} as TAdvertContext);
 
 export const AdvertContextProvider = ({ children }: IDefaultProviderProps) => {
   const [adverts, setAdverts] = useState<TAdvertResponse[] | null>([]);
-  const [newAdvert, setNewAdvert] = useState<AdvertDataAxios | null>(null);
-
-  const createAdvert = async (advert: AdvertDataAxios) => {
-    const token = localStorage.getItem("token");
-    
-    try {
-      const response = await api.post<AdvertResponse>("adverts", advert, {
-        headers: {Authorization: `Bearer ${token}`},
-      })
-      console.log(response.data);
-
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  
   const updateAdvert = (id: number, updatedAdvert: TAdvertUpdate) => {
     const updatedAdverts = adverts!.map((advert) =>
       advert.id === id ? updatedAdvert : advert
@@ -60,7 +46,7 @@ export const AdvertContextProvider = ({ children }: IDefaultProviderProps) => {
   };
   return (
     <AdvertContext.Provider
-      value={{ createAdvert, updateAdvert, deleteAdvert, setAdverts, adverts, setNewAdvert, newAdvert }}
+      value={{  updateAdvert, deleteAdvert, setAdverts, adverts }}
     >
       {children}
     </AdvertContext.Provider>

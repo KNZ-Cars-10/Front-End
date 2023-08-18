@@ -5,20 +5,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler } from "react-hook-form";
 import { useContext, useEffect } from "react";
 import { AdvertContext } from "../../providers/advertContext/advertContext";
+import { carsContext } from "../../providers/carsContext/carsContext";
 
 export const ModalCreateAnnounce = () => {
   const { register, handleSubmit, formState:{errors} } = useForm<AdvertData>({
     resolver: zodResolver(advertSchemaRequest),
   });
   const {setNewAdvert, newAdvert, createAdvert} = useContext(AdvertContext)
+  const {brands, getCars, cars} = useContext(carsContext)
 
   useEffect(()=>{
-    try {
-      createAdvert(newAdvert!)
-    } catch (error) {
-      console.log(error);
-      
-    }
+    createAdvert(newAdvert!)
   },[newAdvert])
   const onSubmit: SubmitHandler<AdvertData> = (data: AdvertData) => {
 
@@ -32,6 +29,10 @@ export const ModalCreateAnnounce = () => {
 
     setNewAdvert(newData)
   };
+
+  const setCarsSelect = (brand:string) => {
+    getCars(brand)
+  }
 
   return (
     <div className="modal">
@@ -51,11 +52,18 @@ export const ModalCreateAnnounce = () => {
           </label>
           <select
             {...register("brand")}
+            onChange={(e) => setCarsSelect(e.target.value)}
             id="mark"
             className="text-style-inputs-buttons-input-placeholder input"
             placeholder="Oi"
           >
-            <option value="comida">Oi</option>
+            {brands.map((brand) => {
+              const brandName = brand.charAt(0).toUpperCase() + brand.slice(1)
+
+              return(
+                <option value={brand}>{brandName}</option>
+              )
+            })}
           </select>
         </LabelInput>
         <LabelInput>
@@ -71,7 +79,12 @@ export const ModalCreateAnnounce = () => {
             className="text-style-inputs-buttons-input-placeholder input"
             placeholder="Oi"
           >
-            <option value="comida">Oi</option>
+            {cars.map(({name}) => {
+              const carName = name.charAt(0).toUpperCase() +name.slice(1)
+              return(
+                <option value={name}>{carName}</option>
+              )
+            })}
           </select>
         </LabelInput>
         <div className="doub-input">
