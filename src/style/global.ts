@@ -20,6 +20,9 @@ export const GlobalStyles = createGlobalStyle`
 
   .error{
     color: var(--color-feedback-alert-1);
+	font-size: 12px;
+	font-family: "Lexend";
+	margin-left: 20px;
   }
 
   button{
@@ -241,8 +244,8 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-inputs-buttons-input-label {
 	font-size: 14px;
-	font-family: "Inter";
-	font-weight: 500;
+	font-family: "Inter", sans-serif; 
+	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
 	text-transform: none;

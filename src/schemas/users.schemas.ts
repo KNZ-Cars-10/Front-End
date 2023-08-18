@@ -1,4 +1,4 @@
-import { string, z } from "zod";
+import { z } from "zod";
 import { advertSchema } from "./adverts.schemas";
 
 export const userSchema = z.object({
