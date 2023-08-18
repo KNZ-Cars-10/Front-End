@@ -3,23 +3,42 @@ import { LoginData } from "../../interfaces/login.interfaces";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { requestLoginSchema } from "../../schemas/login.schemas";
 import { UserContext } from "../../providers/userContext/userContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FormStyled, Input, StyledLink1, StyledLink2 } from "./style";
+import { api } from "../../services/api";
+import { TUserLoginFormValues } from "../../providers/userContext/@Types";
 
 export const LoginPage = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginData>({
+  const { userLogin, passwordError } = useContext(UserContext);
+
+  const { register, handleSubmit } = useForm<LoginData>({
     resolver: zodResolver(requestLoginSchema),
   });
 
-  const { userLogin } = useContext(UserContext);
+  const [emailExists, setEmailExists] = useState(true);
+
+  const checkEmailExists = async (email: string) => {
+    try {
+      const response = await api.get(`users/checkEmail/${email}`);
+
+      return response.data.exists;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const onSubmit = async (formData: TUserLoginFormValues) => {
+    const exists = await checkEmailExists(formData.email);
+    setEmailExists(exists);
+
+    if (exists) {
+      userLogin(formData);
+    }
+  };
 
   return (
     <>
-      <FormStyled onSubmit={handleSubmit(userLogin)}>
+      <FormStyled onSubmit={handleSubmit(onSubmit)}>
         <h1>Login</h1>
 
         <div>
@@ -30,9 +49,13 @@ export const LoginPage = () => {
               id="email"
               placeholder="Digitar email"
               {...register("email")}
-              hasError={!!errors.email}
+              hasError={!emailExists}
             />
-            {errors.email && <span>{errors.email.message}</span>}
+            {!emailExists && (
+              <span>
+                O email que você inseriu não está conectado a uma conta.
+              </span>
+            )}
           </section>
         </div>
 
@@ -44,9 +67,9 @@ export const LoginPage = () => {
               id="password"
               placeholder="Digitar senha"
               {...register("password")}
-              hasError={!!errors.password}
+              hasError={passwordError}
             />
-            {errors.password && <span>{errors.password.message}</span>}
+            {passwordError && <span>A senha inserida está incorreta.</span>}
             <StyledLink1 to="/password-reset">Esqueci minha senha</StyledLink1>
           </section>
         </div>
