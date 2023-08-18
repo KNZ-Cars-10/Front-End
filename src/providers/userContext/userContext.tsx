@@ -60,6 +60,8 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
 
       localStorage.setItem("token", `${response.data.token}`);
 
+      setPasswordError(false);
+
       navigate("dash");
 
       toast.success("Login realizado com sucesso!");
