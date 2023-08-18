@@ -4,11 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { requestLoginSchema } from "../../schemas/login.schemas";
 import { UserContext } from "../../providers/userContext/userContext";
 import { useContext } from "react";
-import { FormStyled } from "./style";
-import { Link } from "./style";
+import { FormStyled, Input, StyledLink1, StyledLink2 } from "./style";
 
 export const LoginPage = () => {
-  const { register, handleSubmit } = useForm<LoginData>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginData>({
     resolver: zodResolver(requestLoginSchema),
   });
 
@@ -21,24 +24,30 @@ export const LoginPage = () => {
 
         <div>
           <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            placeholder="Digitar email"
-            {...register("email")}
-          />
+          <section>
+            <Input
+              type="text"
+              id="email"
+              placeholder="Digitar email"
+              {...register("email")}
+              hasError={!!errors.email}
+            />
+            {errors.email && <span>{errors.email.message}</span>}
+          </section>
         </div>
 
         <div>
           <label htmlFor="password">Senha</label>
           <section>
-            <input
+            <Input
               type="text"
               id="password"
               placeholder="Digitar senha"
               {...register("password")}
+              hasError={!!errors.password}
             />
-            <span>Esqueci minha senha</span>
+            {errors.password && <span>{errors.password.message}</span>}
+            <StyledLink1 to="/password-reset">Esqueci minha senha</StyledLink1>
           </section>
         </div>
 
@@ -46,7 +55,7 @@ export const LoginPage = () => {
 
         <p>Ainda não possui conta?</p>
 
-        <Link to="/register">Cadastrar</Link>
+        <StyledLink2 to="/register">Cadastrar</StyledLink2>
       </FormStyled>
     </>
   );

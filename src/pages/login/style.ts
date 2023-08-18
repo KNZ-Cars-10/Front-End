@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 import { Link as LinkRouter } from "react-router-dom";
 
 export const FormStyled = styled.form`
@@ -8,6 +8,8 @@ export const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
   gap: 25px;
+
+  margin-bottom: 32px;
 
   padding: 35px;
 
@@ -32,17 +34,6 @@ export const FormStyled = styled.form`
     font-size: 14px;
   }
 
-  input {
-    width: 100%;
-
-    height: 50px;
-
-    padding: 0 12px;
-
-    border: 2px solid var(--color-grey-scale-grey-4);
-    border-radius: 8px;
-  }
-
   button {
     height: 50px;
 
@@ -59,14 +50,11 @@ export const FormStyled = styled.form`
     cursor: pointer;
   }
 
-  p {
-    text-align: center;
-
-    font-weight: 400;
-    font-size: 14px;
+  span {
+    font-size: 12px;
     line-height: 18px;
 
-    color: var(--grey-250);
+    color: var(--color-feedback-alert-1);
   }
 
   section {
@@ -74,21 +62,48 @@ export const FormStyled = styled.form`
 
     display: flex;
     flex-direction: column;
+    align-items: end;
+
     gap: 10px;
   }
 
-  span {
+  p {
     display: flex;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
 
     font-size: 14px;
-
-    cursor: pointer;
   }
 `;
 
-export const Link = styled(LinkRouter)`
+export const Input = styled.input<{ hasError: boolean }>`
+  width: 100%;
+
+  height: 50px;
+
+  padding: 0 12px;
+
+  border: 2px solid var(--color-grey-scale-grey-4);
+  border-radius: 8px;
+
+  ${(props) =>
+    props.hasError &&
+    css`
+      border-color: var(--color-feedback-alert-1);
+    `}
+`;
+
+export const StyledLink1 = styled(LinkRouter)`
+  width: fit-content;
+
+  display: flex;
+  justify-content: end;
+
+  color: var(--color-grey-scale-grey-0);
+  font-size: 14px;
+`;
+
+export const StyledLink2 = styled(LinkRouter)`
   display: flex;
   justify-content: center;
   align-items: center;
