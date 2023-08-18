@@ -23,6 +23,7 @@ export type TUserContext = {
   userLogout: () => void;
   autoLoginUser: () => Promise<void>;
   userLogin: (formData: TUserLoginFormValues) => Promise<void>;
+  passwordError: boolean;
   setUser: React.Dispatch<React.SetStateAction<TUser>>;
 };
 
