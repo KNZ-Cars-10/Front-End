@@ -16,7 +16,7 @@ export function Header() {
         </div>
 
         <div className="navUpButtons">
-          <Link to="/login">Fazer Login</Link>
+          <Link to="/">Fazer Login</Link>
           <Link to="/register" className="register">
             Cadastrar
           </Link>
