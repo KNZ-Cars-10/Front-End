@@ -80,6 +80,7 @@ export const LoginPage = () => {
 
         <StyledLink2 to="/register">Cadastrar</StyledLink2>
       </FormStyled>
+
     </>
   );
 };
