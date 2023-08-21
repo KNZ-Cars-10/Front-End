@@ -7,6 +7,7 @@ import {
   TUserContext,
   TUserLoginFormValues,
   TUserRegister,
+  TUserSend,
 } from "./@Types";
 import { toast } from "react-toastify";
 
@@ -37,13 +38,13 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
     autoLoginUser();
   }, []);
 
-  const userRegister = async (formData: TUserRegister) => {
+  const userRegister = async (formData: TUserSend) => {
     try {
       const response = await api.post("users", formData);
       setUser(response.data.user);
       localStorage.setItem("token", response.data.accessToken);
       toast.success("Cadastro realizado com sucesso!");
-      navigate("dash");
+      navigate("/dash");
     } catch (error) {
       toast.error("Usuário já existente");
     }

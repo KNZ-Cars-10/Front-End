@@ -1,18 +1,16 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../providers/userContext/userContext";
-import { TUserRegister } from "../../providers/userContext/@Types";
+import { TUserRegister, TUserSend } from "../../providers/userContext/@Types";
 import { userSchemaRegister } from "../../schemas/users.schemas";
 import { StyledRegister } from "./style";
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
 
-
 export const RegisterPage = () => {
     const [selectedButton, setSelectedButton] = useState<number | null>(null);
     const [showPassword, setShowPassword] = useState(false);
-    const inputRef = useRef<HTMLDivElement | null>(null)
     const toggleShowPassword = () => setShowPassword(!showPassword);
 
     const handleButtonSelection = (buttonIndex: number) => {
@@ -28,17 +26,29 @@ export const RegisterPage = () => {
     const { userRegister} = useContext(UserContext);
 
     const mySubmition = async (data: TUserRegister) => {
-        /* Verificar com a Turma, sobre o confirm_password */
-        console.log( "Valores inseridos:", data);
-
-        /* try {
-            console.log( "Valores inseridos:", data);
-            const validValues = userSchemaRegister.parse(data);
-            userRegister(validValues);
-            console.log( "Valores validados:",validValues);
+        
+        const sendData: TUserSend = {
+            name: data.name,
+            password: data.password,
+            email: data.email,
+            cpf: data.cpf,
+            phone: data.phone,
+            birth_date: data.birth_date,
+            description: data.description,
+            zip_code:  data.zip_code,
+            state: data.state,
+            city: data.city,
+            street: data.street,
+            number: data.number,
+            complement: data.complement,
+            is_advertise: data.is_advertise
+        }
+        
+        try {
+            userRegister(sendData);
         } catch (error) {
-            
-        } */
+            console.log(error)
+        }
     }
 
     return (
