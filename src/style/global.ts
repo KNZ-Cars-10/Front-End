@@ -258,6 +258,7 @@ export const GlobalStyles = createGlobalStyle`
 	font-style: normal;
 	text-decoration: none;
 	text-transform: none;
+	border: none;
 }
 
 .text-style-inputs-buttons-button-big-text {

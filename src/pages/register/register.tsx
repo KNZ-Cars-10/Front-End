@@ -1,13 +1,19 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { UserContext } from "../../providers/userContext/userContext";
 import { TUserRegister } from "../../providers/userContext/@Types";
 import { userSchemaRegister } from "../../schemas/users.schemas";
 import { StyledRegister } from "./style";
+import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
+
+
 
 export const RegisterPage = () => {
     const [selectedButton, setSelectedButton] = useState<number | null>(null);
+    const [showPassword, setShowPassword] = useState(false);
+    const inputRef = useRef<HTMLDivElement | null>(null)
+    const toggleShowPassword = () => setShowPassword(!showPassword);
 
     const handleButtonSelection = (buttonIndex: number) => {
       setSelectedButton(buttonIndex === selectedButton ? null : buttonIndex);
@@ -143,21 +149,83 @@ export const RegisterPage = () => {
                 </div>
                 <p className="error centralize-p">{errors.is_advertise?.message}</p>
             </div>
+            
+            <div className="stick-label">
+                <label 
+                    htmlFor="password" 
+                    className="text-style-inputs-buttons-input-label"
+                    style={{marginBottom: "0"}}
+                >Senha</label>
+                <div className="position-relative">
+                    <div style={{
+                    height:"1.5rem",
+                    width:"1.5rem",
+                    padding:"4px",
+                    position:"absolute",
+                    boxSizing:"border-box",
+                    top:"30%",
+                    right:"20px",
+                    transform:"translateY(-50%) translateX(-30%)",
+                    }}>
+                        {showPassword ? 
+                                <IoMdEyeOff onClick={toggleShowPassword} className="eye-icon"/>
+                                : 
+                                <IoMdEye onClick={toggleShowPassword} className="eye-icon"/>
+                        }
+                    </div>
+                    <input style={{
+                        height: "50px",
+                        boxSizing: "border-box",
+                        paddingLeft: "1.5rem",
+                        width: "100%"
+                    }}
+                    type={showPassword ? 'text' : 'password'}
+                    id="password" 
+                    {...register("password")}
+                    placeholder="Sua senha aqui"
+                    ></input>
+                    <p className="error" style={{marginTop: "8px"}}>{errors.password?.message}</p>
+              </div>
+            </div>
 
             <div className="stick-label">
-                <label htmlFor="password" className="text-style-inputs-buttons-input-label">Senha</label>
-                <input type="text" id="password" className="text-style-inputs-buttons-input-placeholder" {...register("password")} placeholder="Sua senha aqui"/>
-                <p className="error">{errors.password?.message}</p>
+                <label 
+                    htmlFor="confirm_password" 
+                    className="text-style-inputs-buttons-input-label"
+                    style={{marginBottom: "0"}}
+                >Confirmar Senha</label>
+                <div className="position-relative">
+                    <div style={{
+                    height:"1.5rem",
+                    width:"1.5rem",
+                    padding:"4px",
+                    position:"absolute",
+                    boxSizing:"border-box",
+                    top:"30%",
+                    right:"20px",
+                    transform:"translateY(-50%) translateX(-30%)",
+                    }}>
+                        {showPassword ? 
+                                <IoMdEyeOff onClick={toggleShowPassword} className="eye-icon"/>
+                                : 
+                                <IoMdEye onClick={toggleShowPassword} className="eye-icon"/>
+                        }
+                    </div>
+                    <input style={{
+                        height: "50px",
+                        boxSizing: "border-box",
+                        paddingLeft: "1.5rem",
+                        width: "100%"
+                    }}
+                    type={showPassword ? 'text' : 'password'}
+                    id="password" 
+                    {...register("confirm_password")}
+                    placeholder="Confirme sua senha aqui"
+                    ></input>
+                    <p className="error" style={{marginTop: "8px"}}>{errors.confirm_password?.message}</p>
+              </div>
             </div>
             
-
-            <div className="stick-label">
-                <label htmlFor="confirm_password" className="text-style-inputs-buttons-input-label">Confirmar Senha</label>
-                <input type="text" id="confirm_password" className="text-style-inputs-buttons-input-placeholder" {...register("confirm_password")} placeholder="Confirme sua senha aqui"/>
-                <p className="error">{errors.confirm_password?.message}</p>
-            </div>
-            
-
             <button type="submit">Finalizar cadastro</button>
         </form>
       </StyledRegister>

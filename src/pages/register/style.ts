@@ -28,9 +28,40 @@ background-color: var(--color-grey-scale-grey-7);
 }
 
 .stick-label{
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    .eye-icon {
+        font-size: 30px; 
+        cursor: pointer; 
+    }
+}
+
+.position-relative{
+    position: relative
+}
+
+
+
+.fit-eye{
+    border-radius: 4px;
+    border: 2px solid var(--color-grey-scale-grey-7);
+    transition: border-color 0.3s;
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding-right: 20px; 
+
+    input{
+        border: none;
+    }
+
+    
+}
+
+.fit-eye-focused{
+    border-color: var(--color-grey-scale-grey-0);
 }
 
 
