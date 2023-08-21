@@ -7,6 +7,7 @@ import {
   TUserContext,
   TUserLoginFormValues,
   TUserRegister,
+  TUserSend,
 } from "./@Types";
 import { toast } from "react-toastify";
 
@@ -14,7 +15,9 @@ export const UserContext = createContext({} as TUserContext);
 
 export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<TUser | null>(null);
+  const [isAdvertise, setIsAdvertise] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+
   const navigate = useNavigate();
 
   const autoLoginUser = async () => {
@@ -36,13 +39,13 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
     autoLoginUser();
   }, []);
 
-  const userRegister = async (formData: TUserRegister) => {
+  const userRegister = async (formData: TUserSend) => {
     try {
       const response = await api.post("users", formData);
       setUser(response.data.user);
       localStorage.setItem("token", response.data.accessToken);
       toast.success("Cadastro realizado com sucesso!");
-      navigate("dash");
+      navigate("/dash");
     } catch (error) {
       toast.error("Usuário já existente");
     }
@@ -80,6 +83,8 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
         userLogin,
         passwordError,
         autoLoginUser,
+        isAdvertise,
+        setIsAdvertise
       }}
     >
       {children}

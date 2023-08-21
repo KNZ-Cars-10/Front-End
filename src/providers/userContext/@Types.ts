@@ -5,6 +5,7 @@ import {
   userSchemaRegister,
   userSchemaRequest,
   userSchemaResponse,
+  userSendSchema,
 } from "../../schemas/users.schemas";
 
 export type TUser = z.infer<typeof userSchema>;
@@ -15,16 +16,20 @@ export type TUserRequest = z.infer<typeof userSchemaRequest>;
 
 export type TUserRespose = z.infer<typeof userSchemaResponse>;
 
-export type TUserUpdate = z.infer<typeof updateUserSchema>;
+export type TUserUpdate = z.infer<typeof updateUserSchema>; 
+
+export type TUserSend = z.infer<typeof userSendSchema>;
 
 export type TUserContext = {
   user: TUser | null;
-  userRegister: (FormData: TUserRegister) => Promise<void>;
+  userRegister: (FormData: TUserSend) => Promise<void>;
   userLogout: () => void;
   autoLoginUser: () => Promise<void>;
   userLogin: (formData: TUserLoginFormValues) => Promise<void>;
+  setUser: React.Dispatch<React.SetStateAction<TUser | null>>;
+  isAdvertise: boolean,
+  setIsAdvertise: React.Dispatch<React.SetStateAction<boolean>>
   passwordError: boolean;
-  setUser: React.Dispatch<React.SetStateAction<TUser>>;
 };
 
 export type TUserLoginFormValues = {
