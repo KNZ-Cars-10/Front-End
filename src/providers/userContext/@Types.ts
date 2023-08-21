@@ -29,6 +29,7 @@ export type TUserContext = {
   setUser: React.Dispatch<React.SetStateAction<TUser | null>>;
   isAdvertise: boolean,
   setIsAdvertise: React.Dispatch<React.SetStateAction<boolean>>
+  passwordError: boolean;
 };
 
 export type TUserLoginFormValues = {

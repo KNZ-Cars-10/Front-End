@@ -16,6 +16,7 @@ export const UserContext = createContext({} as TUserContext);
 export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<TUser | null>(null);
   const [isAdvertise, setIsAdvertise] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -59,12 +60,16 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
   const userLogin = async (formData: TUserLoginFormValues) => {
     try {
       const response = await api.post("login", formData);
-      console.log(response);
+
       localStorage.setItem("token", `${response.data.token}`);
+
+      setPasswordError(false);
+
       navigate("dash");
+
       toast.success("Login realizado com sucesso!");
     } catch (error) {
-      toast.error("Usuário ou senha inválidos");
+      setPasswordError(true);
     }
   };
 
@@ -76,6 +81,7 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
         userLogout,
         setUser,
         userLogin,
+        passwordError,
         autoLoginUser,
         isAdvertise,
         setIsAdvertise
