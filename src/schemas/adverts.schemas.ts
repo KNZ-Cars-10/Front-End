@@ -4,6 +4,23 @@ export const advertSchema = z.object({
   id: z.number(),
   brand: z.string(),
   model: z.string(),
+  year: z.string(),
+  fuel: z.string(),
+  mileage: z.string(),
+  color: z.string(),
+  price_FIPE: z.string(),
+  price: z.string(),
+  description: z.string(),
+  cover_image: z.string().nullable(),
+  first_image: z.string().nullable(),
+  second_image: z.string().nullable(),
+  other_images: z.string().array().nullish(),
+});
+
+export const advertSchemaAxios = z.object({
+  id: z.number(),
+  brand: z.string(),
+  model: z.string(),
   year: z.number(),
   fuel: z.string(),
   mileage: z.number(),
@@ -21,6 +38,12 @@ export const advertSchemaRequest = advertSchema.omit({
   id: true,
   createdAt: true,
 });
+
+export const advertSchemaRequestAxios = advertSchemaAxios.omit({
+  id: true,
+  createdAt: true,
+});
+
 
 export const advertSchemaResponse = advertSchema.extend({
   user: z.object({
@@ -65,7 +88,8 @@ export const advertsSchema = advertSchema
 export const updateAdvertSchema = advertSchemaRequest.partial();
 
 // export const advertsSchema = advertSchemaResponse.array();
-
-type teste = z.infer<typeof advertsSchema>;
+export type AdvertDataAxios = z.infer<typeof advertSchemaRequestAxios>
+export type AdvertData = z.infer<typeof advertSchemaRequest>;
+export type AdvertResponse = z.infer<typeof advertSchemaResponse>;
 
 // type teste2 = z.infer<typeof advertsSchemaResponse>;

@@ -1,8 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
+
 export const GlobalStyles = createGlobalStyle`
 
-*{
+
+*{	
+	
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -20,6 +23,9 @@ export const GlobalStyles = createGlobalStyle`
 
   .error{
     color: var(--color-feedback-alert-1);
+	font-size: 12px;
+	font-family: "Lexend";
+	margin-left: 20px;
   }
 
   button{
@@ -71,12 +77,21 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
+	justify-content: center;
     /* position: fixed; */
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: var(--color-matte);
 	/* Tem que resolve modal de filtros com duas barras de rolagem  */
 	overflow: auto;
+
+	::-webkit-scrollbar{
+		width: 4px;
+	}
+	::-webkit-scrollbar-thumb{
+		background-color: var(--color-grey-scale-grey-4);
+		border-radius: 8px;
+	}
   }
 
   .loading{
@@ -223,8 +238,8 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-7-500 {
 	font-size: 16px;
-	font-family: "Lexend";
-	font-weight: 500;
+	font-family: "Lexend", sans-serif;
+	font-weight: 00;
 	font-style: normal;
 	text-decoration: none;
 	text-transform: none;
@@ -241,8 +256,8 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-inputs-buttons-input-label {
 	font-size: 14px;
-	font-family: "Inter";
-	font-weight: 500;
+	font-family: "Inter", sans-serif; 
+	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
 	text-transform: none;
@@ -250,16 +265,17 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-inputs-buttons-input-placeholder {
 	font-size: 16px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	text-decoration: none;
 	text-transform: none;
+	border: none;
 }
 
 .text-style-inputs-buttons-button-big-text {
 	font-size: 16px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 700;
 	font-style: normal;
 	text-decoration: none;
@@ -298,7 +314,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-text-body-2-500 {
 	font-size: 14px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	line-height: 24px;

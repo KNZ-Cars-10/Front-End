@@ -6,6 +6,7 @@ import {
 } from "./@Types";
 import { api } from "../../services/api";
 import axios from "axios";
+import { AdvertDataAxios, AdvertResponse } from "../../schemas/adverts.schemas";
 
 export const AdvertContext = createContext({} as TAdvertContext);
 
@@ -25,6 +26,22 @@ export const AdvertProvider = ({ children }: IDefaultProviderProps) => {
   const [fuel, setFuel] = useState<string | null>(null);
   const [mileage, setMileage] = useState<number | null>(null);
   const [price, setPrice] = useState<number | null>(null);
+  const [newAdvert, setNewAdvert] = useState<AdvertDataAxios | null>(null);
+
+
+  const createAdvert = async (advert: AdvertDataAxios) => {
+    const token = localStorage.getItem("token");
+    
+    try {
+      const response = await api.post<AdvertResponse>("adverts", advert, {
+        headers: {Authorization: `Bearer ${token}`},
+      })
+      console.log(response.data);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function getAdverts() {
     try {
@@ -49,6 +66,9 @@ export const AdvertProvider = ({ children }: IDefaultProviderProps) => {
     <AdvertContext.Provider
       value={{
         loading,
+        createAdvert,
+        newAdvert,
+        setNewAdvert,
         setLoading,
         mock,
         setMock,
