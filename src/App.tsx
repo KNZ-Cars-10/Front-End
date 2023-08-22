@@ -3,7 +3,7 @@ import { RouterComponent } from "./Routes/routes";
 import "react-toastify/dist/ReactToastify.css";
 import { Footer } from "./components/footer/footer";
 import { UserContextProvider } from "./providers/userContext/userContext";
-// import { Header } from "./components/header/header";
+import { Header } from "./components/header/header";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <div className="App">
         <div className="routes">
           <UserContextProvider>
-            {/* <Header /> */}
+            <Header />
             <RouterComponent />
 
             <ToastContainer

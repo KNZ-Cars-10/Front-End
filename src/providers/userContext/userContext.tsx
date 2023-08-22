@@ -7,6 +7,7 @@ import {
   TUserContext,
   TUserLoginFormValues,
   TUserRegister,
+  TUserSend,
 } from "./@Types";
 import { toast } from "react-toastify";
 
@@ -14,6 +15,9 @@ export const UserContext = createContext({} as TUserContext);
 
 export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<TUser | null>(null);
+  const [isAdvertise, setIsAdvertise] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
   const navigate = useNavigate();
 
   const autoLoginUser = async () => {
@@ -35,13 +39,13 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
     autoLoginUser();
   }, []);
 
-  const userRegister = async (formData: TUserRegister) => {
+  const userRegister = async (formData: TUserSend) => {
     try {
       const response = await api.post("users", formData);
       setUser(response.data.user);
       localStorage.setItem("token", response.data.accessToken);
       toast.success("Cadastro realizado com sucesso!");
-      navigate("dash");
+      navigate("/dash");
     } catch (error) {
       toast.error("Usuário já existente");
     }
@@ -56,12 +60,16 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
   const userLogin = async (formData: TUserLoginFormValues) => {
     try {
       const response = await api.post("login", formData);
-      console.log(response);
+
       localStorage.setItem("token", `${response.data.token}`);
+
+      setPasswordError(false);
+
       navigate("dash");
+
       toast.success("Login realizado com sucesso!");
     } catch (error) {
-      toast.error("Usuário ou senha inválidos");
+      setPasswordError(true);
     }
   };
 
@@ -73,7 +81,10 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
         userLogout,
         setUser,
         userLogin,
+        passwordError,
         autoLoginUser,
+        isAdvertise,
+        setIsAdvertise
       }}
     >
       {children}
