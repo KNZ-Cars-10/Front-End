@@ -21,7 +21,7 @@ export const userSchema = z.object({
   state: z.string().min(1, "Estado obrigatório"),
   city: z.string().min(1, "Cidade obrigatório"),
   street: z.string().min(1, "Rua obrigatório"),
-  number: z.number({invalid_type_error: "Número Obrigatório", required_error: "Número Obrigatório"}),
+  number: z.string({invalid_type_error: "Número Obrigatório", required_error: "Número Obrigatório"}),
   complement: z.string().nullable(),
   is_advertise: z.boolean({invalid_type_error: "Selecione uma opção"})
 });
@@ -59,7 +59,7 @@ export const userSendSchema = z.object({
   state: z.string().min(1, "Estado obrigatório"),
   city: z.string().min(1, "Cidade obrigatório"),
   street: z.string().min(1, "Rua obrigatório"),
-  number: z.number({invalid_type_error: "Número Obrigatório", required_error: "Número Obrigatório"}),
+  number: z.string({invalid_type_error: "Número Obrigatório", required_error: "Número Obrigatório"}),
   complement: z.string().nullable(),
   is_advertise: z.boolean({invalid_type_error: "Selecione uma opção"})
 });
