@@ -52,6 +52,7 @@ export const AdvertProvider = ({ children }: IDefaultProviderProps) => {
       setMock(response.data);
       setData(response.data);
     } catch (error) {
+      console.log(error)
       if (axios.isAxiosError<string>(error)) {
         console.log(error);
       } else {

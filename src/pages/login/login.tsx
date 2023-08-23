@@ -23,6 +23,7 @@ export const LoginPage = () => {
 
       return response.data.exists;
     } catch (error) {
+      console.log(error)
       return false;
     }
   };

@@ -26,7 +26,7 @@ export const RegisterPage = () => {
     const { userRegister} = useContext(UserContext);
 
     const mySubmition = async (data: TUserRegister) => {
-        
+        console.log(data)
         const sendData: TUserSend = {
             name: data.name,
             password: data.password,

@@ -31,6 +31,7 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
         });
         navigate("dash");
       } catch (error) {
+        console.log(error)
         localStorage.removeItem("token");
       }
     }
@@ -47,6 +48,7 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
       toast.success("Cadastro realizado com sucesso!");
       navigate("/dash");
     } catch (error) {
+      console.log(error)
       toast.error("Usuário já existente");
     }
   };
@@ -69,6 +71,7 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
 
       toast.success("Login realizado com sucesso!");
     } catch (error) {
+      console.log(error)
       setPasswordError(true);
     }
   };
