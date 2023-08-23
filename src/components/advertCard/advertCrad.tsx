@@ -1,22 +1,24 @@
-import { TAdvertResponse } from "../../providers/advertContext/@Types";
+import { TAdvert } from "../../providers/advertContext/@Types";
+import { TUser } from "../../providers/userContext/@Types";
 import { StyledAdvertCard } from "./style";
 
 type Props = {
-  advert: TAdvertResponse;
+  advert: TAdvert;
+  user: TUser;
 };
 
-export function AdvertCard({ advert }: Props) {
+export function AdvertCard({ advert, user }: Props) {
   return (
     <StyledAdvertCard>
       <div className="img">
         <img src={advert.cover_image!} alt="" />
       </div>
-      <h2>{advert.brand}</h2>
+      <h2>{advert.brand} - {advert.model}</h2>
       <p>{advert.description}</p>
 
       <div className="user">
         <div>R</div>
-        <span>{advert.user.name}</span>
+        <span>{user.name}</span>
       </div>
 
       <div className="information">

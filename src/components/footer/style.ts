@@ -7,11 +7,13 @@ export const StyledFooter = styled.div`
   gap: 1rem;
   width: 100%;
   padding: 1rem;
+  height: 140px;
   background-color: var(--color-grey-scale-grey-0);
   color: var(--color-grey-scale-grey-10);
   text-align: center;
-  /* position: absolute; */
-  /* bottom: 0px; */
+  position: relative;
+  botton: 0;
+  z-index: -1;
 
   .arrow {
     display: flex;

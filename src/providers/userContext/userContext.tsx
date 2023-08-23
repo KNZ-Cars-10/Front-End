@@ -7,6 +7,7 @@ import {
   TUserContext,
   TUserLoginFormValues,
   TUserRegister,
+  TUserRespose,
 } from "./@Types";
 import { toast } from "react-toastify";
 
@@ -14,6 +15,7 @@ export const UserContext = createContext({} as TUserContext);
 
 export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<TUser | null>(null);
+  const [userData, setUserData] = useState<TUserRespose | null>(null)
   const navigate = useNavigate();
 
   const autoLoginUser = async () => {
@@ -65,6 +67,20 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
+  const advertsByUser = async (userId: number) => {
+    const token = localStorage.getItem("token")
+    try {
+      const response = await api.get(`users/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      setUserData(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -74,6 +90,9 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
         setUser,
         userLogin,
         autoLoginUser,
+        advertsByUser,
+        userData,
+        setUserData
       }}
     >
       {children}

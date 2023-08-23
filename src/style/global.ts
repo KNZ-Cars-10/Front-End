@@ -28,8 +28,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   html{
-    min-height: 100vh;
-    width: 100%;
+    /* min-height: 100vh; */
 	
   }
 
@@ -50,7 +49,7 @@ export const GlobalStyles = createGlobalStyle`
     flex-direction: column;
     align-items: center;
     height: 100%;
-    width: 100%; 
+    width: 140%; 
 
     /* background-color: var(--color-grey-scale-grey-1); */
   }
@@ -64,7 +63,6 @@ export const GlobalStyles = createGlobalStyle`
   #root{
    min-height: 100vh;
    width: 100%;
-
   }
 
   .modal {

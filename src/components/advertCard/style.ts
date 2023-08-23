@@ -6,18 +6,20 @@ export const StyledAdvertCard = styled.div`
   align-self: flex-start;
   gap: 10px;
   /* border: 1px black solid; */
-  min-width: 300px;
-  max-width: 300px;
+  width: 312px;
+  height: 350px;
 
-  background-color: var(--color-colors-fixed-white-fixed);
+  background-color: var(--color-grey-scale-grey-6);
 
   .img > img {
     height: 100%;
     width: 100%;
+    max-height: 152px;
+    max-width: 312px;
   }
 
   & > p {
-    text-align: center;
+    text-align: left;
     color: var(--color-grey-scale-grey-2);
     max-height: 100px;
   }
@@ -44,7 +46,7 @@ export const StyledAdvertCard = styled.div`
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    background-color: red;
+    background-color: var(--color-brand-brand-1);
   }
 
   .user > span {

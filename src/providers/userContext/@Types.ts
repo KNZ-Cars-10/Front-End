@@ -24,6 +24,9 @@ export type TUserContext = {
   autoLoginUser: () => Promise<void>;
   userLogin: (formData: TUserLoginFormValues) => Promise<void>;
   setUser: React.Dispatch<React.SetStateAction<TUser>>;
+  advertsByUser: (userId: number) => Promise<TUserRespose>
+  userData: TUserRespose | null
+  setUserData: React.Dispatch<React.SetStateAction<TUserRespose>>
 };
 
 export type TUserLoginFormValues = {
