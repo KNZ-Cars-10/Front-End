@@ -60,7 +60,7 @@ export const advertSchemaResponse = advertSchema.extend({
     street: z.string(),
     number: z.number(),
     complement: z.string().nullable(),
-    is_advertise: z.boolean(),
+    is_advertiser: z.boolean(),
   }),
 });
 
@@ -80,7 +80,7 @@ export const advertsSchema = advertSchema
       street: z.string(),
       number: z.number(),
       complement: z.string().nullable(),
-      is_advertise: z.boolean(),
+      is_advertiser: z.boolean(),
     }),
   })
   .array();

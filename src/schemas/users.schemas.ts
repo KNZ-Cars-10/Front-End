@@ -23,7 +23,7 @@ export const userSchema = z.object({
   street: z.string().min(1, "Rua obrigatório"),
   number: z.string({invalid_type_error: "Número Obrigatório", required_error: "Número Obrigatório"}),
   complement: z.string().nullable(),
-  is_advertise: z.boolean({invalid_type_error: "Selecione uma opção"})
+  is_advertiser: z.boolean({invalid_type_error: "Selecione uma opção"})
 });
 
 export const userSchemaRegister = userSchema
@@ -61,7 +61,7 @@ export const userSendSchema = z.object({
   street: z.string().min(1, "Rua obrigatório"),
   number: z.string({invalid_type_error: "Número Obrigatório", required_error: "Número Obrigatório"}),
   complement: z.string().nullable(),
-  is_advertise: z.boolean({invalid_type_error: "Selecione uma opção"})
+  is_advertiser: z.boolean({invalid_type_error: "Selecione uma opção"})
 });
 
 export const userSchemaRequest = userSchema.omit({

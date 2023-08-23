@@ -41,7 +41,7 @@ export const RegisterPage = () => {
             street: data.street,
             number: data.number,
             complement: data.complement,
-            is_advertise: data.is_advertise
+            is_advertiser: data.is_advertiser
         }
         
         try {
@@ -140,24 +140,24 @@ export const RegisterPage = () => {
                 <div className="flex-buttons">
                     <input
                     type="hidden"
-                    {...register("is_advertise")}
+                    {...register("is_advertiser")}
                     />
                     <button type="button" className={selectedButton === 1 ? "selected" : ""} 
                     onClick={() => {
-                        setValue("is_advertise", true);
+                        setValue("is_advertiser", true);
                         handleButtonSelection(1);
                     }}>
                         Anunciante
                     </button>
                     <button type="button" className={selectedButton === 2 ? "selected" : ""} 
                     onClick={() => {
-                        setValue("is_advertise", false);
+                        setValue("is_advertiser", false);
                         handleButtonSelection(2);
                     }}>
                         Comprador
                     </button>
                 </div>
-                <p className="error centralize-p">{errors.is_advertise?.message}</p>
+                <p className="error centralize-p">{errors.is_advertiser?.message}</p>
             </div>
             
             <div className="stick-label">
