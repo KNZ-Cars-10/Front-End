@@ -1,23 +1,32 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 
-export const StyledAdvertCard = styled.div`
+interface ICardProps {
+  color: string | undefined;
+}
+
+export const StyledAdvertCard = styled.div<ICardProps>`
   display: flex;
   flex-direction: column;
   align-self: flex-start;
   gap: 10px;
-  /* border: 1px black solid; */
   min-width: 300px;
   max-width: 300px;
 
   background-color: var(--color-colors-fixed-white-fixed);
 
+  .img {
+    cursor: pointer;
+  }
+
   .img > img {
     height: 100%;
     width: 100%;
+    border-radius: 5px;
+    min-height: 200px;
+    max-height: 200px;
   }
 
   & > p {
-    text-align: center;
     color: var(--color-grey-scale-grey-2);
     max-height: 100px;
   }
@@ -27,7 +36,7 @@ export const StyledAdvertCard = styled.div`
     font-weight: 700;
   }
 
-  .user {
+  .userCard {
     display: flex;
     flex-direction: row;
     align-self: flex-start;
@@ -35,20 +44,71 @@ export const StyledAdvertCard = styled.div`
     gap: 1rem;
   }
 
-  .user > div {
+  .userCard > div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: var(--color-colors-fixed-white-fixed);
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    background-color: red;
+
+    ${({ color }) => {
+      if (color == "1") {
+        return css`
+          background-color: var(--color-random-random-1);
+        `;
+      } else if (color == "2") {
+        return css`
+          background-color: var(--color-random-random-2);
+        `;
+      } else if (color == "3") {
+        return css`
+          background-color: var(--color-random-random-3);
+        `;
+      } else if (color == "4") {
+        return css`
+          background-color: var(--color-random-random-4);
+        `;
+      } else if (color == "5") {
+        return css`
+          background-color: var(--color-random-random-5);
+        `;
+      } else if (color == "6") {
+        return css`
+          background-color: var(--color-random-random-6);
+        `;
+      } else if (color == "7") {
+        return css`
+          background-color: var(--color-random-random-7);
+        `;
+      } else if (color == "8") {
+        return css`
+          background-color: var(--color-random-random-8);
+        `;
+      } else if (color == "9") {
+        return css`
+          background-color: var(--color-random-random-9);
+        `;
+      } else if (color == "10") {
+        return css`
+          background-color: var(--color-random-random-10);
+        `;
+      } else if (color == "11") {
+        return css`
+          background-color: var(--color-random-random-11);
+        `;
+      } else if (color == "12") {
+        return css`
+          background-color: var(--color-random-random-12);
+        `;
+      }
+    }}
   }
 
-  .user > span {
+  .userCard > span {
     color: var(--color-grey-scale-grey-2);
+    cursor: pointer;
   }
 
   .information {

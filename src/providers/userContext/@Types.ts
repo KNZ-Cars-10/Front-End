@@ -22,8 +22,6 @@ export type TUserResponse = z.infer<typeof userSchemaResponse>;
 
 export type TUserUpdate = z.infer<typeof userSchemaUpdate>;
 
-// export type TUserSend = z.infer<typeof userSchemaRegister>;
-
 export type TLoginRequest = z.infer<typeof requestLoginSchema>;
 
 export type TLoginResponse = z.infer<typeof responseLoginSchema>;
@@ -34,16 +32,11 @@ export type TUserContext = {
   userRegister: (FormData: TUserRegister) => Promise<void>;
   userLogout: () => void;
   autoLoginUser: () => Promise<void>;
-  userLogin: (formData: TUserLoginFormValues) => Promise<void>;
+  userLogin: (formData: TLoginRequest) => Promise<void>;
   isAdvertise: boolean;
   setIsAdvertise: React.Dispatch<React.SetStateAction<boolean>>;
   profile: TUserResponse | null;
   setProfile: React.Dispatch<React.SetStateAction<TUserResponse | null>>;
   userMenu: boolean;
   setUserMenu: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-export type TUserLoginFormValues = {
-  email: string;
-  password: string;
 };

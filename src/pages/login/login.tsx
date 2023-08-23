@@ -1,21 +1,34 @@
 import { useForm } from "react-hook-form";
-import { LoginData } from "../../interfaces/login.interfaces";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { requestLoginSchema } from "../../schemas/login.schemas";
 import { UserContext } from "../../providers/userContext/userContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FormStyled, Input, StyledLink1, StyledLink2 } from "./style";
 // import { api } from "../../services/api";
-import { TUserLoginFormValues } from "../../providers/userContext/@Types";
+import { useNavigate } from "react-router-dom";
+import { TLoginRequest } from "../../providers/userContext/@Types";
 
 export const LoginPage = () => {
-  const { userLogin } = useContext(UserContext);
+  const { userLogin, setUserMenu } = useContext(UserContext);
+
+  const navigate = useNavigate();
+
+  let token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (token) {
+      navigate("/");
+      setUserMenu(false);
+    } else {
+      setUserMenu(false);
+    }
+  }, []);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginData>({
+  } = useForm<TLoginRequest>({
     resolver: zodResolver(requestLoginSchema),
   });
 
@@ -31,7 +44,7 @@ export const LoginPage = () => {
   //   }
   // };
 
-  const onSubmit = async (formData: TUserLoginFormValues) => {
+  const onSubmit = async (formData: TLoginRequest) => {
     // const exists = await checkEmailExists(formData.email);
     // setEmailExists(exists);
 

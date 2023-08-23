@@ -4,7 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useLocation } from "react-router-dom";
 import { UserContext } from "../../providers/userContext/userContext";
 
-export function Header() {
+export const Header = () => {
   const { profile, userLogout, userMenu, setUserMenu } =
     useContext(UserContext);
 
@@ -98,4 +98,4 @@ export function Header() {
       )}
     </StyledHeader>
   );
-}
+};

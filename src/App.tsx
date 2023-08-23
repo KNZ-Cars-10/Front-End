@@ -7,7 +7,7 @@ import { Header } from "./components/header/header";
 import { GlobalStyles } from "./style/global";
 import { AdvertProvider } from "./providers/advertContext/advertContext";
 
-function App() {
+const App = () => {
   return (
     <>
       <AdvertProvider>
@@ -38,6 +38,6 @@ function App() {
       </AdvertProvider>
     </>
   );
-}
+};
 
 export default App;

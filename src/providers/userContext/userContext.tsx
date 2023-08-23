@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { IDefaultProviderProps } from "../advertContext/@Types";
 
 import {
+  TLoginRequest,
   TLoginResponse,
-  TUser,
   TUserContext,
-  TUserLoginFormValues,
   TUserRegister,
   TUserResponse,
 } from "./@Types";
@@ -23,17 +22,10 @@ export const UserContext = createContext({} as TUserContext);
 
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const { setLoading } = useContext(AdvertContext);
-
   const [isAdvertise, setIsAdvertise] = useState(false);
-  // const [passwordError, setPasswordError] = useState(false);
   const [userMenu, setUserMenu] = useState(false);
   const [user, setUser] = useState<TUserResponse | null>(null);
   const [profile, setProfile] = useState<TUserResponse | null>(null);
-
-  const [updateProfile, setUpdateProfile] = useState(false);
-  const [updateAddress, setUpdateAddress] = useState(false);
-  const [deleteProfile, setDeleteProfile] = useState(false);
-  const [password, setPassword] = useState<string | null>(null);
 
   const navigate = useNavigate();
 
@@ -47,7 +39,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        navigate("dash");
+        navigate("/");
       } catch (error) {
         if (axios.isAxiosError<string>(error)) {
           console.log(error);
@@ -89,7 +81,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
-  async function getUserLoged(token: string) {
+  const getUserLoged = async (token: string) => {
     try {
       setLoading(true);
       const response = await api.get<TUserResponse>("profile/", {
@@ -119,9 +111,9 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  const userLogin = async (formData: TUserLoginFormValues) => {
+  const userLogin = async (formData: TLoginRequest) => {
     try {
       setLoading(true);
       const response = await api.post<TLoginResponse>("login", formData);
@@ -145,7 +137,6 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   const userLogout = () => {
-    setPassword("");
     setProfile(null);
     setUser(null);
     navigate("/login");
