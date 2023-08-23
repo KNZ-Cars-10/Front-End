@@ -13,9 +13,9 @@ export const RouterComponent = () => {
     <AdvertProvider>
       <CarsProvider>
         <Routes>
-          <Route path="/" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/dash" element={<DashPage />} />
+          <Route path="/" element={<DashPage />} />
           <Route path="/password-reset" element={<PasswordResetPage />} />
         </Routes>
       </CarsProvider>

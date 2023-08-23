@@ -1,12 +1,16 @@
 import { z } from "zod";
 import {
-  updateUserSchema,
+  userSchemaUpdate,
   userSchema,
   userSchemaRegister,
   userSchemaRequest,
   userSchemaResponse,
-  userSendSchema,
 } from "../../schemas/users.schemas";
+
+import {
+  responseLoginSchema,
+  requestLoginSchema,
+} from "../../schemas/login.schemas";
 
 export type TUser = z.infer<typeof userSchema>;
 
@@ -14,22 +18,29 @@ export type TUserRegister = z.infer<typeof userSchemaRegister>;
 
 export type TUserRequest = z.infer<typeof userSchemaRequest>;
 
-export type TUserRespose = z.infer<typeof userSchemaResponse>;
+export type TUserResponse = z.infer<typeof userSchemaResponse>;
 
-export type TUserUpdate = z.infer<typeof updateUserSchema>; 
+export type TUserUpdate = z.infer<typeof userSchemaUpdate>;
 
-export type TUserSend = z.infer<typeof userSendSchema>;
+// export type TUserSend = z.infer<typeof userSchemaRegister>;
+
+export type TLoginRequest = z.infer<typeof requestLoginSchema>;
+
+export type TLoginResponse = z.infer<typeof responseLoginSchema>;
 
 export type TUserContext = {
-  user: TUser | null;
-  userRegister: (FormData: TUserSend) => Promise<void>;
+  user: TUserResponse | null;
+  setUser: React.Dispatch<React.SetStateAction<TUserResponse | null>>;
+  userRegister: (FormData: TUserRegister) => Promise<void>;
   userLogout: () => void;
   autoLoginUser: () => Promise<void>;
   userLogin: (formData: TUserLoginFormValues) => Promise<void>;
-  setUser: React.Dispatch<React.SetStateAction<TUser | null>>;
-  isAdvertise: boolean,
-  setIsAdvertise: React.Dispatch<React.SetStateAction<boolean>>
-  passwordError: boolean;
+  isAdvertise: boolean;
+  setIsAdvertise: React.Dispatch<React.SetStateAction<boolean>>;
+  profile: TUserResponse | null;
+  setProfile: React.Dispatch<React.SetStateAction<TUserResponse | null>>;
+  userMenu: boolean;
+  setUserMenu: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type TUserLoginFormValues = {

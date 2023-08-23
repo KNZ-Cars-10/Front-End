@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledFooter = styled.div`
+export const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,8 +10,7 @@ export const StyledFooter = styled.div`
   background-color: var(--color-grey-scale-grey-0);
   color: var(--color-grey-scale-grey-10);
   text-align: center;
-  /* position: absolute; */
-  /* bottom: 0px; */
+  height: 10vh;
 
   .arrow {
     display: flex;

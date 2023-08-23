@@ -3,37 +3,41 @@ import { LoginData } from "../../interfaces/login.interfaces";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { requestLoginSchema } from "../../schemas/login.schemas";
 import { UserContext } from "../../providers/userContext/userContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { FormStyled, Input, StyledLink1, StyledLink2 } from "./style";
-import { api } from "../../services/api";
+// import { api } from "../../services/api";
 import { TUserLoginFormValues } from "../../providers/userContext/@Types";
 
 export const LoginPage = () => {
-  const { userLogin, passwordError } = useContext(UserContext);
+  const { userLogin } = useContext(UserContext);
 
-  const { register, handleSubmit } = useForm<LoginData>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginData>({
     resolver: zodResolver(requestLoginSchema),
   });
 
-  const [emailExists, setEmailExists] = useState(true);
+  // const [emailExists, setEmailExists] = useState(true);
 
-  const checkEmailExists = async (email: string) => {
-    try {
-      const response = await api.get(`users/checkEmail/${email}`);
+  // const checkEmailExists = async (email: string) => {
+  //   try {
+  //     const response = await api.get(`users/checkEmail/${email}`);
 
-      return response.data.exists;
-    } catch (error) {
-      return false;
-    }
-  };
+  //     return response.data.exists;
+  //   } catch (error) {
+  //     return false;
+  //   }
+  // };
 
   const onSubmit = async (formData: TUserLoginFormValues) => {
-    const exists = await checkEmailExists(formData.email);
-    setEmailExists(exists);
+    // const exists = await checkEmailExists(formData.email);
+    // setEmailExists(exists);
 
-    if (exists) {
-      userLogin(formData);
-    }
+    userLogin(formData);
+    // if (exists) {
+    // }
   };
 
   return (
@@ -49,13 +53,14 @@ export const LoginPage = () => {
               id="email"
               placeholder="Digitar email"
               {...register("email")}
-              hasError={!emailExists}
+              // hasError={!emailExists}
             />
-            {!emailExists && (
+            <p className="error">{errors.email?.message}</p>
+            {/* {!emailExists && (
               <span>
                 O email que você inseriu não está conectado a uma conta.
               </span>
-            )}
+            )} */}
           </section>
         </div>
 
@@ -63,13 +68,14 @@ export const LoginPage = () => {
           <label htmlFor="password">Senha</label>
           <section>
             <Input
-              type="text"
+              type="password"
               id="password"
               placeholder="Digitar senha"
               {...register("password")}
-              hasError={passwordError}
+              // hasError={passwordError}
             />
-            {passwordError && <span>A senha inserida está incorreta.</span>}
+            <p className="error">{errors.password?.message}</p>
+            {/* {passwordError && <span>A senha inserida está incorreta.</span>} */}
             <StyledLink1 to="/password-reset">Esqueci minha senha</StyledLink1>
           </section>
         </div>
@@ -80,7 +86,6 @@ export const LoginPage = () => {
 
         <StyledLink2 to="/register">Cadastrar</StyledLink2>
       </FormStyled>
-
     </>
   );
 };

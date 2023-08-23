@@ -32,8 +32,8 @@ export type TAdverts = z.infer<typeof advertsSchema>;
 export type TAdvertUpdate = z.infer<typeof updateAdvertSchema>;
 
 export type TAdvertContext = {
-  // loading: boolean;
-  // setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   // mock: TAdvertResponseFull | undefined;
   // setMock: React.Dispatch<
   //   React.SetStateAction<TAdvertResponseFull | undefined>
@@ -60,10 +60,10 @@ export type TAdvertContext = {
   // price: number | null;
   // setPrice: React.Dispatch<React.SetStateAction<number | null>>;
 
-  setAdverts: React.Dispatch<React.SetStateAction<TAdvertResponse[] | null>>
-  adverts: TAdvertResponse[] | null
-  setNewAdvert: React.Dispatch<React.SetStateAction<AdvertDataAxios | null>>
-  newAdvert: AdvertDataAxios | null
+  setAdverts: React.Dispatch<React.SetStateAction<TAdvertResponse[] | null>>;
+  adverts: TAdvertResponse[] | null;
+  setNewAdvert: React.Dispatch<React.SetStateAction<AdvertDataAxios | null>>;
+  newAdvert: AdvertDataAxios | null;
 
   // getAdverts(): Promise<void>;
   createAdvert: (advert: AdvertDataAxios) => void;
