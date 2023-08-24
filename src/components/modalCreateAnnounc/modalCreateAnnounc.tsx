@@ -1,264 +1,228 @@
+import { useContext, useEffect, useState } from "react";
+import { StyledModalCreateAdvert } from "./style";
 import { useForm } from "react-hook-form";
-import { CreateAnnounceForm, LabelInput } from "./style";
-import { AdvertData, AdvertDataAxios, advertSchemaRequest } from "../../schemas/adverts.schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SubmitHandler } from "react-hook-form";
-import { useContext, useEffect } from "react";
 import { AdvertContext } from "../../providers/advertContext/advertContext";
-import { carsContext } from "../../providers/carsContext/carsContext";
+import { TAdvertRequest } from "../../providers/advertContext/@Types";
+import { advertSchemaRequest } from "../../schemas/adverts.schemas";
 
-export const ModalCreateAnnounce = () => {
-  const { register, handleSubmit, formState:{errors} } = useForm<AdvertData>({
-    resolver: zodResolver(advertSchemaRequest),
-  });
-  const {setNewAdvert, newAdvert, createAdvert} = useContext(AdvertContext)
-  const {brands, getCars, cars} = useContext(carsContext)
+export const ModalCreateAdvert = () => {
+  const {
+    createAdvert,
+    setCreateAdvertModal,
+    setExternalBrand,
+    setExternalModel,
+    externalBrands,
+    externalModels,
+    externalModel,
+    externalBrand,
+    currentCar,
+  } = useContext(AdvertContext);
 
-  useEffect(()=>{
-    createAdvert(newAdvert!)
-  },[newAdvert])
-  const onSubmit: SubmitHandler<AdvertData> = (data: AdvertData) => {
+  const [currentFuel, setCurrentFuel] = useState<string | undefined>(undefined);
 
-    const newData: AdvertDataAxios = {
-      ...data,
-      year: +data.year,
-      price_FIPE: +data.price_FIPE,
-      price: +data.price,
-      mileage: +data.mileage,
+  useEffect(() => {
+    if (currentCar) {
+      if (currentCar.fuel == 1) {
+        setCurrentFuel("Flex");
+      } else if (currentCar.fuel == 2) {
+        setCurrentFuel("Hibrido");
+      } else if (currentCar.fuel == 3) {
+        setCurrentFuel("Elétrico");
+      }
     }
+  }, [currentCar]);
 
-    setNewAdvert(newData)
+  const [currentImage, setCurrentImage] = useState<File | null>(null);
+
+  const [currentImageURL, setCurrentImageURL] = useState<string | null>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const images = e.target.files![0];
+
+    setCurrentImage(images);
+
+    const url = URL.createObjectURL(e.target.files![0]);
+
+    setCurrentImageURL(url);
   };
 
-  const setCarsSelect = (brand:string) => {
-    getCars(brand)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TAdvertRequest>({
+    mode: "onBlur",
+    resolver: zodResolver(advertSchemaRequest),
+  });
+
+  const onSubmitFunction = (data: TAdvertRequest) => {
+    console.log(data);
+
+    const newData = {
+      ...data,
+      status: true,
+      other_images: [],
+    };
+
+    createAdvert(newData, currentImage!);
+  };
+
+  if (errors) {
+    console.log(errors);
   }
 
   return (
     <div className="modal">
-      <CreateAnnounceForm onSubmit={handleSubmit(onSubmit)}>
-        <header>
-          <p className="text-style-heading-heading-7-500">Criar anúncio</p>
-          <img src="/src/assets/x.svg" alt="" />
-        </header>
-        <p className="text-style-text-body-2-500">Informações do veículo</p>
+      <StyledModalCreateAdvert onSubmit={handleSubmit(onSubmitFunction)}>
+        <h2>Criar anúncio</h2>
 
-        <LabelInput>
-          <label
-            htmlFor="mark"
-            className="text-style-inputs-buttons-input-label"
-          >
-            Marca
-          </label>
+        <span>Informações do veículo</span>
+
+        <div>
+          <label htmlFor="brand">Marca</label>
           <select
+            id="brand"
             {...register("brand")}
-            onChange={(e) => setCarsSelect(e.target.value)}
-            id="mark"
-            className="text-style-inputs-buttons-input-placeholder input"
-            placeholder="Oi"
+            onChange={(e) => setExternalBrand(e.target.value)}
+            value={externalBrand!}
           >
-            {brands.map((brand) => {
-              const brandName = brand.charAt(0).toUpperCase() + brand.slice(1)
-
-              return(
-                <option value={brand}>{brandName}</option>
-              )
-            })}
+            {externalBrands?.map((brand) => (
+              <option key={brand}>{brand}</option>
+            ))}
           </select>
-        </LabelInput>
-        <LabelInput>
-          <label
-            htmlFor="model"
-            className="text-style-inputs-buttons-input-label"
-          >
-            Modelo
-          </label>
+          <p className="error">{errors.brand?.message}</p>
+        </div>
+
+        <div>
+          <label htmlFor="model">Modelo</label>
           <select
             {...register("model")}
             id="model"
-            className="text-style-inputs-buttons-input-placeholder input"
-            placeholder="Oi"
+            onChange={(e) => setExternalModel(e.target.value)}
+            value={externalModel!}
           >
-            {cars.map(({name}) => {
-              const carName = name.charAt(0).toUpperCase() +name.slice(1)
-              return(
-                <option value={name}>{carName}</option>
-              )
-            })}
+            {externalModels?.map((model) => (
+              <option key={model}>{model}</option>
+            ))}
           </select>
-        </LabelInput>
-        <div className="doub-input">
-          <LabelInput>
-            <label
-              htmlFor="year"
-              className="text-style-inputs-buttons-input-label"
-            >
-              Ano
-            </label>
+          <p className="error">{errors.model?.message}</p>
+        </div>
 
+        <div className="local">
+          <div>
+            <label htmlFor="year">Ano</label>
             <input
-              type="number"
+              type="text"
               id="year"
-              className="text-style-inputs-buttons-input-placeholder input"
-              placeholder="2023"
+              placeholder="2018"
               {...register("year")}
             />
-            <p>{errors.year?.message}</p>
-          </LabelInput>
-          <LabelInput>
-            <label
-              htmlFor="gas"
-              className="text-style-inputs-buttons-input-label"
-            >
-              Combustível
-            </label>
+            <p className="error">{errors.year?.message}</p>
+          </div>
+          <div>
+            <label htmlFor="fuel">Combustivel</label>
+
             <input
+              type="text"
+              readOnly
               {...register("fuel")}
-              className="text-style-inputs-buttons-input-placeholder input"
-              id="gas"
-              placeholder="Gasolina/Etanol"
+              value={currentFuel}
+              placeholder="Escolha a marca e modelo"
             />
-          </LabelInput>
+
+            <p className="error">{errors.fuel?.message}</p>
+          </div>
         </div>
-        <div className="doub-input">
-          <LabelInput>
-            <label
-              htmlFor="km"
-              className="text-style-inputs-buttons-input-label"
-            >
-              Quilometragem
-            </label>
+
+        <div className="local">
+          <div>
+            <label htmlFor="price_FIPE">Preço tabela FIPE</label>
             <input
-              type="number"
-              {...register("mileage")}
-              id="km"
-              className="text-style-inputs-buttons-input-placeholder input"
-              placeholder="30.000"
-            />
-          </LabelInput>
-          <LabelInput>
-            <label
-              htmlFor="color"
-              className="text-style-inputs-buttons-input-label"
-            >
-              Cor
-            </label>
-            <input
-              {...register("color")}
-              className="text-style-inputs-buttons-input-placeholder input"
-              id="color"
-              placeholder="Prata"
-            />
-          </LabelInput>
-        </div>
-        <div className="doub-input">
-          <LabelInput>
-            <label
-              htmlFor="fipe"
-              className="text-style-inputs-buttons-input-label"
-            >
-              Preço tabela FIPE
-            </label>
-            <input
-              type="number"
+              type="text"
+              id="price_FIPE"
+              readOnly
               {...register("price_FIPE")}
-              id="fipe"
-              className="text-style-inputs-buttons-input-placeholder input"
-              placeholder="R$ 48.000,00"
+              value={currentCar.value}
+              placeholder="Escolha a marca e modelo"
             />
-          </LabelInput>
-          <LabelInput>
-            <label
-              htmlFor="price"
-              className="text-style-inputs-buttons-input-label"
-            >
-              Preço
-            </label>
+            <p className="error">{errors.price_FIPE?.message}</p>
+          </div>
+          <div>
+            <label htmlFor="price">Preço</label>
             <input
-              type="number"
+              type="text"
               {...register("price")}
-              className="text-style-inputs-buttons-input-placeholder input"
               id="price"
-              placeholder="RS$ 50.000,00"
+              placeholder="R$ 50.000,00"
             />
-          </LabelInput>
+            <p className="error">{errors.price?.message}</p>
+          </div>
         </div>
-        <LabelInput>
-          <label
-            htmlFor="description"
-            className="text-style-inputs-buttons-input-label"
-          >
-            Descrição
-          </label>
+
+        <div className="local">
+          <div>
+            <label htmlFor="mileage">Quilometragem</label>
+            <input
+              type="text"
+              id="mileage"
+              placeholder="30.000"
+              {...register("mileage")}
+            />
+            <p className="error">{errors.mileage?.message}</p>
+          </div>
+          <div>
+            <label htmlFor="color">Cor</label>
+            <input
+              type="text"
+              {...register("color")}
+              id="color"
+              placeholder="Branco"
+            />
+            <p className="error">{errors.color?.message}</p>
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="description">Descrição</label>
           <textarea
+            id="description"
+            placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
             {...register("description")}
-            name=""
-            id=""
-            className="text-style-inputs-buttons-input-placeholder input"
-            rows={5}
-            placeholder="Digite a descrição do anúncio..."
-          ></textarea>
-        </LabelInput>
-        <LabelInput>
-          <label
-            htmlFor="capeImage"
-            className="text-style-inputs-buttons-input-label"
-          >
-            Imagem da capa
-          </label>
-          <input
-            {...register("cover_image")}
-            className="text-style-inputs-buttons-input-placeholder input"
-            type="url"
-            id="capeImage"
-            placeholder="https://image.com"
           />
-        </LabelInput>
-        <LabelInput>
-          <label
-            htmlFor="firstImage"
-            className="text-style-inputs-buttons-input-label"
-          >
-            1° Imagem da galeria
-          </label>
+          <p className="error">{errors.description?.message}</p>
+        </div>
+
+        <div>
+          <label htmlFor="cover_image">Imagem de capa</label>
           <input
-            {...register("first_image")}
-            className="text-style-inputs-buttons-input-placeholder input"
-            type="url"
-            id="firstImage"
-            placeholder="https://image.com"
+            onChange={(e) => handleFileChange(e)}
+            type="file"
+            id="cover_image"
+            placeholder="Adicionar campo para imagem da galeria"
           />
-        </LabelInput>
-        <LabelInput>
-          <label
-            htmlFor="secondImage"
-            className="text-style-inputs-buttons-input-label"
-          >
-            2° Imagem da galeria
-          </label>
-          <input
-            {...register("second_image")}
-            className="text-style-inputs-buttons-input-placeholder input"
-            type="url"
-            id="secondImage"
-            placeholder="https://image.com"
-          />
-        </LabelInput>
-        <div className="buttonsSubmit">
+          <p className="error">{errors.cover_image?.message}</p>
+        </div>
+
+        {currentImageURL ? (
+          <div className="img">
+            <img src={currentImageURL!} alt="imagem atual que será enviada" />
+          </div>
+        ) : null}
+
+        <div className="buttons">
           <button
-            type="reset"
-            className="text-style-inputs-buttons-button-big-text cancel"
+            type="button"
+            className="cancel"
+            onClick={() => setCreateAdvertModal(false)}
           >
             Cancelar
           </button>
-          <button
-            type="submit"
-            className="text-style-inputs-buttons-button-big-text submit"
-          >
-            Criar anúncio
+          <button className="save" type="submit">
+            Criar anuncio
           </button>
         </div>
-      </CreateAnnounceForm>
+      </StyledModalCreateAdvert>
     </div>
   );
 };

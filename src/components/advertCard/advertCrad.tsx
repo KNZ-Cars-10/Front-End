@@ -1,22 +1,30 @@
+import { useNavigate } from "react-router-dom";
 import { TAdvertResponse } from "../../providers/advertContext/@Types";
 import { StyledAdvertCard } from "./style";
+import { TUser } from "../../providers/userContext/@Types";
 
 type Props = {
   advert: TAdvertResponse;
+  user: TUser;
 };
 
-export function AdvertCard({ advert }: Props) {
+export const AdvertCard = ({ advert, user }: Props) => {
+  const navigate = useNavigate();
+
   return (
-    <StyledAdvertCard>
-      <div className="img">
+    <StyledAdvertCard color={user?.color}>
+      <div className="img" onClick={() => navigate(`/advert/${advert.id}`)}>
         <img src={advert.cover_image!} alt="" />
       </div>
-      <h2>{advert.brand}</h2>
+      <h2>{advert.model}</h2>
       <p>{advert.description}</p>
 
-      <div className="user">
-        <div>R</div>
-        <span>{advert.user.name}</span>
+      <div className="userCard">
+        {user.inicial ? <div> {user.inicial}</div> : null}
+
+        <span onClick={() => navigate(`/advertiser/${user.id}`)}>
+          {user.name}
+        </span>
       </div>
 
       <div className="information">
@@ -28,4 +36,4 @@ export function AdvertCard({ advert }: Props) {
       </div>
     </StyledAdvertCard>
   );
-}
+};
