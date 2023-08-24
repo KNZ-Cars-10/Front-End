@@ -138,7 +138,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-1-700 {
 	font-size: 44px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 700;
 	font-style: normal;
 	line-height: 56px;
@@ -148,7 +148,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-2-600 {
 	font-size: 36px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -157,7 +157,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-3-500 {
 	font-size: 32px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -166,7 +166,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-3-600 {
 	font-size: 32px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -175,7 +175,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-4-600 {
 	font-size: 28px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -184,7 +184,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-4-500 {
 	font-size: 28px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -193,7 +193,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-5-500 {
 	font-size: 24px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -202,7 +202,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-5-600 {
 	font-size: 24px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -211,7 +211,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-6-500 {
 	font-size: 20px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -220,7 +220,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-6-600 {
 	font-size: 20px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -229,7 +229,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-7-500 {
 	font-size: 16px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -238,7 +238,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-7-600 {
 	font-size: 16px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -247,7 +247,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-inputs-buttons-input-label {
 	font-size: 14px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -256,7 +256,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-inputs-buttons-input-placeholder {
 	font-size: 16px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	text-decoration: none;
@@ -265,7 +265,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-inputs-buttons-button-big-text {
 	font-size: 16px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 700;
 	font-style: normal;
 	text-decoration: none;
@@ -274,7 +274,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-text-body-1-400 {
 	font-size: 16px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	line-height: 28px;
@@ -284,7 +284,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-text-body-1-600 {
 	font-size: 16px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 700;
 	font-style: normal;
 	line-height: 28px;
@@ -294,7 +294,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-text-body-2-400 {
 	font-size: 14px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	line-height: 24px;
@@ -304,7 +304,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-text-body-2-500 {
 	font-size: 14px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	line-height: 24px;

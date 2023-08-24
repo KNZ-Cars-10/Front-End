@@ -81,37 +81,37 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
-  const getUserLoged = async (token: string) => {
-    try {
-      setLoading(true);
-      const response = await api.get<TUserResponse>("profile/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+  // const getUserLoged = async (token: string) => {
+  //   try {
+  //     setLoading(true);
+  //     const response = await api.get<TUserResponse>("profile/", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
 
-      setProfile(response.data);
-    } catch (error) {
-      if (axios.isAxiosError<responseError>(error)) {
-        if (
-          error.response?.data.message == "jwt expired" ||
-          error.response?.data.message == "Not Found"
-        ) {
-          toast.error(
-            "Token de autenticação expirado, por favor faça login novamente"
-          );
-          navigate("/login");
-          userLogout();
-        }
-        console.log(error);
-        userLogout();
-      } else {
-        console.log(error);
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     setProfile(response.data);
+  //   } catch (error) {
+  //     if (axios.isAxiosError<responseError>(error)) {
+  //       if (
+  //         error.response?.data.message == "jwt expired" ||
+  //         error.response?.data.message == "Not Found"
+  //       ) {
+  //         toast.error(
+  //           "Token de autenticação expirado, por favor faça login novamente"
+  //         );
+  //         navigate("/login");
+  //         userLogout();
+  //       }
+  //       console.log(error);
+  //       userLogout();
+  //     } else {
+  //       console.log(error);
+  //     }
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const userLogin = async (formData: TLoginRequest) => {
     try {
@@ -120,7 +120,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
       localStorage.setItem("token", `${response.data.token}`);
       toast.success(`Bem-vindo de volta !!`);
-      getUserLoged(response.data.token);
+      // getUserLoged(response.data.token);
       navigate("/");
     } catch (error) {
       if (axios.isAxiosError<string>(error)) {
