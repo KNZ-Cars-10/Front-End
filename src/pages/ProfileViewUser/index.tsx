@@ -28,18 +28,25 @@ const ProfileViewUser = () => {
         advertsByUser(parseInt(userId!))
     }, [])
 
+    let accountType = null
+    if(userData?.is_advertiser) {
+        accountType = "Anunciante"
+    } else {
+        accountType = "Comprador"
+    }
+
     return (
         <>
         <TempHeader />
         <StyledSubHeader />
         <StyledProfileInfo>
             <StyledSubProfileInfo>
-                <StyledElipseProfileInfo>
-                    <StyledInitialsProfileInfo>SL</StyledInitialsProfileInfo>
+                <StyledElipseProfileInfo style={{background: userData?.color}}>
+                    <StyledInitialsProfileInfo>{userData?.inicial}</StyledInitialsProfileInfo>
                 </StyledElipseProfileInfo>
                 <StyledNameSpanDiv>
                     <StyledName>{userData?.name}</StyledName>
-                    <StyledSpan>Anunciante</StyledSpan>
+                    <StyledSpan>{accountType}</StyledSpan>
                 </StyledNameSpanDiv>
                 <StyledText>{userData?.description}</StyledText>
             </StyledSubProfileInfo>

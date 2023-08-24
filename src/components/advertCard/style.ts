@@ -5,7 +5,6 @@ export const StyledAdvertCard = styled.div`
   flex-direction: column;
   align-self: flex-start;
   gap: 10px;
-  /* border: 1px black solid; */
   width: 312px;
   height: 350px;
 
@@ -22,6 +21,10 @@ export const StyledAdvertCard = styled.div`
     text-align: left;
     color: var(--color-grey-scale-grey-2);
     max-height: 100px;
+    min-height: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Inter", sans-serif;
   }
 
   & > h2 {
@@ -34,7 +37,7 @@ export const StyledAdvertCard = styled.div`
     flex-direction: row;
     align-self: flex-start;
     align-items: center;
-    gap: 1rem;
+    gap: 8px;
   }
 
   .user > div {
@@ -46,7 +49,6 @@ export const StyledAdvertCard = styled.div`
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    background-color: var(--color-brand-brand-1);
   }
 
   .user > span {
@@ -70,7 +72,11 @@ export const StyledAdvertCard = styled.div`
   }
 
   .information > span {
-    font-weight: 700;
+    font-weight: 500;
+    font-family: "Lexend", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--color-grey-scale-grey-1);
   }
 
   .information > div > p {

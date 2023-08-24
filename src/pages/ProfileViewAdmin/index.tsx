@@ -10,23 +10,28 @@ import {
     StyledName,
     StyledSpan, 
     StyledText,
-    StyleTitle,
+    StyledButton,
     StyleUl,
     TempHeader
-} from "./styles" 
-import { AdvertCard } from "../../components/advertCard/advertCrad"
+} from "./styles"
 import { UserContext } from "../../providers/userContext/userContext"
-import { useParams } from "react-router-dom"
+import { ProfileCard } from "../../components/ProfileCard"
 
 
 const ProfileViewAdmin = () => {
  
-    const { advertsByUser, userData } = useContext(UserContext)
-    const { userId } = useParams()
+    const { userProfile, data } = useContext(UserContext)
     
     useEffect(() => {
-        advertsByUser(parseInt(userId!))
+        userProfile()
     }, [])
+
+    let accountType = null
+    if(data?.is_advertiser) {
+        accountType = "Anunciante"
+    } else {
+        accountType = "Comprador"
+    }
 
     return (
         <>
@@ -34,21 +39,21 @@ const ProfileViewAdmin = () => {
         <StyledSubHeader />
         <StyledProfileInfo>
             <StyledSubProfileInfo>
-                <StyledElipseProfileInfo>
-                    <StyledInitialsProfileInfo>SL</StyledInitialsProfileInfo>
+                <StyledElipseProfileInfo style={{background: data?.color}}>
+                    <StyledInitialsProfileInfo>{data?.inicial}</StyledInitialsProfileInfo>
                 </StyledElipseProfileInfo>
                 <StyledNameSpanDiv>
-                    <StyledName>{userData?.name}</StyledName>
-                    <StyledSpan>Anunciante</StyledSpan>
+                    <StyledName>{data?.name}</StyledName>
+                    <StyledSpan>{accountType}</StyledSpan>
                 </StyledNameSpanDiv>
-                <StyledText>{userData?.description}</StyledText>
+                <StyledText>{data?.description}</StyledText>
+                <StyledButton>Criar anúncio</StyledButton>
             </StyledSubProfileInfo>
         </StyledProfileInfo>
         <StyledMain>
-            <StyleTitle>Anúncios</StyleTitle>
             <StyleUl>
-                {userData?.adverts.map((advert) => (
-                    <AdvertCard key={advert!.id} advert={advert!} user={userData} />))}
+                {data?.adverts.map((advert) => (
+                    <ProfileCard key={advert!.id} advert={advert!} user={data} />))}
             </StyleUl>
         </StyledMain>
         </>

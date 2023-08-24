@@ -28,11 +28,10 @@ margin: 44px 70px 50px 41px;
 export const StyledElipseProfileInfo = styled.div`
 width: 104px;
 height: 104px;
-background-color: var(--color-brand-brand-1);
-border: 1px solid var(--color-brand-brand-1);
 border-radius: 90px;
 display: flex;
 align-items: center;
+justify-content: center;
 `
 
 export const StyledInitialsProfileInfo = styled.p`
@@ -43,6 +42,7 @@ font-weight: 500;
 margin: auto;
 display: flex;
 align-items: center;
+justify-content: center;
 color: var(--color-colors-fixed-white-fixed);
 `
 

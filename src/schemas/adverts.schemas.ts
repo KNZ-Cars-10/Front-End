@@ -15,6 +15,7 @@ export const advertSchema = z.object({
   first_image: z.string().nullable(),
   second_image: z.string().nullable(),
   other_images: z.string().array().nullish(),
+  status: z.boolean()
 });
 
 export const advertSchemaRequest = advertSchema.omit({

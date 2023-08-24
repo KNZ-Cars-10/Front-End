@@ -15,7 +15,9 @@ export const userSchema = z.object({
   street: z.string(),
   number: z.number(),
   complement: z.string().nullable(),
-  is_advertise: z.boolean(),
+  is_advertiser: z.boolean(),
+  color: z.string(),
+  inicial: z.string(),
 });
 
 export const userSchemaRegister = userSchema

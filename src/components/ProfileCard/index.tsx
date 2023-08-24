@@ -1,6 +1,6 @@
 import { TAdvert } from "../../providers/advertContext/@Types";
 import { TUser } from "../../providers/userContext/@Types";
-import { StyledAdvertCard } from "./style";
+import { StyledProfileCard } from "./style";
 
 type Props = {
   advert: TAdvert;
@@ -9,20 +9,23 @@ type Props = {
 
 
 
-export function AdvertCard({ advert, user }: Props) {
+export function ProfileCard({ advert, /* user */ }: Props) {
+
+    let isActive = null
+    if(advert?.status) {
+        isActive = <span className="isActiveTrue">Ativo</span>
+    } else {
+        isActive = <span className="isActiveFalse">Inativo</span>
+    }
 
   return (
-    <StyledAdvertCard>
+    <StyledProfileCard>
       <div className="img">
         <img src={advert.cover_image!} alt="" />
+        {isActive}
       </div>
       <h2>{advert.brand} - {advert.model}</h2>
       <p>{advert.description}</p>
-
-      <div className="user">
-        <div style={{background: `${user?.color}`}}>{user?.inicial}</div>
-        <span>{user?.name}</span>
-      </div>
 
       <div className="information">
         <div>
@@ -31,6 +34,10 @@ export function AdvertCard({ advert, user }: Props) {
         </div>
         <span>R$ {advert.price}</span>
       </div>
-    </StyledAdvertCard>
+        <div className="buttons">
+        <button className="editButton">Editar</button>
+        <button className="detailsButton">Ver detalhes</button>
+        </div>
+    </StyledProfileCard>
   );
 }

@@ -16,6 +16,7 @@ export const UserContext = createContext({} as TUserContext);
 export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<TUser | null>(null);
   const [userData, setUserData] = useState<TUserRespose | null>(null)
+  const [data, setData] = useState<TUserRespose | null>(null)
   const navigate = useNavigate();
 
   const autoLoginUser = async () => {
@@ -34,7 +35,7 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
   useEffect(() => {
-    autoLoginUser();
+    /* autoLoginUser() */;
   }, []);
 
   const userRegister = async (formData: TUserRegister) => {
@@ -58,10 +59,10 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
   const userLogin = async (formData: TUserLoginFormValues) => {
     try {
       const response = await api.post("login", formData);
-      console.log(response);
       localStorage.setItem("token", `${response.data.token}`);
       navigate("dash");
       toast.success("Login realizado com sucesso!");
+      console.log(response)
     } catch (error) {
       toast.error("Usuário ou senha inválidos");
     }
@@ -81,6 +82,21 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
     }
   }
 
+  const userProfile = async () => {
+    const token = localStorage.getItem("token")
+    try {
+      const response = await api.get("profile", {
+        
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      setData(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -92,7 +108,10 @@ export const UserContextProvider = ({ children }: IDefaultProviderProps) => {
         autoLoginUser,
         advertsByUser,
         userData,
-        setUserData
+        setUserData,
+        userProfile,
+        data,
+        setData
       }}
     >
       {children}

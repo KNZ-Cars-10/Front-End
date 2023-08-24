@@ -27,6 +27,9 @@ export type TUserContext = {
   advertsByUser: (userId: number) => Promise<TUserRespose>
   userData: TUserRespose | null
   setUserData: React.Dispatch<React.SetStateAction<TUserRespose>>
+  userProfile: () => Promise<TUserRespose>
+  data: TUserRespose | null
+  setData: React.Dispatch<React.SetStateAction<TUserRespose>>
 };
 
 export type TUserLoginFormValues = {
