@@ -90,7 +90,26 @@ margin-top: 24px;
 height: 84px;
 `
 
-export const StyledButton = styled.button`
+export const StyledDivButtons = styled.div`
+display: flex;
+gap: 10px;
+`
+
+export const StyledCreateButton = styled.button`
+width: 160px;
+height: 48px;
+border: solid 2px var(--color-brand-brand-1);
+border-radius: 4px;
+margin-top: 10px;
+margin-botton: 42px;
+background-color: var(--color-grey-scale-grey-10);
+font-size: 16px;
+font-weight: 600;
+font-family: "Inter", sans-serif;
+color: var(--color-brand-brand-1);
+`
+
+export const StyledEditButton = styled.button`
 width: 160px;
 height: 48px;
 border: solid 2px var(--color-brand-brand-1);
@@ -102,6 +121,7 @@ font-size: 16px;
 font-weight: 600;
 font-family: "Inter", sans-serif;
 color: var(--color-brand-brand-1)
+
 `
 
 export const StyledMain = styled.div`

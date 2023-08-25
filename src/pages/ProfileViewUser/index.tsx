@@ -17,6 +17,7 @@ import {
 import { AdvertCard } from "../../components/advertCard/advertCrad"
 import { UserContext } from "../../providers/userContext/userContext"
 import { useParams } from "react-router-dom"
+import { EmptyCardUser } from "../../components/EmptyCard"
 
 
 const ProfileViewUser = () => {
@@ -56,6 +57,9 @@ const ProfileViewUser = () => {
             <StyleUl>
                 {userData?.adverts.map((advert) => (
                     <AdvertCard key={advert!.id} advert={advert!} user={userData} />))}
+                    {
+                        userData?.adverts.length < 1?(<EmptyCardUser />): ""
+                    }
             </StyleUl>
         </StyledMain>
         </>

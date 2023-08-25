@@ -10,12 +10,15 @@ import {
     StyledName,
     StyledSpan, 
     StyledText,
-    StyledButton,
+    StyledDivButtons,
+    StyledCreateButton,
+    StyledEditButton,
     StyleUl,
     TempHeader
 } from "./styles"
 import { UserContext } from "../../providers/userContext/userContext"
 import { ProfileCard } from "../../components/ProfileCard"
+import { EmptyCardProfile } from "../../components/EmptyCard"
 
 
 const ProfileViewAdmin = () => {
@@ -47,13 +50,19 @@ const ProfileViewAdmin = () => {
                     <StyledSpan>{accountType}</StyledSpan>
                 </StyledNameSpanDiv>
                 <StyledText>{data?.description}</StyledText>
-                <StyledButton>Criar anúncio</StyledButton>
+                <StyledDivButtons>
+                <StyledCreateButton>Criar anúncio</StyledCreateButton>
+                <StyledEditButton>Editar perfil</StyledEditButton>
+                </StyledDivButtons>
             </StyledSubProfileInfo>
         </StyledProfileInfo>
         <StyledMain>
             <StyleUl>
                 {data?.adverts.map((advert) => (
                     <ProfileCard key={advert!.id} advert={advert!} user={data} />))}
+                    {
+                        data?.adverts.length < 1?(<EmptyCardProfile />): ""
+                    }
             </StyleUl>
         </StyledMain>
         </>

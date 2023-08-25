@@ -57,7 +57,7 @@ margin-top: 24px;
 
 export const StyledName = styled.p`
 font-size: 20px;
-font-family: "Lexend";
+font-family: "Lexend", sans-serif;
 font-weight: 600;
 font-style: normal;
 text-decoration: none;
@@ -81,7 +81,7 @@ justify-content: center;
 
 export const StyledText = styled.p`
 font-size: 16px;
-font-family: "Inter";
+font-family: "Inter", sans-serif;
 font-weight: 400;
 font-style: normal;
 line-height: 28px;
@@ -93,7 +93,6 @@ margin-top: 24px;
 
 export const StyledMain = styled.div`
 width: 100%;
-/* height: 130%; */
 background-color: var(--color-grey-scale-grey-6);
 position: absolute;
 margin-top: 357px;
@@ -102,7 +101,7 @@ z-index: 0;
 
 export const StyleTitle = styled.p`
 font-size: 24px;
-font-family: "Lexend";
+font-family: "Lexend", sans-serif;
 font-weight: 600;
 font-style: normal;
 text-decoration: none;
@@ -123,7 +122,6 @@ align-content: flex-start;
 justify-content: flex-start;
 flex-wrap: wrap;
 gap: 48px;
-/* border: 1px solid black; */
 `
 
 export const TempHeader = styled.div`
