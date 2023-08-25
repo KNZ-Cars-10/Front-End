@@ -12,7 +12,7 @@ export const Footer = () => {
         Motors <span>shop</span>
       </h3>
 
-      <span>2022 - Todods os direitos reservados.</span>
+      <span>© 2022 - Todos os direitos reservados.</span>
 
       <div onClick={() => scrollToTop()} className="arrow">
         <AiOutlineArrowUp />

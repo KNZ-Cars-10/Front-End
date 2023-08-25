@@ -9,10 +9,10 @@ export const StyledAdvertCard = styled.div<ICardProps>`
   flex-direction: column;
   align-self: flex-start;
   gap: 10px;
-  min-width: 300px;
-  max-width: 300px;
+  width: 312px;
+  height: 350px;
 
-  background-color: var(--color-colors-fixed-white-fixed);
+  background-color: var(--color-grey-scale-grey-6);
 
   .img {
     cursor: pointer;
@@ -21,14 +21,18 @@ export const StyledAdvertCard = styled.div<ICardProps>`
   .img > img {
     height: 100%;
     width: 100%;
-    border-radius: 5px;
-    min-height: 200px;
-    max-height: 200px;
+    max-height: 152px;
+    max-width: 312px;
   }
 
   & > p {
+    text-align: left;
     color: var(--color-grey-scale-grey-2);
     max-height: 100px;
+    min-height: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Inter", sans-serif;
   }
 
   & > h2 {
@@ -41,7 +45,7 @@ export const StyledAdvertCard = styled.div<ICardProps>`
     flex-direction: row;
     align-self: flex-start;
     align-items: center;
-    gap: 1rem;
+    gap: 8px;
   }
 
   .userCard > div {
@@ -52,58 +56,6 @@ export const StyledAdvertCard = styled.div<ICardProps>`
     height: 30px;
     width: 30px;
     border-radius: 50%;
-
-    ${({ color }) => {
-      if (color == "1") {
-        return css`
-          background-color: var(--color-random-random-1);
-        `;
-      } else if (color == "2") {
-        return css`
-          background-color: var(--color-random-random-2);
-        `;
-      } else if (color == "3") {
-        return css`
-          background-color: var(--color-random-random-3);
-        `;
-      } else if (color == "4") {
-        return css`
-          background-color: var(--color-random-random-4);
-        `;
-      } else if (color == "5") {
-        return css`
-          background-color: var(--color-random-random-5);
-        `;
-      } else if (color == "6") {
-        return css`
-          background-color: var(--color-random-random-6);
-        `;
-      } else if (color == "7") {
-        return css`
-          background-color: var(--color-random-random-7);
-        `;
-      } else if (color == "8") {
-        return css`
-          background-color: var(--color-random-random-8);
-        `;
-      } else if (color == "9") {
-        return css`
-          background-color: var(--color-random-random-9);
-        `;
-      } else if (color == "10") {
-        return css`
-          background-color: var(--color-random-random-10);
-        `;
-      } else if (color == "11") {
-        return css`
-          background-color: var(--color-random-random-11);
-        `;
-      } else if (color == "12") {
-        return css`
-          background-color: var(--color-random-random-12);
-        `;
-      }
-    }}
   }
 
   .userCard > span {
@@ -128,7 +80,11 @@ export const StyledAdvertCard = styled.div<ICardProps>`
   }
 
   .information > span {
-    font-weight: 700;
+    font-weight: 500;
+    font-family: "Lexend", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--color-grey-scale-grey-1);
   }
 
   .information > div > p {

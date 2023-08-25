@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import { TAdvertResponse } from "../../providers/advertContext/@Types";
-import { StyledAdvertCard } from "./style";
+import { TAdvert } from "../../providers/advertContext/@Types";
 import { TUser } from "../../providers/userContext/@Types";
+import { useNavigate } from "react-router-dom";
+import { StyledAdvertCard } from "./style";
 
 type Props = {
-  advert: TAdvertResponse;
+  advert: TAdvert;
   user: TUser;
 };
 
@@ -16,14 +16,14 @@ export const AdvertCard = ({ advert, user }: Props) => {
       <div className="img" onClick={() => navigate(`/advert/${advert.id}`)}>
         <img src={advert.cover_image!} alt="" />
       </div>
-      <h2>{advert.model}</h2>
+
+      <h2>{advert.brand} - {advert.model}</h2>
       <p>{advert.description}</p>
 
-      <div className="userCard">
-        {user.inicial ? <div> {user.inicial}</div> : null}
-
+      <div className="user">
+        <div style={{background: `${user?.color}`}}>{user?.inicial}</div>
         <span onClick={() => navigate(`/advertiser/${user.id}`)}>
-          {user.name}
+          {user?.name}
         </span>
       </div>
 

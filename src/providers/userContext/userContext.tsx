@@ -27,6 +27,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     const [userMenu, setUserMenu] = useState(false);
     const [user, setUser] = useState<TUserResponse | null>(null);
     const [profile, setProfile] = useState<TUserResponse | null>(null);
+    const [userData, setUserData] = useState<TUserRespose | null>(null)
+    const [data, setData] = useState<TUserRespose | null>(null)
 
     const navigate = useNavigate();
 
@@ -155,6 +157,34 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         }
     };
 
+    const advertsByUser = async (userId: number) => {
+      const token = localStorage.getItem("token")
+      try {
+        const response = await api.get(`users/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        setUserData(response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  
+    const userProfile = async () => {
+      const token = localStorage.getItem("token")
+      try {
+        const response = await api.get("profile", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        setData(response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    
     const userLogout = () => {
         setProfile(null);
         setUser(null);
@@ -215,7 +245,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
                 setModalEditProfile,
                 modalEditProfile,
                 userUpdate,
-                userDelete,
+                userDelete, advertsByUser, userProfile, data,
+                setData, userData, setUserData
             }}
         >
             {children}

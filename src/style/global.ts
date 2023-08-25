@@ -63,9 +63,19 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
-	min-height:80vh;
-    width: 100%; 
-	background-color: var(--color-grey-scale-grey-7);
+    /* background-color: var(--color-grey-scale-grey-1); */
+  }
+
+  body{
+    min-height: 100vh;
+    width: 100%;
+	/* overflow-x: hidden */
+  }
+
+  #root{
+	 min-height:80vh;
+   width: 100%; 
+	 background-color: var(--color-grey-scale-grey-7);
   }
 
   .modal {

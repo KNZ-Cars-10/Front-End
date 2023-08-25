@@ -43,4 +43,10 @@ export type TUserContext = {
   setUserMenu: React.Dispatch<React.SetStateAction<boolean>>;
   userUpdate:(data: unknown) => Promise<void>;
   userDelete:(data: unknown) => Promise<void>;
+  advertsByUser: (userId: number) => Promise<TUserRespose>;
+  userData: TUserRespose | null;
+  setUserData: React.Dispatch<React.SetStateAction<TUserRespose>>;
+  userProfile: () => Promise<TUserRespose>;
+  data: TUserRespose | null;
+  setData: React.Dispatch<React.SetStateAction<TUserRespose>>;
 };
