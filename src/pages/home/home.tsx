@@ -10,6 +10,7 @@ import { AdvertContext } from "../../providers/advertContext/advertContext";
 
 import { AiOutlineCheck } from "react-icons/ai";
 import { UserContext } from "../../providers/userContext/userContext";
+import { ModalEditProfile } from "../../components/modalEditProfile";
 
 export const HomePage = () => {
   const {
@@ -151,6 +152,7 @@ export const HomePage = () => {
 
   return (
     <>
+    <ModalEditProfile/>
       {loading ? (
         <div className="modal">
           <div className="loading">
