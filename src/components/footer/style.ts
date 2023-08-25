@@ -1,19 +1,16 @@
 import { styled } from "styled-components";
 
-export const StyledFooter = styled.div`
+export const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   width: 100%;
   padding: 1rem;
-  height: 140px;
   background-color: var(--color-grey-scale-grey-0);
   color: var(--color-grey-scale-grey-10);
   text-align: center;
-  position: relative;
-  botton: 0;
-  z-index: -1;
+  height: 10vh;
 
   .arrow {
     display: flex;

@@ -1,4 +1,8 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
+
+interface IGlobalProps {
+  filter: boolean;
+}
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -11,7 +15,7 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     transition: 1s;
     font-family: 'Nunito', 'Inter', sans-serif;
-	/* overflow: auto; */
+	line-height: 150%;
   }
 
   svg {
@@ -27,9 +31,19 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 700;
   }
 
-  html{
-    /* min-height: 100vh; */
-	
+  html {
+	min-height: 100vh;
+	width: 100%;
+  }
+
+  body{
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  #root{
+   min-height: 100vh;
+   width: 100%;
   }
 
 
@@ -37,20 +51,18 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
     width: 100%; 
+	justify-content: space-between;
 	overflow-x: hidden;
-	/* position: relative; */
-    /* background-color: var(--color-grey-scale-grey-1); */
+	min-height: 100vh;
   }
+
+ 
   
   .routes{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    width: 140%; 
-
     /* background-color: var(--color-grey-scale-grey-1); */
   }
 
@@ -61,17 +73,20 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   #root{
-   min-height: 100vh;
-   width: 100%;
+	 min-height:80vh;
+   width: 100%; 
+	 background-color: var(--color-grey-scale-grey-7);
   }
 
   .modal {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* position: fixed; */
+    position: fixed;
     width: 100%;
     height: 100%;
+	z-index:5;
+	min-height: 100vh;
     background-color: var(--color-matte);
 	/* Tem que resolve modal de filtros com duas barras de rolagem  */
 	overflow: auto;
@@ -85,9 +100,10 @@ export const GlobalStyles = createGlobalStyle`
 	width: 100%;
 	height: 100%;
 
-	h2{
-		// Tem que Estiliza
-	}
+  }
+
+  .loading > h2{
+	// Tem que Estiliza
   }
 
   :root {
@@ -97,6 +113,8 @@ export const GlobalStyles = createGlobalStyle`
 	--color-feedback-sucess-1: #18794e;
 	--color-feedback-sucess-2: #ccebd7;
 	--color-feedback-sucess-3: #ddf3e4;
+	--color-feedback-attention-1: #FFFD0E;
+	--color-feedback-attention-2: #FFEE7E;
 	--color-random-random-1: #e34d8c;
 	--color-random-random-2: #c04277;
 	--color-random-random-3: #7d2a4d;
@@ -130,7 +148,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-1-700 {
 	font-size: 44px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 700;
 	font-style: normal;
 	line-height: 56px;
@@ -140,7 +158,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-2-600 {
 	font-size: 36px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -149,7 +167,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-3-500 {
 	font-size: 32px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -158,7 +176,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-3-600 {
 	font-size: 32px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -167,7 +185,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-4-600 {
 	font-size: 28px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -176,7 +194,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-4-500 {
 	font-size: 28px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -185,7 +203,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-5-500 {
 	font-size: 24px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -194,7 +212,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-5-600 {
 	font-size: 24px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -203,7 +221,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-6-500 {
 	font-size: 20px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -212,7 +230,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-6-600 {
 	font-size: 20px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -221,7 +239,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-7-500 {
 	font-size: 16px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -230,7 +248,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-7-600 {
 	font-size: 16px;
-	font-family: "Lexend";
+	font-family: "Lexend", sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -239,7 +257,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-inputs-buttons-input-label {
 	font-size: 14px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -248,7 +266,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-inputs-buttons-input-placeholder {
 	font-size: 16px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	text-decoration: none;
@@ -257,7 +275,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-inputs-buttons-button-big-text {
 	font-size: 16px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 700;
 	font-style: normal;
 	text-decoration: none;
@@ -266,7 +284,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-text-body-1-400 {
 	font-size: 16px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	line-height: 28px;
@@ -276,7 +294,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-text-body-1-600 {
 	font-size: 16px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 700;
 	font-style: normal;
 	line-height: 28px;
@@ -286,7 +304,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-text-body-2-400 {
 	font-size: 14px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	line-height: 24px;
@@ -296,7 +314,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-text-body-2-500 {
 	font-size: 14px;
-	font-family: "Inter";
+	font-family: "Inter", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	line-height: 24px;

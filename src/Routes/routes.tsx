@@ -1,22 +1,20 @@
 import { Route, Routes } from "react-router-dom";
-import { DashPage } from "../pages/dash/dash";
+import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
-import { AdvertProvider } from "../providers/advertContext/advertContext";
+import { PasswordResetPage } from "../pages/passwordReset/password-reset";
+import { RegisterPage } from "../pages/register/register";
 import { ProfileViewUser } from "../pages/ProfileViewUser";
 import { ProfileViewAdmin } from "../pages/ProfileViewAdmin";
-// import { AdvertProvider } from "../providers/advertContext/advertContext";
-
+  
 export const RouterComponent = () => {
   return (
-    <AdvertProvider>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        {/* <Route path="/register" element={<RegisterPage />} /> */}
-        <Route path="/dash" element={<DashPage />} />
-        {/* <Route path="/*" element={<NotFound />} /> */}
-        <Route path="/profile" element={<ProfileViewAdmin />} />
-        <Route path="/users/:userId" element={<ProfileViewUser /> } />
-      </Routes>
-    </AdvertProvider>
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/password-reset" element={<PasswordResetPage />} />
+      <Route path="/profile" element={<ProfileViewAdmin />} />
+      <Route path="/users/:userId" element={<ProfileViewUser /> } />
+    </Routes>
   );
 };
