@@ -14,7 +14,7 @@ export const RegisterPage = () => {
 
   const { setUserMenu } = useContext(UserContext);
 
-  let token = localStorage.getItem("token");
+  let token = localStorage.getItem("Motors-Shop-Token");
 
   useEffect(() => {
     if (token) {
@@ -39,10 +39,38 @@ export const RegisterPage = () => {
   const onSubmitFunction = (data: TUserRegister) => {
     const color = Math.floor(Math.random() * 12) + 1;
 
+    let newColor = "";
+
+    if (color == 1) {
+      newColor = "var(--color-random-random-1)";
+    } else if (color == 2) {
+      newColor = "var(--color-random-random-2)";
+    } else if (color == 3) {
+      newColor = "var(--color-random-random-3)";
+    } else if (color == 4) {
+      newColor = "var(--color-random-random-4)";
+    } else if (color == 5) {
+      newColor = "var(--color-random-random-5)";
+    } else if (color == 6) {
+      newColor = "var(--color-random-random-6)";
+    } else if (color == 7) {
+      newColor = "var(--color-random-random-7)";
+    } else if (color == 8) {
+      newColor = "var(--color-random-random-8)";
+    } else if (color == 9) {
+      newColor = "var(--color-random-random-9)";
+    } else if (color == 10) {
+      newColor = "var(--color-random-random-10)";
+    } else if (color == 11) {
+      newColor = "var(--color-random-random-11)";
+    } else if (color == 12) {
+      newColor = "var(--color-random-random-12)";
+    }
+
     const newData = {
       ...data,
       is_advertiser: advertiser,
-      color: color.toString(),
+      color: newColor,
     };
 
     userRegister(newData);

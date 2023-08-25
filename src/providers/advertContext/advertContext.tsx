@@ -199,7 +199,7 @@ export const AdvertProvider = ({ children }: IDefaultProviderProps) => {
     setPrice(auxMin);
   }
 
-  let token = localStorage.getItem("KNZ-Schedule-Token");
+  let token = localStorage.getItem("Motors-Shop-Token");
 
   const getAdverts = async () => {
     try {

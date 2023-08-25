@@ -4,7 +4,7 @@ import {
   TAdvertResponseFull,
   TAdverts,
 } from "../../providers/advertContext/@Types";
-import { AdvertCard } from "../../components/advertCard/advertCrad";
+import { AdvertCard } from "../../components/advertCard/advertCard";
 import { Filters } from "../../components/filters/filters";
 import { AdvertContext } from "../../providers/advertContext/advertContext";
 
@@ -152,7 +152,7 @@ export const HomePage = () => {
 
   return (
     <>
-    <ModalEditProfile/>
+      {/* <ModalEditProfile/> */}
       {loading ? (
         <div className="modal">
           <div className="loading">

@@ -13,7 +13,7 @@ export const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  let token = localStorage.getItem("token");
+  let token = localStorage.getItem("Motors-Shop-Token");
 
   useEffect(() => {
     if (token) {

@@ -10,7 +10,7 @@ export const StyledFooter = styled.footer`
   background-color: var(--color-grey-scale-grey-0);
   color: var(--color-grey-scale-grey-10);
   text-align: center;
-  height: 10vh;
+  height: 15vh;
 
   .arrow {
     display: flex;
@@ -24,8 +24,14 @@ export const StyledFooter = styled.footer`
     cursor: pointer;
   }
 
+  .arrow > svg {
+    height: 100px;
+    width: 100px;
+  }
+
   @media (min-width: 770px) {
     flex-direction: row;
     justify-content: space-between;
+    height: 10vh;
   }
 `;

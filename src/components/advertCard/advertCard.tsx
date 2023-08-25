@@ -11,17 +11,21 @@ type Props = {
 export const AdvertCard = ({ advert, user }: Props) => {
   const navigate = useNavigate();
 
+  console.log(user);
+
   return (
     <StyledAdvertCard color={user?.color}>
       <div className="img" onClick={() => navigate(`/advert/${advert.id}`)}>
         <img src={advert.cover_image!} alt="" />
       </div>
 
-      <h2>{advert.brand} - {advert.model}</h2>
+      <h2>
+        {advert.brand} - {advert.model}
+      </h2>
       <p>{advert.description}</p>
 
-      <div className="user">
-        <div style={{background: `${user?.color}`}}>{user?.inicial}</div>
+      <div className="userCard">
+        <div style={{ background: `${user?.color}` }}>{user?.inicial}</div>
         <span onClick={() => navigate(`/advertiser/${user.id}`)}>
           {user?.name}
         </span>

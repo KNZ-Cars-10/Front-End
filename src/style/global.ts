@@ -63,8 +63,11 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: var(--color-grey-scale-grey-1); */
+	min-height:85vh;
+    width: 100%; 
+	/* background-color: var(--color-grey-scale-grey-7); */
   }
+
 
   body{
     min-height: 100vh;
@@ -104,6 +107,10 @@ export const GlobalStyles = createGlobalStyle`
 
   .loading > h2{
 	// Tem que Estiliza
+  }
+
+  .inicial{
+	color: var(--color-colors-fixed-white-fixed);
   }
 
   :root {
