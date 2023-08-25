@@ -35,8 +35,12 @@ export type TUserContext = {
   userLogin: (formData: TLoginRequest) => Promise<void>;
   isAdvertise: boolean;
   setIsAdvertise: React.Dispatch<React.SetStateAction<boolean>>;
+  modalEditProfile: boolean;
+  setModalEditProfile: React.Dispatch<React.SetStateAction<boolean>>;
   profile: TUserResponse | null;
   setProfile: React.Dispatch<React.SetStateAction<TUserResponse | null>>;
   userMenu: boolean;
   setUserMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  userUpdate:(data: unknown) => Promise<void>;
+  userDelete:(data: unknown) => Promise<void>;
 };
