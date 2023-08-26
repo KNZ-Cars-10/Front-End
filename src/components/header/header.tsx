@@ -4,11 +4,9 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useLocation } from "react-router-dom";
 import { UserContext } from "../../providers/userContext/userContext";
 
-export const Header = () => {
-  const { profile, userLogout, userMenu, setUserMenu } =
+export function Header() {
+  const { profile, logout, userMenu, setUserMenu, nav, setNav } =
     useContext(UserContext);
-
-  const [nav, setNav] = useState(false);
 
   useEffect(() => {
     setUserMenu(false);
@@ -28,8 +26,8 @@ export const Header = () => {
         {profile != null ? (
           <div className="navUpUser">
             <div onClick={() => setUserMenu(!userMenu)} className="avatarUp">
-              <div>
-                <span>{profile.inicial}</span>
+              <div style={{ background: `${profile?.color}` }}>
+                <span className="inicial">{profile.inicial}</span>
               </div>
               <span>{profile.name}</span>
             </div>
@@ -37,7 +35,7 @@ export const Header = () => {
               <div className="userMenuUp">
                 <Link to="/profile">Minha Conta</Link>
                 <Link to="/">Home</Link>
-                <span onClick={() => userLogout()}>Sair</span>
+                <span onClick={() => logout()}>Sair</span>
               </div>
             ) : null}
           </div>
@@ -65,18 +63,23 @@ export const Header = () => {
       </div>
 
       {profile != null ? (
-        <div className="navDownUser">
-          <div>
-            <div>
-              <span>{profile.inicial}</span>
+        <>
+          <div className="navDownUser">
+            <div onClick={() => setUserMenu(!userMenu)}>
+              <div style={{ background: `${profile?.color}` }}>
+                <span className="inicial">{profile.inicial}</span>
+              </div>
+              <p>{profile.name}</p>
             </div>
-            <span>{profile.name}</span>
           </div>
-
-          <Link to="/profile">Minha Conta</Link>
-          <Link to="/">Home</Link>
-          <span onClick={() => userLogout()}>Sair</span>
-        </div>
+          {userMenu ? (
+            <div className="userMenuDown">
+              <Link to="/profile">Minha Conta</Link>
+              <Link to="/">Home</Link>
+              <span onClick={() => logout()}>Sair</span>
+            </div>
+          ) : null}
+        </>
       ) : (
         <div className="navDown">
           {currentRoute.pathname == "/login" ? (
@@ -98,4 +101,4 @@ export const Header = () => {
       )}
     </StyledHeader>
   );
-};
+}

@@ -1,64 +1,58 @@
-import { useContext, useEffect } from "react"
-import { 
-    StyledElipseProfileInfo, 
-    StyledInitialsProfileInfo, 
-    StyledMain, 
-    StyledProfileInfo, 
-    StyledSubHeader, 
-    StyledSubProfileInfo,
-    StyledNameSpanDiv,
-    StyledName,
-    StyledSpan, 
-    StyledText,
-    StyledButton,
-    StyleUl,
-    TempHeader
-} from "./styles"
-import { UserContext } from "../../providers/userContext/userContext"
-import { ProfileCard } from "../../components/ProfileCard"
-
+import { useContext, useEffect } from "react";
+import {
+  StyledElipseProfileInfo,
+  StyledInitialsProfileInfo,
+  StyledMain,
+  StyledProfileInfo,
+  StyledSubHeader,
+  StyledNameSpanDiv,
+  StyledName,
+  StyledSpan,
+  StyledText,
+  StyledButton,
+  StyleUl,
+  Container,
+} from "./styles";
+import { UserContext } from "../../providers/userContext/userContext";
+import { ProfileCard } from "../../components/ProfileCard";
 
 const ProfileViewAdmin = () => {
- 
-    const { userProfile, data } = useContext(UserContext)
-    
-    useEffect(() => {
-        userProfile()
-    }, [])
+  const { userProfile, data } = useContext(UserContext);
 
-    let accountType = null
-    if(data?.is_advertiser) {
-        accountType = "Anunciante"
-    } else {
-        accountType = "Comprador"
-    }
+  useEffect(() => {
+    userProfile();
+  }, []);
 
-    return (
-        <>
-        <TempHeader />
-        <StyledSubHeader />
-        <StyledProfileInfo>
-            <StyledSubProfileInfo>
-                <StyledElipseProfileInfo style={{background: data?.color}}>
-                    <StyledInitialsProfileInfo>{data?.inicial}</StyledInitialsProfileInfo>
-                </StyledElipseProfileInfo>
-                <StyledNameSpanDiv>
-                    <StyledName>{data?.name}</StyledName>
-                    <StyledSpan>{accountType}</StyledSpan>
-                </StyledNameSpanDiv>
-                <StyledText>{data?.description}</StyledText>
-                <StyledButton>Criar anúncio</StyledButton>
-            </StyledSubProfileInfo>
-        </StyledProfileInfo>
-        <StyledMain>
-            <StyleUl>
-                {data?.adverts.map((advert) => (
-                    <ProfileCard key={advert!.id} advert={advert!} user={data} />))}
-            </StyleUl>
-        </StyledMain>
-        </>
-    )
-}
+  let accountType = null;
+  if (data?.is_advertiser) {
+    accountType = "Anunciante";
+  } else {
+    accountType = "Comprador";
+  }
 
+  return (
+    <Container>
+      <StyledSubHeader />
+      <StyledProfileInfo>
+        <StyledElipseProfileInfo style={{ background: data?.color }}>
+          <StyledInitialsProfileInfo>{data?.inicial}</StyledInitialsProfileInfo>
+        </StyledElipseProfileInfo>
+        <StyledNameSpanDiv>
+          <StyledName>{data?.name}</StyledName>
+          <StyledSpan>{accountType}</StyledSpan>
+        </StyledNameSpanDiv>
+        <StyledText>{data?.description}</StyledText>
+        <StyledButton>Criar anúncio</StyledButton>
+      </StyledProfileInfo>
+      <StyledMain>
+        <StyleUl>
+          {data?.adverts.map((advert) => (
+            <ProfileCard key={advert!.id} advert={advert!} user={data} />
+          ))}
+        </StyleUl>
+      </StyledMain>
+    </Container>
+  );
+};
 
-export { ProfileViewAdmin }
+export { ProfileViewAdmin };

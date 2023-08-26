@@ -5,7 +5,7 @@ import { PasswordResetPage } from "../pages/passwordReset/password-reset";
 import { RegisterPage } from "../pages/register/register";
 import { ProfileViewUser } from "../pages/ProfileViewUser";
 import { ProfileViewAdmin } from "../pages/ProfileViewAdmin";
-  
+
 export const RouterComponent = () => {
   return (
     <Routes>
@@ -14,7 +14,7 @@ export const RouterComponent = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/password-reset" element={<PasswordResetPage />} />
       <Route path="/profile" element={<ProfileViewAdmin />} />
-      <Route path="/users/:userId" element={<ProfileViewUser /> } />
+      <Route path="/advertiser/:userId" element={<ProfileViewUser />} />
     </Routes>
   );
 };
