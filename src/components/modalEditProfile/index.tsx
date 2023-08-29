@@ -7,7 +7,7 @@ import { useContext } from "react";
 
 export const ModalEditProfile = () => {
     const { userUpdate, userDelete } = useContext(UserContext);
-    const { profile } = useContext(UserContext);
+    const { profile, setModalEditProfile } = useContext(UserContext);
 
     const {
         register,
@@ -27,17 +27,18 @@ export const ModalEditProfile = () => {
         userDelete(profile?.id);
     };
 
-    const handleCancel = () => {};
-
     return (
+        
         <DivModal>
-            <div>
-                <FormContent>
+            <div className="div__container">
+                <FormContent className="media">
                     <div>
                         <h2 className="text-style-heading-heading-7-500">
                             Editar Perfil
-                        </h2>{" "}
-                        <span>X</span>
+                        </h2>
+                        <button className="close" onClick={() => setModalEditProfile(false)}>
+                            X
+                        </button>
                     </div>
                     <p className="text-style-text-body-2-500">
                         Informaçoes pessoais
@@ -126,18 +127,21 @@ export const ModalEditProfile = () => {
 
                     <div className="modal-buttons">
                         <button
+                        className="cancel"
                             type="submit"
-                            onClick={handleSubmit(handleCancel)}
+                            onClick={() => setModalEditProfile(true)}
                         >
                             Cancelar
                         </button>
                         <button
+                        className="delete"
                             type="submit"
                             onClick={handleSubmit(handleDeleteProfile)}
                         >
                             Excluir Perfil
                         </button>
                         <button
+                        className="save"
                             type="submit"
                             onClick={handleSubmit(handleSaveChanges)}
                         >
