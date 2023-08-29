@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { UserContext } from "../../providers/userContext/userContext";
 
 export function Header() {
-  const { profile, logout, userMenu, setUserMenu, nav, setNav } =
+  const { profile, userLogout, userMenu, setUserMenu, nav, setNav } =
     useContext(UserContext);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export function Header() {
               <div className="userMenuUp">
                 <Link to="/profile">Minha Conta</Link>
                 <Link to="/">Home</Link>
-                <span onClick={() => logout()}>Sair</span>
+                <span onClick={() => userLogout()}>Sair</span>
               </div>
             ) : null}
           </div>
@@ -76,7 +76,7 @@ export function Header() {
             <div className="userMenuDown">
               <Link to="/profile">Minha Conta</Link>
               <Link to="/">Home</Link>
-              <span onClick={() => logout()}>Sair</span>
+              <span onClick={() => userLogout()}>Sair</span>
             </div>
           ) : null}
         </>

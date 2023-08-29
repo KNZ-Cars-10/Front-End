@@ -31,55 +31,23 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 700;
   }
 
-  html {
-	min-height: 100vh;
-	width: 100%;
-  }
 
-  body{
-    min-height: 100vh;
-    width: 100%;
-  }
 
-  #root{
-   min-height: 100vh;
-   width: 100%;
-  }
+
 
 
   .App{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%; 
+	flex-direction: column;
+	align-items: center;
 	justify-content: space-between;
-	overflow-x: hidden;
 	min-height: 100vh;
+	height: 100vh;
+	overflow-x: hidden;
   }
 
  
-  
-  .routes{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-	min-height:85vh;
-    width: 100%; 
-	/* background-color: var(--color-grey-scale-grey-7); */
-  }
 
-
-  body{
-    min-height: 100vh;
-    width: 100%;
-	/* overflow-x: hidden */
-  }
-
-  #root{
-	 min-height:80vh;
-   width: 100%; 
-	 background-color: var(--color-grey-scale-grey-7);
-  }
 
   .modal {
     display: flex;

@@ -10,32 +10,32 @@ import { AdvertProvider } from "./providers/advertContext/advertContext";
 const App = () => {
   return (
     <>
-      <AdvertProvider>
-        <UserProvider>
+      <UserProvider>
+        <AdvertProvider>
           <div className="App">
             <Header />
-            <div className="routes">
-              <RouterComponent />
 
-              <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-              />
-            </div>
+            <RouterComponent />
+
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+
             <Footer />
           </div>
 
           <GlobalStyles />
-        </UserProvider>
-      </AdvertProvider>
+        </AdvertProvider>
+      </UserProvider>
     </>
   );
 };

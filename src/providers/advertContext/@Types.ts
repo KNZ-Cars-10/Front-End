@@ -55,8 +55,7 @@ export type TAdvertContext = {
   setUpdateAdvertModal: React.Dispatch<React.SetStateAction<boolean>>;
   data: TAdverts | undefined;
   setData: React.Dispatch<React.SetStateAction<TAdverts | undefined>>;
-  loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+
   filter: boolean;
   setFilter: React.Dispatch<React.SetStateAction<boolean>>;
   createAdvertModal: boolean;

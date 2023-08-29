@@ -15,7 +15,7 @@ export const StyledHeader = styled.header<IHeaderProps>`
   z-index: 5;
   position: relative;
   gap: 20px;
-  min-height: 5vh;
+
   background-color: var(--color-colors-fixed-white-fixed);
   border-bottom: solid 2px var(--color-grey-scale-grey-5);
 

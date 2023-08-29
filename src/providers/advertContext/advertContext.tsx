@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   IDefaultProviderProps,
   TAdvert,
@@ -14,6 +14,7 @@ import {
 import { api } from "../../services/api";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { UserContext } from "../userContext/userContext";
 
 type responseError = {
   message: string;
@@ -22,7 +23,8 @@ type responseError = {
 export const AdvertContext = createContext({} as TAdvertContext);
 
 export const AdvertProvider = ({ children }: IDefaultProviderProps) => {
-  const [loading, setLoading] = useState(true);
+  const { setLoading, profile } = useContext(UserContext);
+
   const [advertProfile, setAdvertProfile] = useState<TAdvert | null>(null);
   const [advertFull, setAdvertFull] = useState<TAdvertResponse | null>(null);
   const [returnRequest, setReturnRequest] = useState<
@@ -471,8 +473,6 @@ export const AdvertProvider = ({ children }: IDefaultProviderProps) => {
     <AdvertContext.Provider
       value={{
         getFilteredAdverts,
-        loading,
-        setLoading,
         returnRequest,
         setReturnRequest,
         getAdverts,
