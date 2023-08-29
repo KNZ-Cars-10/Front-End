@@ -1,6 +1,10 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 
-export const StyledAdvertCard = styled.div`
+interface ICardProps {
+  color: string | undefined;
+}
+
+export const StyledAdvertCard = styled.div<ICardProps>`
   display: flex;
   flex-direction: column;
   align-self: flex-start;
@@ -9,6 +13,10 @@ export const StyledAdvertCard = styled.div`
   height: 350px;
 
   background-color: var(--color-grey-scale-grey-6);
+
+  .img {
+    cursor: pointer;
+  }
 
   .img > img {
     height: 100%;
@@ -32,7 +40,7 @@ export const StyledAdvertCard = styled.div`
     font-weight: 700;
   }
 
-  .user {
+  .userCard {
     display: flex;
     flex-direction: row;
     align-self: flex-start;
@@ -40,19 +48,19 @@ export const StyledAdvertCard = styled.div`
     gap: 8px;
   }
 
-  .user > div {
+  .userCard > div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: var(--color-colors-fixed-white-fixed);
     height: 30px;
     width: 30px;
     border-radius: 50%;
   }
 
-  .user > span {
+  .userCard > span {
     color: var(--color-grey-scale-grey-2);
+    cursor: pointer;
   }
 
   .information {

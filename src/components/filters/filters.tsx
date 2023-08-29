@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { StyledFilter } from "./style";
 import { AdvertContext } from "../../providers/advertContext/advertContext";
 
-export function Filters() {
+export const Filters = () => {
   const { setFilter } = useContext(AdvertContext);
 
   return (
@@ -87,4 +87,4 @@ export function Filters() {
       </StyledFilter>
     </div>
   );
-}
+};

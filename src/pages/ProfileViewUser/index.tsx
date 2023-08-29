@@ -19,22 +19,20 @@ import { UserContext } from "../../providers/userContext/userContext"
 import { useParams } from "react-router-dom"
 import { EmptyCardUser } from "../../components/EmptyCard"
 
-
 const ProfileViewUser = () => {
- 
-    const { advertsByUser, userData } = useContext(UserContext)
-    const { userId } = useParams()
-    
-    useEffect(() => {
-        advertsByUser(parseInt(userId!))
-    }, [])
+  const { advertsByUser, userData } = useContext(UserContext);
+  const { userId } = useParams();
 
-    let accountType = null
-    if(userData?.is_advertiser) {
-        accountType = "Anunciante"
-    } else {
-        accountType = "Comprador"
-    }
+  useEffect(() => {
+    advertsByUser(parseInt(userId!));
+  }, []);
+
+  let accountType = null;
+  if (userData?.is_advertiser) {
+    accountType = "Anunciante";
+  } else {
+    accountType = "Comprador";
+  }
 
     return (
         <>
@@ -66,5 +64,4 @@ const ProfileViewUser = () => {
     )
 }
 
-
-export { ProfileViewUser }
+export { ProfileViewUser };

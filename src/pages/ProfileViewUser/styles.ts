@@ -1,59 +1,47 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
 
 export const StyledSubHeader = styled.div`
-width: 100%;
-height: 357px;
-background-color: var(--color-brand-brand-1);
-
-`
+  width: 100%;
+  height: 200px;
+  background-color: var(--color-brand-brand-1);
+`;
 
 export const StyledProfileInfo = styled.div`
-width: 1240px;
-height: 327px;
-position: absolute;
-background-color: var(--color-grey-scale-grey-10);
-border: 1px solid var(--color-grey-scale-grey-10);
-border-radius: 4px;
-top: 155px;
-z-index: 2;
-`
-
-export const StyledSubProfileInfo = styled.div`
-width: 1129px;
-height: 276px;
-margin: 44px 70px 50px 41px;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 90%;
+  position: absolute;
+  background-color: var(--color-grey-scale-grey-10);
+  gap: 20px;
+  border-radius: 4px;
+  padding: 2rem;
+  top: 155px;
+  z-index: 2;
+`;
 
 export const StyledElipseProfileInfo = styled.div`
-width: 104px;
-height: 104px;
-border-radius: 90px;
-display: flex;
-align-items: center;
-justify-content: center;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 90px;
+  background-color: blue;
+`;
 
 export const StyledInitialsProfileInfo = styled.p`
-width: 44px;
-height: 53px;
-font-size: 36px;
-font-weight: 500;
-margin: auto;
-display: flex;
-align-items: center;
-justify-content: center;
-color: var(--color-colors-fixed-white-fixed);
-`
-
-export const StyledNameSpanDiv = styled.div`
-width: 1129px;
-height: 34px;
-display: flex;
-gap: 8px;
-align-items: center;
-margin-top: 24px;
-`
+  font-size: 36px;
+  font-weight: 500;
+`;
 
 export const StyledName = styled.p`
 font-size: 20px;
@@ -64,20 +52,19 @@ text-decoration: none;
 text-transform: none;
 color: var(--color-grey-scale-grey-1);
 `
+export const StyledNameSpanDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+`;
 
 export const StyledSpan = styled.span`
-width: 92px;
-height: 32px;
-background-color: var(--color-brand-brand-4);
-border: 1px solid var(--color-brand-brand-4);
-border-radius: 4px;
-color: var(--color-brand-brand-1);
-font-size: 14px;
-font-weight: 500;
-display: flex;
-align-items: center;
-justify-content: center;
-`
+  background-color: var(--color-brand-brand-4);
+  border-radius: 4px;
+  padding: 5px;
+  color: var(--color-brand-brand-1);
+`;
 
 export const StyledText = styled.p`
 font-size: 16px;

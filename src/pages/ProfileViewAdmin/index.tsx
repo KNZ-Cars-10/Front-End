@@ -20,22 +20,20 @@ import { UserContext } from "../../providers/userContext/userContext"
 import { ProfileCard } from "../../components/ProfileCard"
 import { EmptyCardProfile } from "../../components/EmptyCard"
 
-
 const ProfileViewAdmin = () => {
+  const { userProfile, data } = useContext(UserContext);
+
+  useEffect(() => {
+    userProfile();
+  }, []);
+
+let accountType = null;
+  if (data?.is_advertiser) {
+    accountType = "Anunciante";
+  } else {
+    accountType = "Comprador";
+  }
  
-    const { userProfile, data } = useContext(UserContext)
-    
-    useEffect(() => {
-        userProfile()
-    }, [])
-
-    let accountType = null
-    if(data?.is_advertiser) {
-        accountType = "Anunciante"
-    } else {
-        accountType = "Comprador"
-    }
-
     return (
         <>
         <TempHeader />
@@ -69,5 +67,4 @@ const ProfileViewAdmin = () => {
     )
 }
 
-
-export { ProfileViewAdmin }
+export { ProfileViewAdmin };
