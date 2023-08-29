@@ -9,7 +9,7 @@ export const StyledRegister = styled.div<IRegisterProps>`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 80vh;
+
   background-color: var(--color-grey-scale-grey-7);
 
   form {

@@ -21,10 +21,11 @@ type responseError = {
 export const UserContext = createContext({} as TUserContext);
 
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
-  const { setLoading } = useContext(AdvertContext);
+  const [loading, setLoading] = useState(true);
   const [isAdvertise, setIsAdvertise] = useState(false);
   const [modalEditProfile, setModalEditProfile] = useState(false);
   const [userMenu, setUserMenu] = useState(false);
+  const [nav, setNav] = useState(false);
   const [user, setUser] = useState<TUserResponse | null>(null);
   const [profile, setProfile] = useState<TUserResponse | null>(null);
   const [userData, setUserData] = useState<TUserResponse | null>(null);
@@ -175,6 +176,28 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
+  const getUser = async (id: number) => {
+    try {
+      setLoading(true);
+
+      const response = await api.get<TUserResponse>(`users/${id}`);
+
+      setUser(response.data);
+    } catch (error) {
+      if (axios.isAxiosError<responseError>(error)) {
+        if (error.response?.data.message == "User not found") {
+          toast.error("Usuario não encontrado");
+          navigate("/");
+          console.log(error);
+        } else {
+          console.log(error);
+        }
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const userLogout = () => {
     setProfile(null);
     setUser(null);
@@ -226,6 +249,11 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         userMenu,
         setUserMenu,
         userLogin,
+        loading,
+        setLoading,
+        nav,
+        setNav,
+        getUser,
         autoLoginUser,
         isAdvertise,
         setIsAdvertise,

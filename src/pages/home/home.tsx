@@ -1,22 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { StyledHome } from "./style";
-import {
-  TAdvertResponseFull,
-  TAdverts,
-} from "../../providers/advertContext/@Types";
+import { TAdverts } from "../../providers/advertContext/@Types";
 import { AdvertCard } from "../../components/advertCard/advertCard";
 import { Filters } from "../../components/filters/filters";
 import { AdvertContext } from "../../providers/advertContext/advertContext";
 
 import { AiOutlineCheck } from "react-icons/ai";
 import { UserContext } from "../../providers/userContext/userContext";
-import { ModalEditProfile } from "../../components/modalEditProfile";
 
-export const HomePage = () => {
+export function HomePage() {
   const {
     getFilteredAdverts,
     getExternalCars,
-    loading,
     returnRequest,
     getAdverts,
     filter,
@@ -47,12 +42,13 @@ export const HomePage = () => {
     setPrice,
   } = useContext(AdvertContext);
 
-  const { setUserMenu } = useContext(UserContext);
+  const { setUserMenu, setNav, loading } = useContext(UserContext);
 
   useEffect(() => {
     getAdverts();
     getExternalCars();
     setUserMenu(false);
+    setNav(false);
   }, []);
 
   useEffect(() => {
@@ -152,7 +148,6 @@ export const HomePage = () => {
 
   return (
     <>
-      {/* <ModalEditProfile/> */}
       {loading ? (
         <div className="modal">
           <div className="loading">
@@ -165,7 +160,7 @@ export const HomePage = () => {
           <section className="banner">
             <div className="linearGradient">
               <h2>Motors Shop</h2>
-              <p>A melhor plataforma de anúncios de carros do páis</p>
+              <p>A melhor plataforma de anúncios de veículos do páis</p>
             </div>
           </section>
 
@@ -253,18 +248,35 @@ export const HomePage = () => {
               <section>
                 <h2>Preço</h2>
                 <div>
-                  <span>R$ {price} Mil</span>
+                  <span>
+                    {Number(price).toLocaleString("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    })}
+                  </span>
                 </div>
                 <input
                   onChange={(event) => handlePrice(event.target.value)}
-                  defaultValue={maxPrice!}
                   min={minPrice!}
                   max={maxPrice!}
+                  defaultValue={maxPrice!}
                   type="range"
                 />
                 <div>
-                  <span>R$ {minPrice} Mil</span>
-                  <span>R$ {maxPrice} Mil</span>
+                  <span>
+                    {" "}
+                    {Number(minPrice).toLocaleString("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    })}{" "}
+                  </span>
+                  <span>
+                    {" "}
+                    {Number(maxPrice).toLocaleString("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    })}{" "}
+                  </span>
                 </div>
               </section>
 
@@ -313,4 +325,4 @@ export const HomePage = () => {
       {filter ? <Filters /> : null}
     </>
   );
-};
+}

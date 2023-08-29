@@ -1,67 +1,101 @@
-import { useContext, useEffect } from "react"
-import { 
-    StyledElipseProfileInfo, 
-    StyledInitialsProfileInfo, 
-    StyledMain, 
-    StyledProfileInfo, 
-    StyledSubHeader, 
-    StyledSubProfileInfo,
-    StyledNameSpanDiv,
-    StyledName,
-    StyledSpan, 
-    StyledText,
-    StyleTitle,
-    StyleUl,
-    TempHeader
-} from "./styles" 
-import { AdvertCard } from "../../components/advertCard/advertCrad"
-import { UserContext } from "../../providers/userContext/userContext"
-import { useParams } from "react-router-dom"
-import { EmptyCardUser } from "../../components/EmptyCard"
+import { useContext, useEffect, useState } from "react";
 
-const ProfileViewUser = () => {
-  const { advertsByUser, userData } = useContext(UserContext);
-  const { userId } = useParams();
+import { UserContext } from "../../providers/userContext/userContext";
+import { useNavigate, useParams } from "react-router-dom";
+import { AdvertCard } from "../../components/advertCard/advertCard";
+import { StyledAdvertiser } from "./styles";
+import { EmptyCardUser } from "../../components/EmptyCard";
+
+export function ProfileViewUser() {
+  const { user, getUser, setUserMenu, profile } = useContext(UserContext);
+
+  const { loading } = useContext(UserContext);
+
+  const { advertiserId } = useParams();
+
+  let aux: any = [];
+
+  const navigate = useNavigate();
+
+  const [currentAdverts, setCurrentAdverts] = useState([]);
 
   useEffect(() => {
-    advertsByUser(parseInt(userId!));
+    setUserMenu(false);
+    if (profile) {
+      if (profile.id == parseInt(advertiserId!)) {
+        navigate("/profile");
+      } else {
+        getUser(parseInt(advertiserId!));
+      }
+    } else {
+      getUser(parseInt(advertiserId!));
+    }
   }, []);
 
-  let accountType = null;
-  if (userData?.is_advertiser) {
-    accountType = "Anunciante";
-  } else {
-    accountType = "Comprador";
-  }
+  useEffect(() => {
+    if (profile) {
+      if (user?.id === profile?.id) {
+      }
+    }
 
-    return (
+    user?.adverts.map((advert) => {
+      if (advert?.status) {
+        aux.push(advert);
+      }
+    });
+
+    setCurrentAdverts(aux);
+  }, [user]);
+
+  return (
+    <>
+      {loading ? (
+        <div className="modal">
+          <div className="loading">
+            {" "}
+            <h2>Carregando</h2>
+          </div>
+        </div>
+      ) : (
         <>
-        <TempHeader />
-        <StyledSubHeader />
-        <StyledProfileInfo>
-            <StyledSubProfileInfo>
-                <StyledElipseProfileInfo style={{background: userData?.color}}>
-                    <StyledInitialsProfileInfo>{userData?.inicial}</StyledInitialsProfileInfo>
-                </StyledElipseProfileInfo>
-                <StyledNameSpanDiv>
-                    <StyledName>{userData?.name}</StyledName>
-                    <StyledSpan>{accountType}</StyledSpan>
-                </StyledNameSpanDiv>
-                <StyledText>{userData?.description}</StyledText>
-            </StyledSubProfileInfo>
-        </StyledProfileInfo>
-        <StyledMain>
-            <StyleTitle>Anúncios</StyleTitle>
-            <StyleUl>
-                {userData?.adverts.map((advert) => (
-                    <AdvertCard key={advert!.id} advert={advert!} user={userData} />))}
-                    {
-                        userData?.adverts.length < 1?(<EmptyCardUser />): ""
-                    }
-            </StyleUl>
-        </StyledMain>
-        </>
-    )
-}
+          <StyledAdvertiser color={user?.color}>
+            <div className="banner"></div>
 
-export { ProfileViewUser };
+            <div className="user">
+              <div
+                style={{ background: `${user?.color}` }}
+                className="imgProfile"
+              >
+                <span>{user?.inicial}</span>
+              </div>
+              <div className="informations">
+                <span>{user?.name}</span>
+                {user?.is_advertiser ? (
+                  <span className="advertiser">Anunciante</span>
+                ) : (
+                  <span className="noAdvertiser">Comprador</span>
+                )}
+              </div>
+
+              <p>{user?.description}</p>
+            </div>
+
+            <h2>Anúncios</h2>
+
+            <div className="advertsList">
+              {currentAdverts.length > 0 ? (
+                <ul>
+                  {currentAdverts.map((advert: any) => (
+                    <AdvertCard advert={advert} user={user!} key={advert.id} />
+                  ))}
+                </ul>
+              ) : (
+                <EmptyCardUser />
+              )}
+            </div>
+          </StyledAdvertiser>
+        </>
+      )}
+    </>
+  );
+}
