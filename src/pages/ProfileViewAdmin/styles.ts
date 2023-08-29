@@ -68,15 +68,38 @@ export const StyledText = styled.p`
   color: var(--color-grey-scale-grey-2);
 `;
 
-export const StyledButton = styled.button`
-  border: solid 2px var(--color-brand-brand-1);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  background-color: var(--color-grey-scale-grey-10);
-  font-size: 16px;
-  color: var(--color-brand-brand-1);
-  margin-top: 1rem;
-`;
+export const StyledDivButtons = styled.div`
+display: flex;
+gap: 10px;
+`
+
+export const StyledCreateButton = styled.button`
+width: 160px;
+height: 48px;
+border: solid 2px var(--color-brand-brand-1);
+border-radius: 4px;
+margin-top: 10px;
+margin-botton: 42px;
+background-color: var(--color-grey-scale-grey-10);
+font-size: 16px;
+font-weight: 600;
+font-family: "Inter", sans-serif;
+color: var(--color-brand-brand-1);
+`
+
+export const StyledEditButton = styled.button`
+width: 160px;
+height: 48px;
+border: solid 2px var(--color-brand-brand-1);
+border-radius: 4px;
+margin-top: 10px;
+margin-botton: 42px;
+background-color: var(--color-grey-scale-grey-10);
+font-size: 16px;
+font-weight: 600;
+font-family: "Inter", sans-serif;
+color: var(--color-brand-brand-1)
+`
 
 export const StyledMain = styled.div`
   display: flex;

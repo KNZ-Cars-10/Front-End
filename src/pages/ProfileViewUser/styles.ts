@@ -44,12 +44,14 @@ export const StyledInitialsProfileInfo = styled.p`
 `;
 
 export const StyledName = styled.p`
-  font-size: 20px;
-  font-family: "Lexend", sans-serif;
-  font-weight: 600;
-  color: var(--color-grey-scale-grey-1);
-`;
-
+font-size: 20px;
+font-family: "Lexend", sans-serif;
+font-weight: 600;
+font-style: normal;
+text-decoration: none;
+text-transform: none;
+color: var(--color-grey-scale-grey-1);
+`
 export const StyledNameSpanDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -65,27 +67,54 @@ export const StyledSpan = styled.span`
 `;
 
 export const StyledText = styled.p`
-  color: var(--color-grey-scale-grey-2);
-`;
+font-size: 16px;
+font-family: "Inter", sans-serif;
+font-weight: 400;
+font-style: normal;
+line-height: 28px;
+text-decoration: none;
+text-transform: none;
+color: var(--color-grey-scale-grey-2);
+margin-top: 24px;
+`
 
 export const StyledMain = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  width: 90%;
-  margin-top: 10rem;
-`;
+width: 100%;
+background-color: var(--color-grey-scale-grey-6);
+position: absolute;
+margin-top: 357px;
+z-index: 0;
+`
 
 export const StyleTitle = styled.p`
-  font-size: 2rem;
-  margin-bottom: 2rem;
-`;
+font-size: 24px;
+font-family: "Lexend", sans-serif;
+font-weight: 600;
+font-style: normal;
+text-decoration: none;
+text-transform: none;
+color: #000000;
+margin-left: 184px;
+margin-top: 196.22px;
+`
 
 export const StyleUl = styled.ul`
-  display: flex;
-  flex-direction: row;
-  align-self: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 48px;
-`;
+width: 1392px;
+height: auto;
+margin: 0 auto;
+margin-top: 65.57px;
+display: flex;
+flex-direction: row;
+align-content: flex-start;
+justify-content: flex-start;
+flex-wrap: wrap;
+gap: 48px;
+`
+
+export const TempHeader = styled.div`
+width: 100%;
+height: 80px;
+position: absolute;
+z-index: 5;
+background-color: white;
+`
