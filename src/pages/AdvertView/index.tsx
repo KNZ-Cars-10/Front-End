@@ -12,12 +12,10 @@ import { TCommentRequest } from "../../providers/advertContext/@Types";
 
 export const AdvertViewPage = () => {
   const { getSpeceficAdvert, advertFull } = useContext(AdvertContext);
-  const { comments, listComments, createComment, getUserLoged, data } =
+  const { comments, listComments, createComment, profile } =
     useContext(UserContext);
 
   const { advertId } = useParams();
-
-  const token = localStorage.getItem("Motors-Shop-Token");
 
   const { handleSubmit, register } = useForm<TCommentRequest>({
     resolver: zodResolver(commentSchemaRquest),
@@ -51,7 +49,7 @@ export const AdvertViewPage = () => {
   return (
     <>
       {advertFull ? (
-        <DetailedSection bgColor={data ? data.color : "4"}>
+        <DetailedSection bgColor={profile ? profile.color : "4"}>
           <div className="blue" />
 
           <main>
@@ -125,17 +123,17 @@ export const AdvertViewPage = () => {
                   )}
                 </ul>
                 <fieldset>
-                  {data ? (
+                  {profile ? (
                     <form
                       className="comment-area"
                       onSubmit={handleSubmit(OnSubmit)}
                     >
                       <div>
                         <span className="text-style-inputs-buttons-input-label">
-                          {data.inicial}
+                          {profile.inicial}
                         </span>{" "}
                         <h2 className="text-style-text-body-2-500">
-                          {data.name}
+                          {profile.name}
                         </h2>
                       </div>
                       <textarea
