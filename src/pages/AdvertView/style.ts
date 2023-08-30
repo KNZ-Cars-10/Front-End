@@ -85,6 +85,7 @@ export const DetailedSection = styled.section<StyledLiProps>`
     width: 100%;
     background-color: var(--color-colors-fixed-white-fixed);
     border-radius: 4px;
+    max-height: 500px;
   }
 
   .main-image > img {
