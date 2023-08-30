@@ -9,7 +9,7 @@ import {
   updateAdvertSchema,
 } from "../../schemas/adverts.schemas";
 import {
-  commentSchema,
+  commentSchemaFull,
   commentSchemaRquest,
   commentsSchema,
   commentsSchemaUpdate,
@@ -38,7 +38,7 @@ export type TExternalCar = z.infer<typeof externalCar>;
 
 export type TExternalCars = z.infer<typeof externalCars>;
 
-export type TComment = z.infer<typeof commentSchema>;
+export type TComment = z.infer<typeof commentSchemaFull>;
 
 export type TCommentRequest = z.infer<typeof commentSchemaRquest>;
 

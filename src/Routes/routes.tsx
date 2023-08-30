@@ -5,6 +5,7 @@ import { PasswordResetPage } from "../pages/passwordReset/password-reset";
 import { RegisterPage } from "../pages/register/register";
 import { ProfileViewUser } from "../pages/ProfileViewUser";
 import { ProfileViewAdmin } from "../pages/ProfileViewAdmin";
+import { AdvertViewPage } from "../pages/AdvertView";
 
 export const RouterComponent = () => {
   return (
@@ -14,6 +15,7 @@ export const RouterComponent = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/password-reset" element={<PasswordResetPage />} />
       <Route path="/profile" element={<ProfileViewAdmin />} />
+      <Route path="/advert/:advertId" element={<AdvertViewPage/>} />
       <Route path="/advertiser/:advertiserId" element={<ProfileViewUser />} />
     </Routes>
   );
