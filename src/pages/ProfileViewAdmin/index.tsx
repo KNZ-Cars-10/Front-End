@@ -20,7 +20,8 @@ import { EmptyCardProfile } from "../../components/EmptyCard";
 import { ModalEditProfile } from "../../components/modalEditProfile";
 
 const ProfileViewAdmin = () => {
-  const { userProfile, data,modalEditProfile, setModalEditProfile } = useContext(UserContext);
+  const { userProfile, data, modalEditProfile, setModalEditProfile } =
+    useContext(UserContext);
 
   useEffect(() => {
     userProfile();
@@ -36,7 +37,7 @@ const ProfileViewAdmin = () => {
   return (
     <>
       <StyledSubHeader />
-      {modalEditProfile ? <ModalEditProfile /> :null}
+      {modalEditProfile ? <ModalEditProfile /> : null}
       <StyledProfileInfo>
         <StyledElipseProfileInfo style={{ background: data?.color }}>
           <StyledInitialsProfileInfo>{data?.inicial}</StyledInitialsProfileInfo>
@@ -48,7 +49,9 @@ const ProfileViewAdmin = () => {
         <StyledText>{data?.description}</StyledText>
         <StyledDivButtons>
           <StyledCreateButton>Criar anúncio</StyledCreateButton>
-          <StyledEditButton onClick={() => setModalEditProfile(true)}>Editar perfil</StyledEditButton>
+          <StyledEditButton onClick={() => setModalEditProfile(true)}>
+            Editar perfil
+          </StyledEditButton>
         </StyledDivButtons>
       </StyledProfileInfo>
       <StyledMain>
