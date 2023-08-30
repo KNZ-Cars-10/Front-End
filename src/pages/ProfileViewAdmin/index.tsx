@@ -18,9 +18,12 @@ import { UserContext } from "../../providers/userContext/userContext";
 import { ProfileCard } from "../../components/ProfileCard";
 import { EmptyCardProfile } from "../../components/EmptyCard";
 import { ModalEditProfile } from "../../components/modalEditProfile";
+import { AdvertContext } from "../../providers/advertContext/advertContext";
+import { ModalCreateAdvert } from "../../components/modalCreateAnnounc/modalCreateAnnounc";
 
 const ProfileViewAdmin = () => {
   const { userProfile, data,modalEditProfile, setModalEditProfile } = useContext(UserContext);
+  const { setCreateAdvertModal, createAdvertModal } = useContext(AdvertContext)
 
   useEffect(() => {
     userProfile();
@@ -35,6 +38,7 @@ const ProfileViewAdmin = () => {
 
   return (
     <>
+      {createAdvertModal ? <ModalCreateAdvert/> : null}
       <StyledSubHeader />
       {modalEditProfile ? <ModalEditProfile /> :null}
       <StyledProfileInfo>
@@ -47,7 +51,7 @@ const ProfileViewAdmin = () => {
         </StyledNameSpanDiv>
         <StyledText>{data?.description}</StyledText>
         <StyledDivButtons>
-          <StyledCreateButton>Criar anúncio</StyledCreateButton>
+          <StyledCreateButton onClick={() => setCreateAdvertModal(true)}>Criar anúncio</StyledCreateButton>
           <StyledEditButton onClick={() => setModalEditProfile(true)}>Editar perfil</StyledEditButton>
         </StyledDivButtons>
       </StyledProfileInfo>
