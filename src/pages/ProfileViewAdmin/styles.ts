@@ -31,7 +31,7 @@ export const StyledProfile = styled.div`
     align-self: flex-start;
     gap: 1rem;
     width: 100%;
-    margin-top: 10rem;
+    margin-top: 1rem;
     padding: 1rem;
   }
 
