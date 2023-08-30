@@ -1,38 +1,39 @@
-import { css, styled } from "styled-components";
+import { styled } from "styled-components";
 
-interface ICardProps {
-  color: string | undefined;
-}
-
-export const StyledAdvertCard = styled.div<ICardProps>`
+export const StyledAdvertCard = styled.div`
   display: flex;
   flex-direction: column;
   align-self: flex-start;
   gap: 10px;
-  width: 312px;
-  height: 350px;
-
-  background-color: var(--color-grey-scale-grey-6);
+  min-width: 300px;
+  max-width: 300px;
+  justify-content: space-between;
+  min-height: 430px;
+  max-height: 430px;
 
   .img {
     cursor: pointer;
+    border: solid 2px transparent;
+    height: 200px;
+    border-radius: 5px;
+  }
+
+  .img:hover {
+    border: 2px solid var(--color-brand-brand-1);
   }
 
   .img > img {
     height: 100%;
     width: 100%;
-    max-height: 152px;
-    max-width: 312px;
+    border-radius: 5px;
+    min-height: 196px;
+    max-height: 196px;
   }
 
   & > p {
-    text-align: left;
     color: var(--color-grey-scale-grey-2);
     max-height: 100px;
-    min-height: 40px;
-    font-size: 14px;
-    font-weight: 400;
-    font-family: "Inter", sans-serif;
+    overflow: auto;
   }
 
   & > h2 {
@@ -45,7 +46,7 @@ export const StyledAdvertCard = styled.div<ICardProps>`
     flex-direction: row;
     align-self: flex-start;
     align-items: center;
-    gap: 8px;
+    gap: 1rem;
   }
 
   .userCard > div {
@@ -58,9 +59,19 @@ export const StyledAdvertCard = styled.div<ICardProps>`
     border-radius: 50%;
   }
 
+  .userCard > div > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
   .userCard > span {
     color: var(--color-grey-scale-grey-2);
     cursor: pointer;
+  }
+
+  .userCard > span:hover {
+    color: var(--color-brand-brand-1);
   }
 
   .information {
@@ -80,11 +91,7 @@ export const StyledAdvertCard = styled.div<ICardProps>`
   }
 
   .information > span {
-    font-weight: 500;
-    font-family: "Lexend", sans-serif;
-    font-size: 16px;
-    line-height: 20px;
-    color: var(--color-grey-scale-grey-1);
+    font-weight: 700;
   }
 
   .information > div > p {

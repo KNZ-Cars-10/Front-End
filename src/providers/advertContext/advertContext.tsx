@@ -233,7 +233,6 @@ export const AdvertProvider = ({ children }: IDefaultProviderProps) => {
       });
 
       formData.cover_image = response.data.secure_url;
-      
     } catch (error) {
       if (axios.isAxiosError<string>(error)) {
         console.log(error);
@@ -244,7 +243,7 @@ export const AdvertProvider = ({ children }: IDefaultProviderProps) => {
       setLoading(false);
     }
     console.log(formData);
-    
+
     try {
       setLoading(true);
 

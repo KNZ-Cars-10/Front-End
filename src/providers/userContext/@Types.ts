@@ -32,6 +32,7 @@ export type TUserContext = {
   setUser: React.Dispatch<React.SetStateAction<TUserResponse | null>>;
   userRegister: (FormData: TUserRegister) => Promise<void>;
   getUser: (id: number) => Promise<void>;
+  getUserLoged: (token: string) => Promise<void>;
   userLogout: () => void;
   autoLoginUser: () => Promise<void>;
   userLogin: (formData: TLoginRequest) => Promise<void>;
@@ -52,11 +53,11 @@ export type TUserContext = {
   advertsByUser: (userId: number) => Promise<void>;
   userData: TUserResponse | null;
   setUserData: React.Dispatch<React.SetStateAction<TUserResponse | null>>;
-  userProfile: () => Promise<void>;
+  // userProfile: () => Promise<void>;
   data: TUserResponse | null;
   setData: React.Dispatch<React.SetStateAction<TUserResponse | null>>;
-  listComments: (id: number) => Promise<void>
-  createComment: (id: number, data: TCommentRequest) => Promise<void>
+  listComments: (id: number) => Promise<void>;
+  createComment: (id: number, data: TCommentRequest) => Promise<void>;
   comments: TComment[] | null;
-  setComment: React.Dispatch<React.SetStateAction<TComment[] | null>>
+  setComment: React.Dispatch<React.SetStateAction<TComment[] | null>>;
 };

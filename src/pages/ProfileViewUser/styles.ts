@@ -39,7 +39,7 @@ export const StyledAdvertiser = styled.div<IUserProps>`
     z-index: 1;
   }
 
-  h2 {
+  & > h2 {
     margin: 2rem 0;
   }
 
