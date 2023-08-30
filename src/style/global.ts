@@ -1,9 +1,5 @@
 import { createGlobalStyle, css } from "styled-components";
 
-interface IGlobalProps {
-  filter: boolean;
-}
-
 export const GlobalStyles = createGlobalStyle`
 
 *{
@@ -31,22 +27,15 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 700;
   }
 
-
-
-
-
-
   .App{
     display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
 	min-height: 100vh;
-	height: 100vh;
+	min-height: 100vh;
 	overflow-x: hidden;
   }
-
- 
 
 
   .modal {
@@ -59,7 +48,6 @@ export const GlobalStyles = createGlobalStyle`
 	z-index:5;
 	min-height: 100vh;
     background-color: var(--color-matte);
-	/* Tem que resolve modal de filtros com duas barras de rolagem  */
 	overflow: auto;
   }
 
@@ -74,7 +62,17 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .loading > h2{
-	// Tem que Estiliza
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 10vw;
+	width: 90%;
+	height: 20vw;
+	text-align: center;
+	border-radius: 5px;
+	background-color: var(--color-grey-scale-grey-2);
+
   }
 
   .inicial{
