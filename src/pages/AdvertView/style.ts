@@ -5,12 +5,14 @@ export const DetailedSection = styled.section<StyledLiProps>`
   width: 100%;
   display: flex;
   gap: 3rem;
+  flex-direction: column;
+  align-items: center;
   padding: 40px 10vw;
   justify-content: center;
   position: relative;
 
   > main {
-    width: 70%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -83,7 +85,7 @@ export const DetailedSection = styled.section<StyledLiProps>`
 
   .main-image {
     width: 100%;
-    background-color: var(--color-colors-fixed-white-fixed);
+    background-color: var(--color-grey-scale-grey-5);
     border-radius: 4px;
     max-height: 500px;
   }
@@ -91,7 +93,7 @@ export const DetailedSection = styled.section<StyledLiProps>`
   .main-image > img {
     width: 100%;
     border-radius: 4px;
-    height: 100%;
+    max-height: 500px;
   }
 
   .blue {
@@ -156,7 +158,7 @@ export const DetailedSection = styled.section<StyledLiProps>`
   }
 
   .details {
-    width: 30%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -167,7 +169,9 @@ export const DetailedSection = styled.section<StyledLiProps>`
     padding: 2.25rem 2.8rem;
     border-radius: 4px;
     display: flex;
+    width: 100%;
     flex-direction: column;
+    justify-content: center;
     gap: 2rem;
   }
 
@@ -175,7 +179,6 @@ export const DetailedSection = styled.section<StyledLiProps>`
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
-
   }
 
   .details > figure > div > img {
@@ -189,12 +192,13 @@ export const DetailedSection = styled.section<StyledLiProps>`
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    width: 100%;
     border-radius: 4px;
     background-color: var(--color-colors-fixed-white-fixed);
     justify-content: center;
     align-items: center;
     padding: 2.25rem 2.8rem;
-  } 
+  }
 
   .advertiser-box > h1 {
     display: flex;
@@ -222,7 +226,19 @@ export const DetailedSection = styled.section<StyledLiProps>`
     border-radius: 4px;
     padding: 10px 28px;
   }
-  
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+
+    > main {
+      width: 70%;
+    }
+    .details {
+      width: 30%;
+    }
+  }
+
 `;
 
 interface StyledLiProps {
