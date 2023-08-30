@@ -17,8 +17,6 @@ export const ModalEditProfile = () => {
     resolver: zodResolver(schemaEditProfile),
   });
 
-  console.log(profile);
-
   const handleSaveChanges: SubmitErrorHandler<TEditProfile> = (data) => {
     userUpdate(data);
   };
@@ -141,7 +139,7 @@ export const ModalEditProfile = () => {
             <button
               className="save"
               type="submit"
-              onClick={handleSubmit(handleSaveChanges)}
+              // onClick={handleSubmit(handleSaveChanges)}
             >
               Salvar Alterações
             </button>

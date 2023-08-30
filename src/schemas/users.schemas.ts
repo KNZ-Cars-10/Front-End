@@ -63,6 +63,8 @@ export const userSchema = z.object({
   is_advertiser: z.boolean(),
   color: z.string(),
   inicial: z.string(),
+  avatar: z.string().nullish(),
+  resetToken: z.string().nullish(),
 });
 
 export const userSchemaRegister = userSchema

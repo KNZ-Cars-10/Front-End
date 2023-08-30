@@ -45,7 +45,6 @@ export const AdvertProvider = ({ children }: IDefaultProviderProps) => {
   const [externalBrand, setExternalBrand] = useState<string | null>(null);
   const [currentCar, setCurrentCar] = useState<any | []>([]);
   const [externalModel, setExternalModel] = useState<string | null>(null);
-
   const [brand, setBrand] = useState<string | null>(null);
   const [model, setModel] = useState<string | null>(null);
   const [color, setColor] = useState<string | null>(null);
@@ -243,6 +242,7 @@ export const AdvertProvider = ({ children }: IDefaultProviderProps) => {
     } finally {
       setLoading(false);
     }
+    console.log(formData);
 
     try {
       setLoading(true);

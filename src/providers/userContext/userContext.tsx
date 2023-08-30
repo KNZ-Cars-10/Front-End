@@ -1,7 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import { IDefaultProviderProps, TComment, TCommentRequest } from "../advertContext/@Types";
+import {
+  IDefaultProviderProps,
+  TComment,
+  TCommentRequest,
+} from "../advertContext/@Types";
 
 import {
   TLoginRequest,
@@ -163,19 +167,19 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
-  const userProfile = async () => {
-    const token = localStorage.getItem("Motors-Shop-Token");
-    try {
-      const response = await api.get("profile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setData(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const userProfile = async () => {
+  //   const token = localStorage.getItem("Motors-Shop-Token");
+  //   try {
+  //     const response = await api.get("profile", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     setData(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const getUser = async (id: number) => {
     try {
@@ -243,32 +247,37 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const listComments = async (id: number) => {
     try {
       const response = await api.get<TComment[]>(`/comment`);
-      const allComments = response.data.filter((comment) => comment.advert.id == id)
-       setComment(allComments)
+      const allComments = response.data.filter(
+        (comment) => comment.advert.id == id
+      );
+      setComment(allComments);
     } catch (error) {
-      console.log(error); 
+      console.log(error);
     }
-  }
+  };
 
   const createComment = async (id: number, data: TCommentRequest) => {
     try {
       const token = localStorage.getItem("Motors-Shop-Token");
-      const response = await api.post<TComment>(`/comment/${id}`, data,{
+      const response = await api.post<TComment>(`/comment/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      comments ? setComment([...comments, response.data]) : setComment([response.data])
+      comments
+        ? setComment([...comments, response.data])
+        : setComment([response.data]);
       toast("Obrigado pelo seu comentário!");
     } catch (error) {
       console.log(error);
       toast("Não Foi Possível Comentar");
     }
-  }
+  };
 
   return (
     <UserContext.Provider
       value={{
+        getUserLoged,
         userRegister,
         user,
         userLogout,
@@ -291,7 +300,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         userUpdate,
         userDelete,
         advertsByUser,
-        userProfile,
+        // userProfile,
         data,
         setData,
         userData,
@@ -299,7 +308,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         comments,
         createComment,
         listComments,
-        setComment
+        setComment,
       }}
     >
       {children}

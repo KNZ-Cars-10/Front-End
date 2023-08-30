@@ -1,33 +1,40 @@
-import { TAdvert } from "../../providers/advertContext/@Types";
-import { TUser } from "../../providers/userContext/@Types";
 import { useNavigate } from "react-router-dom";
+import { TAdvertResponse } from "../../providers/advertContext/@Types";
 import { StyledAdvertCard } from "./style";
+import { TUser } from "../../providers/userContext/@Types";
 
 type Props = {
-  advert: TAdvert;
+  advert: TAdvertResponse;
   user: TUser;
 };
 
-export const AdvertCard = ({ advert, user }: Props) => {
+export function AdvertCard({ advert, user }: Props) {
   const navigate = useNavigate();
 
-  console.log(user);
-
   return (
-    <StyledAdvertCard color={user?.color}>
+    <StyledAdvertCard>
       <div className="img" onClick={() => navigate(`/advert/${advert.id}`)}>
-        <img src={advert.cover_image!} alt="" />
+        <img src={advert.cover_image!} alt="Imagem de capa do anúncio" />
       </div>
-
       <h2>
+        {" "}
         {advert.brand} - {advert.model}
       </h2>
       <p>{advert.description}</p>
 
       <div className="userCard">
-        <div style={{ background: `${user?.color}` }}>{user?.inicial}</div>
+        {user.inicial ? (
+          <div style={{ background: `${user?.color}` }}>
+            {user.avatar ? (
+              <img src={user.avatar} alt="Imagem de perfil do usuário logado" />
+            ) : (
+              <span className="inicial">{user.inicial}</span>
+            )}
+          </div>
+        ) : null}
+
         <span onClick={() => navigate(`/advertiser/${user.id}`)}>
-          {user?.name}
+          {user.name}
         </span>
       </div>
 
@@ -36,8 +43,13 @@ export const AdvertCard = ({ advert, user }: Props) => {
           <p>{advert.mileage} KM</p>
           <p>{advert.year}</p>
         </div>
-        <span>R$ {advert.price}</span>
+        <span>
+          {Number(advert.price).toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </span>
       </div>
     </StyledAdvertCard>
   );
-};
+}

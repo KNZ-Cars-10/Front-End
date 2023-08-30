@@ -1,30 +1,37 @@
+import { useNavigate } from "react-router-dom";
 import { TAdvert } from "../../providers/advertContext/@Types";
-import { TUser } from "../../providers/userContext/@Types";
-import { StyledProfileCard } from "./style";
+import { StyledAdvertCardProfile } from "./style";
+import { useContext } from "react";
+import { AdvertContext } from "../../providers/advertContext/advertContext";
 
 type Props = {
   advert: TAdvert;
-  user: TUser;
 };
 
+export function ProfileCard({ advert }: Props) {
+  const { setUpdateAdvertModal } = useContext(AdvertContext);
 
+  const { setAdvertProfile } = useContext(AdvertContext);
 
-export function ProfileCard({ advert, /* user */ }: Props) {
+  const navigate = useNavigate();
 
-    let isActive = null
-    if(advert?.status) {
-        isActive = <span className="isActiveTrue">Ativo</span>
-    } else {
-        isActive = <span className="isActiveFalse">Inativo</span>
-    }
+  function handleUpdateAdvert() {
+    setAdvertProfile(advert);
+
+    setUpdateAdvertModal(true);
+  }
 
   return (
-    <StyledProfileCard>
+    <StyledAdvertCardProfile status={advert.status}>
       <div className="img">
-        <img src={advert.cover_image!} alt="" />
-        {isActive}
+        {advert.status ? <span>Ativo</span> : <span>Inativo</span>}
+
+        <img src={advert.cover_image!} alt="Imagem de capa do anúncio" />
       </div>
-      <h2>{advert.brand} - {advert.model}</h2>
+      <h2>
+        {advert.brand} - {advert.model}
+      </h2>
+
       <p>{advert.description}</p>
 
       <div className="information">
@@ -32,12 +39,20 @@ export function ProfileCard({ advert, /* user */ }: Props) {
           <p>{advert.mileage} KM</p>
           <p>{advert.year}</p>
         </div>
-        <span>R$ {advert.price}</span>
+        <span>
+          {Number(advert.price).toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </span>
       </div>
-        <div className="buttons">
-        <button className="editButton">Editar</button>
-        <button className="detailsButton">Ver detalhes</button>
-        </div>
-    </StyledProfileCard>
+
+      <div className="buttons">
+        <button onClick={() => handleUpdateAdvert()}>Editar</button>
+        <button onClick={() => navigate(`/advert/${advert.id}`)}>
+          Ver detalhes
+        </button>
+      </div>
+    </StyledAdvertCardProfile>
   );
 }

@@ -4,12 +4,14 @@ export const DivModal = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     background-color: var(--color-matte);
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     position: fixed;
     top: 0;
+    left: 0;
     right: 0;
     z-index: 1000;
 
@@ -20,7 +22,7 @@ export const DivModal = styled.div`
 
 export const FormContent = styled.form`
     margin-top: 10px;
-    width: 520px;
+    width: 99vw;
     height: 700px;
     background-color: var(--color-colors-fixed-white-fixed);
     display: flex;
