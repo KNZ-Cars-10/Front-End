@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { AdvertContext } from "../../providers/advertContext/advertContext";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../providers/userContext/userContext";
 import { DetailedSection, UserComment } from "./style";
 import { formatDistanceToNow, parseISO } from "date-fns";
@@ -26,6 +26,8 @@ export const AdvertViewPage = () => {
     userProfile();
  
   }, []);
+
+  const navigate = useNavigate()
 
   const OnSubmit = (data: TCommentRequest) => {
     createComment(+advertId! ,data)
@@ -171,7 +173,7 @@ export const AdvertViewPage = () => {
               <h1 className="text-style-inputs-buttons-input-label">{advertFull.user.inicial}</h1>
               <h2 className="text-style-heading-heading-6-600">{advertFull.user.name}</h2>
               <p className="text-style-text-body-1-400">{advertFull.user.description}</p>
-              <button className="text-style-inputs-buttons-button-big-text">Ver todos anúncios</button>
+              <button className="text-style-inputs-buttons-button-big-text" onClick={() => navigate(`/advertiser/${advertFull.user.id}`)}>Ver todos anúncios</button>
             </div>
           </aside>
         </DetailedSection>
