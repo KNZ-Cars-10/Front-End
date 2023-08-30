@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import { IDefaultProviderProps } from "../advertContext/@Types";
+import { IDefaultProviderProps, TComment, TCommentRequest } from "../advertContext/@Types";
 
 import {
   TLoginRequest,
@@ -30,6 +30,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const [profile, setProfile] = useState<TUserResponse | null>(null);
   const [userData, setUserData] = useState<TUserResponse | null>(null);
   const [data, setData] = useState<TUserResponse | null>(null);
+  const [comments, setComment] = useState<TComment[] | null>(null);
 
   const navigate = useNavigate();
 
@@ -239,6 +240,32 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
+  const listComments = async (id: number) => {
+    try {
+      const response = await api.get<TComment[]>(`/comment`);
+      const allComments = response.data.filter((comment) => comment.advert.id == id)
+       setComment(allComments)
+    } catch (error) {
+      console.log(error); 
+    }
+  }
+
+  const createComment = async (id: number, data: TCommentRequest) => {
+    try {
+      const token = localStorage.getItem("Motors-Shop-Token");
+      const response = await api.post<TComment>(`/comment/${id}`, data,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      comments ? setComment([...comments, response.data]) : setComment([response.data])
+      toast("Obrigado pelo seu comentário!");
+    } catch (error) {
+      console.log(error);
+      toast("Não Foi Possível Comentar");
+    }
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -269,6 +296,10 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         setData,
         userData,
         setUserData,
+        comments,
+        createComment,
+        listComments,
+        setComment
       }}
     >
       {children}

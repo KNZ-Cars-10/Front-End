@@ -11,6 +11,7 @@ import {
   responseLoginSchema,
   requestLoginSchema,
 } from "../../schemas/login.schemas";
+import { TComment, TCommentRequest } from "../advertContext/@Types";
 
 export type TUser = z.infer<typeof userSchema>;
 
@@ -54,4 +55,8 @@ export type TUserContext = {
   userProfile: () => Promise<void>;
   data: TUserResponse | null;
   setData: React.Dispatch<React.SetStateAction<TUserResponse | null>>;
+  listComments: (id: number) => Promise<void>
+  createComment: (id: number, data: TCommentRequest) => Promise<void>
+  comments: TComment[] | null;
+  setComment: React.Dispatch<React.SetStateAction<TComment[] | null>>
 };
