@@ -1,6 +1,10 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 
-export const GlobalStyles = createGlobalStyle`
+interface IGlobalProps {
+  filter: boolean;
+}
+
+export const GlobalStyles = createGlobalStyle<IGlobalProps>`
 
 *{
     box-sizing: border-box;
@@ -11,72 +15,52 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     transition: 1s;
     font-family: 'Nunito', 'Inter', sans-serif;
-	/* overflow: auto; */
+	line-height: 150%;
   }
 
   svg {
     cursor: pointer;
   }
 
+
   .error{
     color: var(--color-feedback-alert-1);
   }
+
+
 
   button{
     cursor: pointer;
     font-weight: 700;
   }
 
-  html{
-    min-height: 100vh;
-    width: 100%;
-	
-  }
-
-
-  .App{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%; 
-	overflow-x: hidden;
-	/* position: relative; */
-    /* background-color: var(--color-grey-scale-grey-1); */
-  }
   
-  .routes{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 100%; 
-
-    /* background-color: var(--color-grey-scale-grey-1); */
+  .App{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 100vh;
+	height: 100vh;
+	overflow-x: hidden;
   }
 
-  body{
-    min-height: 100vh;
-    width: 100%;
-	/* overflow-x: hidden */
-  }
-
-  #root{
-   min-height: 100vh;
-   width: 100%;
-
-  }
 
   .modal {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: fixed;
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    min-width: 100vw;
+	min-height: 100vh;
+	width: 100%;
+	height: 100%;
+	z-index:5;
+	top: 0;
+	left: 0;
     background-color: var(--color-matte);
-	/* Tem que resolve modal de filtros com duas barras de rolagem  */
 	overflow: auto;
+	overflow-x: hidden;
   }
 
   .loading{
@@ -87,9 +71,24 @@ export const GlobalStyles = createGlobalStyle`
 	width: 100%;
 	height: 100%;
 
-	h2{
-		// Tem que Estiliza
-	}
+  }
+
+  .loading > h2{
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 10vw;
+	width: 90%;
+	height: 20vw;
+	text-align: center;
+	border-radius: 5px;
+	background-color: var(--color-grey-scale-grey-2);
+
+  }
+
+  .inicial{
+	color: var(--color-colors-fixed-white-fixed);
   }
 
   :root {
@@ -99,6 +98,8 @@ export const GlobalStyles = createGlobalStyle`
 	--color-feedback-sucess-1: #18794e;
 	--color-feedback-sucess-2: #ccebd7;
 	--color-feedback-sucess-3: #ddf3e4;
+	--color-feedback-attention-1: #FFFD0E;
+	--color-feedback-attention-2: #FFEE7E;
 	--color-random-random-1: #e34d8c;
 	--color-random-random-2: #c04277;
 	--color-random-random-3: #7d2a4d;
@@ -132,7 +133,6 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-1-700 {
 	font-size: 44px;
-	font-family: "Lexend";
 	font-weight: 700;
 	font-style: normal;
 	line-height: 56px;
@@ -142,7 +142,6 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-2-600 {
 	font-size: 36px;
-	font-family: "Lexend";
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -151,7 +150,6 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-3-500 {
 	font-size: 32px;
-	font-family: "Lexend";
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -160,7 +158,6 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-3-600 {
 	font-size: 32px;
-	font-family: "Lexend";
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -169,7 +166,6 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-4-600 {
 	font-size: 28px;
-	font-family: "Lexend";
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -178,7 +174,6 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-4-500 {
 	font-size: 28px;
-	font-family: "Lexend";
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -187,7 +182,6 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-5-500 {
 	font-size: 24px;
-	font-family: "Lexend";
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -196,7 +190,6 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-5-600 {
 	font-size: 24px;
-	font-family: "Lexend";
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -205,7 +198,6 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-6-500 {
 	font-size: 20px;
-	font-family: "Lexend";
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -214,7 +206,6 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-6-600 {
 	font-size: 20px;
-	font-family: "Lexend";
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;
@@ -223,7 +214,6 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-7-500 {
 	font-size: 16px;
-	font-family: "Lexend";
 	font-weight: 500;
 	font-style: normal;
 	text-decoration: none;
@@ -232,7 +222,6 @@ export const GlobalStyles = createGlobalStyle`
 
 .text-style-heading-heading-7-600 {
 	font-size: 16px;
-	font-family: "Lexend";
 	font-weight: 600;
 	font-style: normal;
 	text-decoration: none;

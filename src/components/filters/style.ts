@@ -5,8 +5,9 @@ export const StyledFilter = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  width: 100%;
-  margin-top: 7rem;
+  width: 90%;
+  border-radius: 5px;
+  margin-top: 5rem;
   background-color: var(--color-colors-fixed-white-fixed);
   padding: 1rem;
 
@@ -42,8 +43,12 @@ export const StyledFilter = styled.div`
     cursor: pointer;
   }
 
-  section > span:hover {
-    color: var(--color-grey-scale-grey-2);
+  section > div > span {
+    color: var(--color-grey-scale-grey-3);
+    padding-left: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    cursor: pointer;
   }
 
   section > div {
@@ -66,10 +71,5 @@ export const StyledFilter = styled.div`
     border-radius: 5px;
     color: var(--color-grey-scale-grey-10);
     margin: 50px 0;
-  }
-
-  button:hover {
-    background-color: var(--color-brand-brand-1);
-    color: var(--color-grey-scale-grey-3);
   }
 `;

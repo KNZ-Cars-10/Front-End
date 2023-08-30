@@ -1,25 +1,43 @@
 import { styled } from "styled-components";
 
-export const StyledAdvertCard = styled.div`
+interface ICardProps {
+  color: string | undefined | null;
+}
+
+export const StyledAdvertCard = styled.div<ICardProps>`
   display: flex;
   flex-direction: column;
   align-self: flex-start;
   gap: 10px;
-  /* border: 1px black solid; */
   min-width: 300px;
   max-width: 300px;
+  justify-content: space-between;
+  min-height: 430px;
+  max-height: 430px;
 
-  background-color: var(--color-colors-fixed-white-fixed);
+  .img {
+    cursor: pointer;
+    border: solid 2px transparent;
+    height: 200px;
+    border-radius: 5px;
+  }
+
+  .img:hover {
+    border: 2px solid var(--color-brand-brand-1);
+  }
 
   .img > img {
     height: 100%;
     width: 100%;
+    border-radius: 5px;
+    min-height: 196px;
+    max-height: 196px;
   }
 
   & > p {
-    text-align: center;
     color: var(--color-grey-scale-grey-2);
     max-height: 100px;
+    overflow: auto;
   }
 
   & > h2 {
@@ -27,7 +45,7 @@ export const StyledAdvertCard = styled.div`
     font-weight: 700;
   }
 
-  .user {
+  .userCard {
     display: flex;
     flex-direction: row;
     align-self: flex-start;
@@ -35,20 +53,29 @@ export const StyledAdvertCard = styled.div`
     gap: 1rem;
   }
 
-  .user > div {
+  .userCard > div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: var(--color-colors-fixed-white-fixed);
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    background-color: red;
   }
 
-  .user > span {
+  .userCard > div > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  .userCard > span {
     color: var(--color-grey-scale-grey-2);
+    cursor: pointer;
+  }
+
+  .userCard > span:hover {
+    color: var(--color-brand-brand-1);
   }
 
   .information {

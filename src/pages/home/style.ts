@@ -1,38 +1,36 @@
 import { styled } from "styled-components";
 
-export const StyledDash = styled.div`
+export const StyledHome = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  background-color: var(--color-colors-fixed-white-fixed);
 
   .banner {
     background-image: url("/src/assets/banner 2.png");
     background-size: cover;
     background-position: center;
     width: 100%;
-    /* Tem que resolve (Unidade de medida variavel) */
-    height: 200px;
-  }
-
-  .banner > img {
-    height: 100%;
-    width: 100%;
+    min-height: 300px;
+    height: 40vw;
   }
 
   .linearGradient {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 1rem 0.5rem;
     gap: 0.5rem;
     height: 100%;
     width: 100%;
-    /* background: linear-gradient(rgba(255, 0, 0, 0), rgba(0, 0, 0, 1)); */
     background: linear-gradient(rgba(0, 0, 0, 1), rgba(255, 0, 0, 0));
   }
 
   .linearGradient > h2 {
+    text-align: center;
+    font-size: 3rem;
     color: var(--color-grey-scale-grey-10);
   }
 
@@ -40,6 +38,14 @@ export const StyledDash = styled.div`
     color: var(--color-grey-scale-grey-10);
     font-weight: 500;
     text-align: center;
+  }
+
+  .empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
   }
 
   ul {
@@ -59,12 +65,12 @@ export const StyledDash = styled.div`
     width: 90%;
     border-radius: 5px;
     color: var(--color-grey-scale-grey-10);
+    border: solid 2px transparent;
     margin: 50px 0;
   }
 
   button:hover {
-    background-color: var(--color-brand-brand-1);
-    color: var(--color-grey-scale-grey-3);
+    border: solid 2px var(--color-grey-scale-grey-0);
   }
 
   .pages {
@@ -122,7 +128,7 @@ export const StyledDash = styled.div`
       align-items: center;
       gap: 20px;
       padding: 1rem;
-      width: 400px;
+      max-width: 300px;
 
       background-color: var(--color-colors-fixed-white-fixed);
 
@@ -149,19 +155,6 @@ export const StyledDash = styled.div`
         padding: 1rem 0;
       }
 
-      section > span {
-        color: var(--color-grey-scale-grey-3);
-        padding-left: 10px;
-        margin-bottom: 5px;
-        font-weight: 600;
-        align-self: flex-start;
-        cursor: pointer;
-      }
-
-      section > span:hover {
-        color: var(--color-grey-scale-grey-2);
-      }
-
       section > div {
         display: flex;
         flex-direction: row;
@@ -172,7 +165,11 @@ export const StyledDash = styled.div`
 
       section > div > span {
         color: var(--color-grey-scale-grey-3);
+        padding-left: 10px;
+        margin-bottom: 5px;
         font-weight: 600;
+        align-self: flex-start;
+        cursor: pointer;
       }
 
       button {
@@ -183,16 +180,15 @@ export const StyledDash = styled.div`
         color: var(--color-grey-scale-grey-10);
         margin: 50px 0;
       }
-
-      button:hover {
-        background-color: var(--color-brand-brand-1);
-        color: var(--color-grey-scale-grey-3);
-      }
     }
 
     ul {
       flex-wrap: wrap;
       justify-content: center;
     }
+  }
+
+  @media (max-width: 1000px) {
+    height: 100%;
   }
 `;

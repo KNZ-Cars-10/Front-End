@@ -1,9 +1,88 @@
 import { useContext } from "react";
 import { StyledFilter } from "./style";
 import { AdvertContext } from "../../providers/advertContext/advertContext";
+import { AiOutlineCheck } from "react-icons/ai";
 
 export function Filters() {
-  const { setFilter } = useContext(AdvertContext);
+  const {
+    getFilteredAdverts,
+    setFilter,
+    brand,
+    setBrand,
+    model,
+    setModel,
+    color,
+    setColor,
+    year,
+    setYear,
+    fuel,
+    setFuel,
+    brands,
+    models,
+    colors,
+    years,
+    fuels,
+    maxMileage,
+    mileage,
+    setMileage,
+    minPrice,
+    maxPrice,
+    price,
+    setPrice,
+  } = useContext(AdvertContext);
+
+  function handleBrandFilter(newBrand: string) {
+    if (brand == newBrand) {
+      setBrand(null);
+    } else {
+      setBrand(newBrand);
+    }
+  }
+
+  function handleModelFilter(newModel: string) {
+    if (model == newModel) {
+      setModel(null);
+    } else {
+      setModel(newModel);
+    }
+  }
+
+  function handleColorFilter(newColor: string) {
+    if (color == newColor) {
+      setColor(null);
+    } else {
+      setColor(newColor);
+    }
+  }
+
+  function handleYearFilter(newYear: string) {
+    if (year == newYear) {
+      setYear(null);
+    } else {
+      setYear(newYear);
+    }
+  }
+
+  function handleFuelFilter(newFuel: string) {
+    if (fuel == newFuel) {
+      setFuel(null);
+    } else {
+      setFuel(newFuel);
+    }
+  }
+
+  function handleMileage(value: string) {
+    setMileage(value);
+  }
+
+  function handlePrice(value: string) {
+    setPrice(value);
+  }
+
+  function handleFilters() {
+    getFilteredAdverts();
+    setFilter(false);
+  }
 
   return (
     <div className="modal">
@@ -18,72 +97,114 @@ export function Filters() {
         <section>
           <h2>Marca</h2>
 
-          <span>Fiat</span>
-          <span>Ford</span>
-          <span>Honda</span>
-          <span>Toyota</span>
-          <span>Volkswagen</span>
+          {brands?.map((newBrand) => (
+            <div key={newBrand}>
+              <span onClick={() => handleBrandFilter(newBrand)}>
+                {newBrand}
+              </span>
+              {brand == newBrand ? <AiOutlineCheck /> : null}
+            </div>
+          ))}
         </section>
 
         <section>
           <h2>Modelo</h2>
 
-          <span>Civic</span>
-          <span>Corolla</span>
-          <span>Cruze</span>
-          <span>Fit</span>
-          <span>Gol</span>
-          <span>Ka</span>
-          <span>Onix</span>
+          {models?.map((newModel) => (
+            <div key={newModel}>
+              <span onClick={() => handleModelFilter(newModel)}>
+                {newModel}
+              </span>
+              {model == newModel ? <AiOutlineCheck /> : null}
+            </div>
+          ))}
         </section>
 
         <section>
           <h2>Cor</h2>
 
-          <span>Azul</span>
-          <span>Branca</span>
-          <span>Cinza</span>
-          <span>Prata</span>
-          <span>Verde</span>
+          {colors?.map((newColor) => (
+            <div key={newColor}>
+              <span onClick={() => handleColorFilter(newColor)}>
+                {newColor}
+              </span>
+              {color == newColor ? <AiOutlineCheck /> : null}
+            </div>
+          ))}
         </section>
 
         <section>
           <h2>Ano</h2>
 
-          <span>2018</span>
-          <span>2019</span>
-          <span>2020</span>
-          <span>2021</span>
-          <span>2022</span>
+          {years?.map((newYear) => (
+            <div key={newYear}>
+              <span onClick={() => handleYearFilter(newYear)}>{newYear}</span>
+              {year == newYear ? <AiOutlineCheck /> : null}
+            </div>
+          ))}
         </section>
 
         <section>
           <h2>Combustível</h2>
 
-          <span>Elétrico</span>
-          <span>Flex</span>
-          <span>Híbrido</span>
+          {fuels?.map((newFuel) => (
+            <div key={newFuel}>
+              <span onClick={() => handleFuelFilter(newFuel)}>{newFuel}</span>
+              {fuel == newFuel ? <AiOutlineCheck /> : null}
+            </div>
+          ))}
         </section>
 
         <section>
           <h2>KM</h2>
           <div>
-            <span>0 km</span>
-            <span>650000 km</span>
+            <span>{mileage} Mil km</span>
           </div>
-          <input type="range" />
+          <input
+            min={0}
+            max={maxMileage!}
+            defaultValue={maxMileage!}
+            onChange={(event) => handleMileage(event.target.value)}
+            type="range"
+          />
         </section>
 
         <section>
           <h2>Preço</h2>
           <div>
-            <span>R$ 10 mil</span>
-            <span>R$ 550 mil</span>
+            <span>
+              {Number(price).toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              })}{" "}
+            </span>
           </div>
-          <input type="range" />
+          <input
+            onChange={(event) => handlePrice(event.target.value)}
+            defaultValue={minPrice!}
+            min={minPrice!}
+            max={maxPrice!}
+            type="range"
+          />
+          <div>
+            <span>
+              {" "}
+              {Number(minPrice).toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </span>
+            <span>
+              {" "}
+              {Number(maxPrice).toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </span>
+          </div>
         </section>
 
-        <button>Ver Anúncios</button>
+        <button onClick={() => handleFilters()}>Ver Anúncios</button>
       </StyledFilter>
     </div>
   );
