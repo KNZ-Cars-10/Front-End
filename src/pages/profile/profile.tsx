@@ -3,7 +3,7 @@ import { StyledProfile } from "./style";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../../providers/userContext/userContext";
-import { AdvertCardProfile } from "../../components/advertCardProfile/advertCradProfile";
+import { AdvertCardProfile } from "../../components/advertCardProfile/advertCardProfile";
 import { ModalUpdateProfile } from "../../components/modals/modalUpdateProfile/modalUpdateProfile";
 import { ModalDeleteProfile } from "../../components/modals/modalDeleteProfile/modalDeleteProfile";
 import { ModalUpdateAddress } from "../../components/modals/modalUpdateAddress/modalUpdateAddress";
@@ -29,7 +29,6 @@ export function ProfilePage() {
   const {
     createAdvertModal,
     setCreateAdvertModal,
-
     updateAdvertModal,
     deleteAdvertModal,
     updatePage,
@@ -64,7 +63,7 @@ export function ProfilePage() {
         </div>
       ) : (
         <>
-          <StyledProfile color={profile?.color}>
+          <StyledProfile>
             <div className="banner"></div>
 
             <div className="user">

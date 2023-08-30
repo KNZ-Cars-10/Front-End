@@ -241,6 +241,13 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       toast.success("Email enviado com sucesso");
       navigate("/");
     } catch (error) {
+      console.log("123");
+
+      if (axios.isAxiosError<responseError>(error)) {
+        if (error.response?.data.message == "User not found") {
+          toast.error("Usuário não encontrado");
+        }
+      }
       console.log(error);
     } finally {
       setLoading(false);

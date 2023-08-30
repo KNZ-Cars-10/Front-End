@@ -1,10 +1,6 @@
 import { styled } from "styled-components";
 
-interface IProfileProps {
-  color: string | undefined | null;
-}
-
-export const StyledProfile = styled.div<IProfileProps>`
+export const StyledProfile = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

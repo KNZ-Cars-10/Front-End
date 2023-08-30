@@ -1,10 +1,6 @@
 import { styled } from "styled-components";
 
-interface ICardProps {
-  color: string | undefined | null;
-}
-
-export const StyledAdvertCard = styled.div<ICardProps>`
+export const StyledAdvertCard = styled.div`
   display: flex;
   flex-direction: column;
   align-self: flex-start;

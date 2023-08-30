@@ -12,7 +12,7 @@ export function AdvertCard({ advert, user }: Props) {
   const navigate = useNavigate();
 
   return (
-    <StyledAdvertCard color={user?.color}>
+    <StyledAdvertCard>
       <div className="img" onClick={() => navigate(`/advert/${advert.id}`)}>
         <img src={advert.cover_image!} alt="Imagem de capa do anúncio" />
       </div>
