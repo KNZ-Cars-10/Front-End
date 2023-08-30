@@ -26,7 +26,6 @@ export const AdvertViewPage = () => {
   useEffect(() => {
     getSpeceficAdvert(+advertId!);
     listComments(+advertId!);
-    getUserLoged(token!);
   }, []);
 
   const navigate = useNavigate();
