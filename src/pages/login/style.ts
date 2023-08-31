@@ -5,8 +5,9 @@ export const StyledLogin = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding: 1rem;
+  padding-bottom: 950px;
   background-color: var(--color-grey-scale-grey-7);
 
   form {
@@ -17,7 +18,7 @@ export const StyledLogin = styled.div`
     padding: 3rem;
     gap: 15px;
     border-radius: 5px;
-    margin-top: 3rem;
+    margin: 3rem 0;
     background-color: var(--color-colors-fixed-white-fixed);
   }
 

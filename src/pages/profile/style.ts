@@ -9,6 +9,7 @@ export const StyledProfile = styled.div`
   height: 100%;
   padding: 0 3rem 1rem 3rem;
   background-color: var(--color-grey-scale-grey-7);
+  padding-bottom: 200px;
 
   & > h2 {
     margin-top: 3rem;
@@ -31,7 +32,7 @@ export const StyledProfile = styled.div`
     align-self: flex-start;
     gap: 1rem;
     width: 100%;
-    margin-top: 10rem;
+    height: 100%;
     padding: 1rem;
     overflow: auto;
   }
@@ -169,6 +170,11 @@ export const StyledProfile = styled.div`
     .profileButtons {
       flex-direction: row;
       max-width: 500px;
+    }
+
+    ul {
+      flex-wrap: wrap;
+      justify-content: center;
     }
   }
 `;

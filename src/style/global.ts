@@ -34,14 +34,25 @@ export const GlobalStyles = createGlobalStyle<IGlobalProps>`
     font-weight: 700;
   }
 
-  
+  html{
+	height: 100%;
+  }
+
+  body{
+	height: 100%;
+  }
+
+  #root{
+	height: 100%;
+  }
+
+
   .App{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-between;
 	min-height: 100vh;
-	height: 100vh;
+	position: relative;
 	overflow-x: hidden;
   }
 

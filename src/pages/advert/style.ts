@@ -11,13 +11,15 @@ export const StyledAdvert = styled.div<IProps>`
   align-items: center;
   width: 100%;
   gap: 30px;
+  height: 100%;
   background-color: var(--color-grey-scale-grey-7);
   position: relative;
+  padding-bottom: 200px;
 
   .left {
     align-items: center;
     gap: 30px;
-    margin-top: 1rem;
+    height: 100%;
   }
 
   .banner {

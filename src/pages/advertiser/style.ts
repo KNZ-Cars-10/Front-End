@@ -12,6 +12,7 @@ export const StyledAdvertiser = styled.div<IUserProps>`
   height: 100%;
   padding: 0 3rem 1rem 3rem;
   background-color: var(--color-grey-scale-grey-7);
+  padding-bottom: 250px;
 
   .banner {
     display: flex;

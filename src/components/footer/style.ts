@@ -10,6 +10,9 @@ export const StyledFooter = styled.footer`
   background-color: var(--color-grey-scale-grey-0);
   color: var(--color-grey-scale-grey-10);
   text-align: center;
+  position: absolute;
+  bottom: 0;
+  /* display: none; */
 
   .arrow {
     display: flex;
@@ -28,7 +31,7 @@ export const StyledFooter = styled.footer`
     width: 100px;
   }
 
-  @media (min-width: 770px) {
+  @media (min-width: 800px) {
     flex-direction: row;
     justify-content: space-between;
   }

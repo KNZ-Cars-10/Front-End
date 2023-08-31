@@ -6,6 +6,7 @@ export const StyledHome = styled.div`
   align-items: center;
   width: 100%;
   background-color: var(--color-colors-fixed-white-fixed);
+  padding-bottom: 200px;
 
   .banner {
     background-image: url("/src/assets/banner 2.png");
@@ -114,6 +115,8 @@ export const StyledHome = styled.div`
   }
 
   @media (min-width: 1000px) {
+    padding-bottom: 50px;
+
     .filterButton {
       display: none;
     }
@@ -186,9 +189,5 @@ export const StyledHome = styled.div`
       flex-wrap: wrap;
       justify-content: center;
     }
-  }
-
-  @media (max-width: 1000px) {
-    height: 100%;
   }
 `;

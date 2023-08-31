@@ -6,7 +6,7 @@ export const StyledNotFound = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 90vh;
   gap: 30px;
   background-image: url("/src/assets/1112635.png");
   background-size: cover;

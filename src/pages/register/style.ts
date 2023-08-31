@@ -10,6 +10,7 @@ export const StyledRegister = styled.div<IRegisterProps>`
   align-items: center;
   width: 100%;
   background-color: var(--color-grey-scale-grey-7);
+  padding-bottom: 200px;
 
   form {
     display: flex;
