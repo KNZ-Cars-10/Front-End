@@ -9,7 +9,7 @@ export const StyledHome = styled.div`
   padding-bottom: 200px;
 
   .banner {
-    background-image: url("/src/assets/banner 2.png");
+    background-image: url("https://res.cloudinary.com/dywbjnplm/image/upload/v1693497535/jizkr8xg7zwpwlcudwbc.jpg");
     background-size: cover;
     background-position: center;
     width: 100%;
