@@ -17,12 +17,9 @@ export function LoginPage() {
   useEffect(() => {
     if (token) {
       navigate("/");
-      setUserMenu(false);
-      setNav(false);
-    } else {
-      setUserMenu(false);
-      setNav(false);
     }
+    setUserMenu(false);
+    setNav(false);
   }, []);
 
   const {

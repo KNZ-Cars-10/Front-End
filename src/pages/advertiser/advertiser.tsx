@@ -6,9 +6,8 @@ import { AdvertCard } from "../../components/advertCard/advertCard";
 import { EmptyCard } from "../../components/emptyCard/emptyCard";
 
 export function AdvertiserPage() {
-  const { user, getUser, setUserMenu, profile } = useContext(UserContext);
-
-  const { loading } = useContext(UserContext);
+  const { user, getUser, setUserMenu, profile, setNav, loading } =
+    useContext(UserContext);
 
   const { advertiserId } = useParams();
 
@@ -20,6 +19,7 @@ export function AdvertiserPage() {
 
   useEffect(() => {
     setUserMenu(false);
+    setNav(false);
     if (profile) {
       if (profile.id == parseInt(advertiserId!)) {
         navigate("/profile");

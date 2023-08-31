@@ -138,7 +138,7 @@ export const StyledModalUpdateAddress = styled.form<IProps>`
 
   .buttons {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     width: 100%;
     gap: 10px;
@@ -198,5 +198,11 @@ export const StyledModalUpdateAddress = styled.form<IProps>`
     height: 100%;
     color: var(--color-feedback-alert-1);
     background-color: var(--color-feedback-alert-2);
+  }
+
+  @media (min-width: 800px) {
+    .buttons {
+      flex-direction: row;
+    }
   }
 `;

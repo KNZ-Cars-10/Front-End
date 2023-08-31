@@ -13,7 +13,7 @@ export function AdvertPage() {
 
   const { advertId } = useParams();
 
-  const { setUserMenu, profile, loading } = useContext(UserContext);
+  const { setUserMenu, profile, loading, setNav } = useContext(UserContext);
 
   const { registerComment, deleteCommentModal } = useContext(CommentContext);
 
@@ -28,6 +28,7 @@ export function AdvertPage() {
   useEffect(() => {
     getSpeceficAdvert(parseInt(advertId!));
     setUserMenu(false);
+    setNav(false);
   }, []);
 
   function commentButton() {

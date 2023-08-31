@@ -10,7 +10,7 @@ import { UserContext } from "../../providers/userContext/userContext";
 export function ResetPasswordPage() {
   const { token } = useParams();
 
-  const { resetPassword } = useContext(UserContext);
+  const { resetPassword, setNav, setUserMenu } = useContext(UserContext);
 
   const oldToken = localStorage.getItem("Motors-Shop-Token");
 
@@ -20,6 +20,8 @@ export function ResetPasswordPage() {
     if (oldToken) {
       navigate("/");
     }
+    setNav(false);
+    setUserMenu(false);
   }, []);
 
   const {

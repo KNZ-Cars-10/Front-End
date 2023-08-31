@@ -24,6 +24,7 @@ export function ProfilePage() {
     updateAddress,
     getUserLoged,
     loading,
+    setNav,
   } = useContext(UserContext);
 
   const {
@@ -41,11 +42,11 @@ export function ProfilePage() {
     if (!token) {
       navigate("/login");
       toast.error("Você deve estar logado para acessar essa página !!");
-      setUserMenu(false);
     } else {
-      setUserMenu(false);
       getUserLoged(token!);
     }
+    setUserMenu(false);
+    setNav(false);
   }, []);
 
   useEffect(() => {
