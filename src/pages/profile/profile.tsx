@@ -63,71 +63,73 @@ export function ProfilePage() {
         </div>
       ) : (
         <>
-          <StyledProfile>
-            <div className="banner"></div>
+          {profile ? (
+            <StyledProfile>
+              <div className="banner"></div>
 
-            <div className="user">
-              <div
-                style={{ background: `${profile?.color}` }}
-                className="imgProfile"
-              >
-                {profile!.avatar ? (
-                  <img
-                    src={profile!.avatar}
-                    alt="Imagem de perfil do usuário logado"
-                  />
-                ) : (
-                  <span>{profile?.inicial}</span>
-                )}
-              </div>
-              <div className="informations">
-                <span>{profile?.name}</span>
-                {profile?.is_advertiser ? (
-                  <span className="advertiser">Anunciante</span>
-                ) : (
-                  <span className="noAdvertiser">Comprador</span>
-                )}
-              </div>
-              <p>{profile?.description}</p>
-              <div className="profileButtons">
-                <button
-                  onClick={() => setCreateAdvertModal(true)}
-                  className="button createAdvert"
+              <div className="user">
+                <div
+                  style={{ background: `${profile?.color}` }}
+                  className="imgProfile"
                 >
-                  Criar anúncio
-                </button>
-                <button
-                  className="button updateProfile"
-                  onClick={() => setUpdateProfile(true)}
-                >
-                  Atualizar Perfil
-                </button>
+                  {profile!.avatar ? (
+                    <img
+                      src={profile!.avatar}
+                      alt="Imagem de perfil do usuário logado"
+                    />
+                  ) : (
+                    <span>{profile?.inicial}</span>
+                  )}
+                </div>
+                <div className="informations">
+                  <span>{profile?.name}</span>
+                  {profile?.is_advertiser ? (
+                    <span className="advertiser">Anunciante</span>
+                  ) : (
+                    <span className="noAdvertiser">Comprador</span>
+                  )}
+                </div>
+                <p>{profile?.description}</p>
+                <div className="profileButtons">
+                  <button
+                    onClick={() => setCreateAdvertModal(true)}
+                    className="button createAdvert"
+                  >
+                    Criar anúncio
+                  </button>
+                  <button
+                    className="button updateProfile"
+                    onClick={() => setUpdateProfile(true)}
+                  >
+                    Atualizar Perfil
+                  </button>
 
-                <button
-                  className="button updateAddress"
-                  onClick={() => setUpdateAddress(true)}
-                >
-                  Atualizar Endereço
-                </button>
+                  <button
+                    className="button updateAddress"
+                    onClick={() => setUpdateAddress(true)}
+                  >
+                    Atualizar Endereço
+                  </button>
+                </div>
               </div>
-            </div>
-            <h2>Anúncios</h2>
-            {profile?.adverts ? (
-              <>
-                {profile?.adverts.length == 0 ? (
-                  <div className="anúncios">
-                    <EmptyCardProfile />
-                  </div>
-                ) : (
-                  <ul>
-                    {profile?.adverts.map((advert) => (
-                      <AdvertCardProfile advert={advert!} key={advert!.id} />
-                    ))}
-                  </ul>
-                )}
-              </>
-            ) : null}
-          </StyledProfile>
+              <h2>Anúncios</h2>
+              {profile?.adverts ? (
+                <>
+                  {profile?.adverts.length == 0 ? (
+                    <div className="anúncios">
+                      <EmptyCardProfile />
+                    </div>
+                  ) : (
+                    <ul>
+                      {profile?.adverts.map((advert) => (
+                        <AdvertCardProfile advert={advert!} key={advert!.id} />
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : null}
+            </StyledProfile>
+          ) : null}
 
           {updateProfile ? <ModalUpdateProfile /> : null}
 
