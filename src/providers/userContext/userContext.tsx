@@ -109,6 +109,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         const response = await api.post("adverts/cover", newImage, {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
           },
         });
 

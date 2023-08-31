@@ -9,7 +9,7 @@ export const StyledProfile = styled.div`
   height: 100%;
   padding: 0 3rem 1rem 3rem;
   background-color: var(--color-grey-scale-grey-7);
-  padding-bottom: 200px;
+  padding-bottom: 300px;
 
   & > h2 {
     margin-top: 3rem;
@@ -76,12 +76,13 @@ export const StyledProfile = styled.div`
 
   .informations {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
   }
 
   .informations > span {
+    text-align: center;
     font-weight: 700;
     color: var(--color-grey-scale-grey-1);
   }
@@ -175,6 +176,10 @@ export const StyledProfile = styled.div`
     ul {
       flex-wrap: wrap;
       justify-content: center;
+    }
+
+    .informations {
+      flex-direction: row;
     }
   }
 `;

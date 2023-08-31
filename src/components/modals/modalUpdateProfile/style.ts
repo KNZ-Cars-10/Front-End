@@ -49,7 +49,7 @@ export const StyledModalUpdateProfile = styled.form<IProps>`
 
   .buttons {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     width: 100%;
     gap: 10px;
@@ -124,7 +124,7 @@ export const StyledModalUpdateProfile = styled.form<IProps>`
 
   .accountType {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     width: 100%;
     gap: 10px;
@@ -178,4 +178,13 @@ export const StyledModalUpdateProfile = styled.form<IProps>`
       `;
     }
   }}
+  @media (min-width: 800px) {
+    .accountType {
+      flex-direction: row;
+    }
+
+    .buttons {
+      flex-direction: row;
+    }
+  }
 `;

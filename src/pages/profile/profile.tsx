@@ -81,14 +81,17 @@ export function ProfilePage() {
                     <span>{profile?.inicial}</span>
                   )}
                 </div>
-                <div className="informations">
-                  <span>{profile?.name}</span>
-                  {profile?.is_advertiser ? (
-                    <span className="advertiser">Anunciante</span>
-                  ) : (
-                    <span className="noAdvertiser">Comprador</span>
-                  )}
-                </div>
+                {profile ? (
+                  <div className="informations">
+                    <span>{profile?.name}</span>
+                    {profile?.is_advertiser ? (
+                      <span className="advertiser">Anunciante</span>
+                    ) : (
+                      <span className="noAdvertiser">Comprador</span>
+                    )}
+                  </div>
+                ) : null}
+
                 <p>{profile?.description}</p>
                 <div className="profileButtons">
                   <button

@@ -12,7 +12,7 @@ export const StyledAdvertiser = styled.div<IUserProps>`
   height: 100%;
   padding: 0 3rem 1rem 3rem;
   background-color: var(--color-grey-scale-grey-7);
-  padding-bottom: 250px;
+  padding-bottom: 300px;
 
   .banner {
     display: flex;
@@ -68,12 +68,13 @@ export const StyledAdvertiser = styled.div<IUserProps>`
 
   .informations {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
   }
 
   .informations > span {
+    text-align: center;
     font-weight: 700;
     color: var(--color-grey-scale-grey-1);
   }
@@ -127,6 +128,10 @@ export const StyledAdvertiser = styled.div<IUserProps>`
     ul {
       flex-wrap: wrap;
       justify-content: center;
+    }
+
+    .informations {
+      flex-direction: row;
     }
   }
 `;

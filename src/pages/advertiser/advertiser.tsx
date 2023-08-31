@@ -74,14 +74,16 @@ export function AdvertiserPage() {
                   <span>{user?.inicial}</span>
                 )}
               </div>
-              <div className="informations">
-                <span>{user?.name}</span>
-                {user?.is_advertiser ? (
-                  <span className="advertiser">Anunciante</span>
-                ) : (
-                  <span className="noAdvertiser">Comprador</span>
-                )}
-              </div>
+              {user ? (
+                <div className="informations">
+                  <span>{user?.name}</span>
+                  {user?.is_advertiser ? (
+                    <span className="advertiser">Anunciante</span>
+                  ) : (
+                    <span className="noAdvertiser">Comprador</span>
+                  )}
+                </div>
+              ) : null}
 
               <p>{user?.description}</p>
             </div>
