@@ -9,8 +9,8 @@ export const StyledRegister = styled.div<IRegisterProps>`
   flex-direction: column;
   align-items: center;
   width: 100%;
-
   background-color: var(--color-grey-scale-grey-7);
+  padding-bottom: 200px;
 
   form {
     display: flex;
@@ -126,8 +126,12 @@ export const StyledRegister = styled.div<IRegisterProps>`
     text-align: center;
     border-radius: 5px;
     width: 100%;
-    border: 2px solid var(--color-brand-brand-1);
+    border: 2px solid transparent;
     color: var(--color-colors-fixed-white-fixed);
     background-color: var(--color-brand-brand-1);
+  }
+
+  .RegisterButton:hover {
+    border: 2px solid var(--color-grey-scale-grey-0);
   }
 `;

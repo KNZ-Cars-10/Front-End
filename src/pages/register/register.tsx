@@ -7,8 +7,8 @@ import { useForm } from "react-hook-form";
 import { UserContext } from "../../providers/userContext/userContext";
 import { useNavigate } from "react-router-dom";
 
-export const RegisterPage = () => {
-  const { userRegister } = useContext(UserContext);
+export function RegisterPage() {
+  const { userRegister, setNav } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -20,8 +20,10 @@ export const RegisterPage = () => {
     if (token) {
       navigate("/");
       setUserMenu(false);
+      setNav(false);
     } else {
       setUserMenu(false);
+      setNav(false);
     }
   }, []);
 
@@ -71,6 +73,7 @@ export const RegisterPage = () => {
       ...data,
       is_advertiser: advertiser,
       color: newColor,
+      resetToken: null,
     };
 
     userRegister(newData);
@@ -281,4 +284,4 @@ export const RegisterPage = () => {
       </form>
     </StyledRegister>
   );
-};
+}
