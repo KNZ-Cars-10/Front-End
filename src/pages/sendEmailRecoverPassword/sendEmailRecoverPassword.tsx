@@ -4,6 +4,7 @@ import { TRecoverPassword } from "../../providers/userContext/@Types";
 import { recoverPasswordUserSchema } from "../../schemas/users.schemas";
 import { api } from "../../services/api";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const PasswordResetPage = () => {
   const [emailExists, setEmailExists] = useState(true);
@@ -25,6 +26,8 @@ export const PasswordResetPage = () => {
   const sendEmail = async (email: string) => {
     try {
       await api.post(`recoverPassword/sendEmail`, email);
+
+      toast.success("E-mail enviado com sucesso!");
     } catch (error) {
       console.log(error);
     }
@@ -32,10 +35,15 @@ export const PasswordResetPage = () => {
 
   const onSubmit = async (formData: TRecoverPassword) => {
     const exists = await checkEmailExists(formData.email);
+
     setEmailExists(exists);
 
-    if (emailExists) {
-      await sendEmail(formData.email);
+    if (exists) {
+      try {
+        await sendEmail(formData.email);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -43,15 +51,19 @@ export const PasswordResetPage = () => {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <span>Digite seu email para recuperação de senha</span>
+
         <input
           type="text"
           id="email"
           placeholder="Digitar email"
           {...register("email")}
         />
+
         {!emailExists && (
           <span>O email que você inseriu não está conectado a uma conta.</span>
         )}
+
+        <button type="submit">Enviar</button>
       </form>
     </>
   );

@@ -71,6 +71,10 @@ export const recoverPasswordUserSchema = z.object({
   email: z.string(),
 });
 
+export const newPasswordUserSchema = z.object({
+  password: z.string().min(8, "A senha deve ter no mínimo 8 caracteres."),
+});
+
 export const userSchemaRegister = userSchema
   .omit({
     id: true,
