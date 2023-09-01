@@ -5,6 +5,7 @@ import {
   userSchemaRegister,
   userSchemaRequest,
   userSchemaResponse,
+  recoverPasswordUserSchema,
 } from "../../schemas/users.schemas";
 
 import {
@@ -26,6 +27,8 @@ export type TUserUpdate = z.infer<typeof userSchemaUpdate>;
 export type TLoginRequest = z.infer<typeof requestLoginSchema>;
 
 export type TLoginResponse = z.infer<typeof responseLoginSchema>;
+
+export type TRecoverPassword = z.infer<typeof recoverPasswordUserSchema>;
 
 export type TUserContext = {
   user: TUserResponse | null;
