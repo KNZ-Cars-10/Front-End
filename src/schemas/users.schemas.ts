@@ -67,6 +67,10 @@ export const userSchema = z.object({
   resetToken: z.string().nullish(),
 });
 
+export const recoverPasswordUserSchema = z.object({
+  email: z.string(),
+});
+
 export const userSchemaRegister = userSchema
   .omit({
     id: true,
