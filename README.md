@@ -2,8 +2,8 @@
 
 O objetivo desse desafio é construir um e-commerce voltado para veículos
 
-Documentação oficial: [KNZ-Cars](https://knz-cars-deploy.onrender.com/),
-Deploy oficial: [KNZ-Cars](https://knzcars.vercel.app/) 
+Documentação oficial: [KNZ-Cars-Doc](https://knz-cars-deploy.onrender.com/),
+Deploy oficial: [KNZ-Cars-Deploy](https://knzcars.vercel.app/) 
 
 ## 🚀 Começando
 
