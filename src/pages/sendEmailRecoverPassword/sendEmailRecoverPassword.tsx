@@ -5,6 +5,7 @@ import { recoverPasswordUserSchema } from "../../schemas/users.schemas";
 import { api } from "../../services/api";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { FormStyled } from "./style";
 
 export const PasswordResetPage = () => {
   const [emailExists, setEmailExists] = useState(true);
@@ -49,22 +50,26 @@ export const PasswordResetPage = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <FormStyled onSubmit={handleSubmit(onSubmit)}>
         <span>Digite seu email para recuperação de senha</span>
 
-        <input
-          type="text"
-          id="email"
-          placeholder="Digitar email"
-          {...register("email")}
-        />
+        <div>
+          <input
+            type="text"
+            id="email"
+            placeholder="Digitar email"
+            {...register("email")}
+          />
 
-        {!emailExists && (
-          <span>O email que você inseriu não está conectado a uma conta.</span>
-        )}
+          {!emailExists && (
+            <span>
+              O email que você inseriu não está conectado a uma conta.
+            </span>
+          )}
+        </div>
 
         <button type="submit">Enviar</button>
-      </form>
+      </FormStyled>
     </>
   );
 };

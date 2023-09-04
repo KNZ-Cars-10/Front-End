@@ -6,6 +6,7 @@ import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { FormStyled } from "./style";
 
 function ResetPassword() {
   const [tokenValid, setTokenValid] = useState(true);
@@ -59,20 +60,24 @@ function ResetPassword() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <FormStyled onSubmit={handleSubmit(onSubmit)}>
         <span>Digite sua nova senha</span>
 
-        <input
-          type="password"
-          id="password"
-          placeholder="Digite a senha"
-          {...register("password")}
-        />
+        <div>
+          <input
+            type="password"
+            id="password"
+            placeholder="Digitar senha"
+            {...register("password")}
+          />
 
-        {!tokenValid && <span>Algo deu errado</span>}
+          {!tokenValid && (
+            <span>Algo deu errado, tente novamente mais tarde</span>
+          )}
+        </div>
 
         <button type="submit">Mudar senha</button>
-      </form>
+      </FormStyled>
     </>
   );
 }
