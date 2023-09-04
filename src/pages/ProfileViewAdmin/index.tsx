@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { StyledProfile } from "./styles";
 import { ModalEditProfile } from "../../components/modalEditProfile";
+import { ModalEditAnnounc } from "../../components/modalEditAnnounc";
 
 export function ProfileViewAdmin() {
   const {
@@ -19,7 +20,7 @@ export function ProfileViewAdmin() {
     modalEditProfile,
   } = useContext(UserContext);
 
-  const { setCreateAdvertModal, createAdvertModal, updatePage } =
+  const {updateAdvertModal, setCreateAdvertModal, createAdvertModal, updatePage } =
     useContext(AdvertContext);
 
   let token = localStorage.getItem("Motors-Shop-Token");
@@ -42,6 +43,7 @@ export function ProfileViewAdmin() {
 
   return (
     <>
+    {updateAdvertModal ? <ModalEditAnnounc /> : null}
       {loading ? (
         <div className="modal">
           <div className="loading">
