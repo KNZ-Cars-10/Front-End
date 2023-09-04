@@ -89,7 +89,7 @@ export const LoginPage = () => {
             />
             <p className="error">{errors.password?.message}</p>
             {/* {passwordError && <span>A senha inserida está incorreta.</span>} */}
-            <StyledLink1 to="/password-reset">Esqueci minha senha</StyledLink1>
+            <StyledLink1 to="/recoverPassword">Esqueci minha senha</StyledLink1>
           </section>
         </div>
 
