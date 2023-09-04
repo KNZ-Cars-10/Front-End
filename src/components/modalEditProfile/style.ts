@@ -23,7 +23,8 @@ export const DivModal = styled.div`
 export const FormContent = styled.form`
     margin-top: 10px;
     width: 99vw;
-    height: 700px;
+    max-width: 500px;
+    height: 800px;
     background-color: var(--color-colors-fixed-white-fixed);
     display: flex;
     flex-direction: column;
@@ -56,6 +57,12 @@ export const FormContent = styled.form`
         border: 1.5px solid var(--color-grey-scale-grey-7);
         height: 80px;
     }
+    .modal-buttons{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
     .modal-buttons > button {
         width: 150px;
         height: 48px;
@@ -73,5 +80,4 @@ export const FormContent = styled.form`
     .save {
         background-color: var(--color-brand-brand-1);
     }
-
 `;
